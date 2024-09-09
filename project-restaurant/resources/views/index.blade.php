@@ -229,14 +229,13 @@
                 <img src="images/o1.jpg" alt="">
               </div>
               <div class="detail-box">
-                <h5>
-                  Tasty Thursdays
+                <h5>ساندویچ همبرگر
                 </h5>
                 <h6>
                   <span>20%</span> Off
                 </h6>
                 <a href="">
-                  Order Now <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
+                 سفارش <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                     <g>
                       <g>
                         <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
@@ -299,13 +298,13 @@
               </div>
               <div class="detail-box">
                 <h5>
-                  Pizza Days
+                 پیتزا گوشت و مرغ
                 </h5>
                 <h6>
                   <span>15%</span> Off
                 </h6>
                 <a href="">
-                  Order Now <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
+                  سفارش <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                     <g>
                       <g>
                         <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
@@ -374,16 +373,16 @@
     <div class="container">
       <div class="heading_container heading_center">
         <h2>
-          Our Menu
+         لیست غذاها
         </h2>
       </div>
 
       <ul class="filters_menu">
-        <li class="active" data-filter="*">All</li>
-        <li data-filter=".burger">Burger</li>
-        <li data-filter=".pizza">Pizza</li>
-        <li data-filter=".pasta">Pasta</li>
-        <li data-filter=".fries">Fries</li>
+        <li class="active" data-filter="*">همه</li>
+        <li data-filter=".burger">ساندویچ</li>
+        <li data-filter=".pizza">ویتزا</li>
+        <li data-filter=".pasta">واستا</li>
+        <li data-filter=".fries">سوخاری</li>
       </ul>
 
       <div class="filters-content">
@@ -392,18 +391,17 @@
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="images/f1.png" alt="">
+                  <img src="images/مخلوط.png" alt="">
                 </div>
                 <div class="detail-box">
                   <h5>
-                    Delicious Pizza
+                   پیتزا مخلوط
                   </h5>
                   <p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                  </p>
+                      مواد تشکیل‌دهنده کلی این پیتزا، معمولاً انواع سوسیس و کالباس است و مواد دیگری مانند ذرت، زیتون و گوجه‌فرنگی نیز در آن وجود دارند.                  </p>
                   <div class="options">
                     <h6>
-                      $20
+                      145000 تومان
                     </h6>
                     <a href="">
                       <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
@@ -465,21 +463,95 @@
             </div>
           </div>
           <div class="col-sm-6 col-lg-4 all burger">
-            <div class="box">
+              <div class="box">
+                  <div>
+                      <div class="img-box">
+                          <img src="images/f1.png" alt="">
+                      </div>
+                      <div class="detail-box">
+                          <h5>
+                             پیتزا مخصوص
+                          </h5>
+                          <p>
+                              مواد تشکیل‌دهنده این پیتزا معمولاً همان سوسیس و گوشت چرخ‌کرده و فلفل دلمه و ذرت و زیتون و… هستند که ممکن است در فست‌فودهای مختلف این مواد باهم متفاوت باشند.                          </p>
+                          <div class="options">
+                              <h6>
+                                  146500
+                              </h6>
+                              <a href="">
+                                  <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
+                        <g>
+                            <g>
+                                <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
+                         c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
+                            </g>
+                        </g>
+                                      <g>
+                                          <g>
+                                              <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
+                         C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
+                         c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
+                         C457.728,97.71,450.56,86.958,439.296,84.91z" />
+                                          </g>
+                                      </g>
+                                      <g>
+                                          <g>
+                                              <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
+                         c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
+                                          </g>
+                                      </g>
+                                      <g>
+                                      </g>
+                                      <g>
+                                      </g>
+                                      <g>
+                                      </g>
+                                      <g>
+                                      </g>
+                                      <g>
+                                      </g>
+                                      <g>
+                                      </g>
+                                      <g>
+                                      </g>
+                                      <g>
+                                      </g>
+                                      <g>
+                                      </g>
+                                      <g>
+                                      </g>
+                                      <g>
+                                      </g>
+                                      <g>
+                                      </g>
+                                      <g>
+                                      </g>
+                                      <g>
+                                      </g>
+                                      <g>
+                                      </g>
+                      </svg>
+                              </a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+            <div class="col-sm-6 col-lg-4 all burger">
+            <div class="box mt-4">
               <div>
                 <div class="img-box">
-                  <img src="images/f2.png" alt="">
+                  <img src="images/مارگاریتا.png" alt="">
                 </div>
                 <div class="detail-box">
                   <h5>
-                    Delicious Burger
+                    پیتزا مارگاریتا
                   </h5>
                   <p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                  </p>
+                      مواد تشکیل‌دهنده پیتزا مارگاریتا، معمولاً گوجه، پنیر پیتزا، روغن‌زیتون و ریحان هستند و البته پیتزا مارگاریتا دارای خمیر مخصوصی نیز هست که باید به‌خوبی تهیه شود تا بتوانید از خوردن این پیتزا لذت بیشتری ببرید.                  </p>
                   <div class="options">
                     <h6>
-                      $15
+                      189500تومان
                     </h6>
                     <a href="">
                       <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
@@ -541,21 +613,96 @@
             </div>
           </div>
           <div class="col-sm-6 col-lg-4 all pizza">
+              <div class="box">
+                  <div>
+                      <div class="img-box">
+                          <img src="images/پپرونی.png" alt="">
+                      </div>
+                      <div class="detail-box">
+                          <h5>
+                             پیتزا پپرونی
+                          </h5>
+                          <p>
+                              مواد تشکیل‌دهنده این پیتزا در کل پپرونی، گوجه، فلفل دلمه و پنیر پیتزا هستند؛ اما ممکن است در برخی رستوران‌ها مواد دیگری نیز مشاهده کنید و طعم‌های جدیدتری از این ترکیب به چشمتان بخورد.                          </p>
+                          <div class="options">
+                              <h6>
+                                  185000تومان
+                              </h6>
+                              <a href="">
+                                  <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
+                        <g>
+                            <g>
+                                <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
+                         c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
+                            </g>
+                        </g>
+                                      <g>
+                                          <g>
+                                              <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
+                         C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
+                         c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
+                         C457.728,97.71,450.56,86.958,439.296,84.91z" />
+                                          </g>
+                                      </g>
+                                      <g>
+                                          <g>
+                                              <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
+                         c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
+                                          </g>
+                                      </g>
+                                      <g>
+                                      </g>
+                                      <g>
+                                      </g>
+                                      <g>
+                                      </g>
+                                      <g>
+                                      </g>
+                                      <g>
+                                      </g>
+                                      <g>
+                                      </g>
+                                      <g>
+                                      </g>
+                                      <g>
+                                      </g>
+                                      <g>
+                                      </g>
+                                      <g>
+                                      </g>
+                                      <g>
+                                      </g>
+                                      <g>
+                                      </g>
+                                      <g>
+                                      </g>
+                                      <g>
+                                      </g>
+                                      <g>
+                                      </g>
+                      </svg>
+                              </a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+            <div class="col-sm-6 col-lg-4 all burger">
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="images/f3.png" alt="">
+                  <img src="images/استیک.png" alt="">
                 </div>
                 <div class="detail-box">
                   <h5>
-                    Delicious Pizza
+                   پیتزا استیک
                   </h5>
                   <p>
-                    Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                  </p>
+                      از مواد تشکیل‌دهنده پیتزا استیک، می‌توان به استیک، سیر، پیاز، فلفل‌دلمه‌ای، گوجه، قارچ و… اشاره کرد؛ اما طبق معمول ممکن است در رستوران‌های مختلف شاهد این باشید که روش پخت دیگری وجود دارد و مواد پیتزا نیز تغییر کرده‌اند.                  </p>
                   <div class="options">
                     <h6>
-                      $17
+                      255000تومان
                     </h6>
                     <a href="">
                       <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
@@ -616,6 +763,234 @@
               </div>
             </div>
           </div>
+            <div class="col-sm-6 col-lg-4 all burger">
+                <div class="box">
+                    <div>
+                        <div class="img-box">
+                            <img src="images/images.png" alt="">
+                        </div>
+                        <div class="detail-box">
+                            <h5>
+                                Delicious Pizza12
+                            </h5>
+                            <p>
+                                Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
+                            </p>
+                            <div class="options">
+                                <h6>
+                                    $17
+                                </h6>
+                                <a href="">
+                                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
+                        <g>
+                            <g>
+                                <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
+                         c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
+                            </g>
+                        </g>
+                                        <g>
+                                            <g>
+                                                <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
+                         C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
+                         c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
+                         C457.728,97.71,450.56,86.958,439.296,84.91z" />
+                                            </g>
+                                        </g>
+                                        <g>
+                                            <g>
+                                                <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
+                         c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
+                                            </g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                      </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 all burger">
+                <div class="box">
+                    <div>
+                        <div class="img-box">
+                            <img src="images/images.png" alt="">
+                        </div>
+                        <div class="detail-box">
+                            <h5>
+                                Delicious Pizza
+                            </h5>
+                            <p>
+                                Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
+                            </p>
+                            <div class="options">
+                                <h6>
+                                    $17
+                                </h6>
+                                <a href="">
+                                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
+                        <g>
+                            <g>
+                                <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
+                         c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
+                            </g>
+                        </g>
+                                        <g>
+                                            <g>
+                                                <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
+                         C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
+                         c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
+                         C457.728,97.71,450.56,86.958,439.296,84.91z" />
+                                            </g>
+                                        </g>
+                                        <g>
+                                            <g>
+                                                <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
+                         c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
+                                            </g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                      </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 all burger">
+                <div class="box">
+                    <div>
+                        <div class="img-box">
+                            <img src="images/images.png" alt="">
+                        </div>
+                        <div class="detail-box">
+                            <h5>
+                                Delicious Pizza1
+                            </h5>
+                            <p>
+                                Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
+                            </p>
+                            <div class="options">
+                                <h6>
+                                    $17
+                                </h6>
+                                <a href="">
+                                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
+                        <g>
+                            <g>
+                                <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
+                         c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
+                            </g>
+                        </g>
+                                        <g>
+                                            <g>
+                                                <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
+                         C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
+                         c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
+                         C457.728,97.71,450.56,86.958,439.296,84.91z" />
+                                            </g>
+                                        </g>
+                                        <g>
+                                            <g>
+                                                <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
+                         c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
+                                            </g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                      </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
           <div class="col-sm-6 col-lg-4 all pasta">
             <div class="box">
               <div>
@@ -768,6 +1143,82 @@
               </div>
             </div>
           </div>
+            <div class="col-sm-6 col-lg-4 all fries">
+                <div class="box">
+                    <div>
+                        <div class="img-box">
+                            <img src="images/f5.png" alt="">
+                        </div>
+                        <div class="detail-box">
+                            <h5>
+                                French Fries
+                            </h5>
+                            <p>
+                                Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
+                            </p>
+                            <div class="options">
+                                <h6>
+                                    $10
+                                </h6>
+                                <a href="">
+                                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
+                        <g>
+                            <g>
+                                <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
+                         c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
+                            </g>
+                        </g>
+                                        <g>
+                                            <g>
+                                                <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
+                         C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
+                         c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
+                         C457.728,97.71,450.56,86.958,439.296,84.91z" />
+                                            </g>
+                                        </g>
+                                        <g>
+                                            <g>
+                                                <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
+                         c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
+                                            </g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                                        <g>
+                                        </g>
+                      </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
           <div class="col-sm-6 col-lg-4 all pizza">
             <div class="box">
               <div>

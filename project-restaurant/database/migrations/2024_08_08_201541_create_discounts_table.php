@@ -14,10 +14,12 @@ return new class extends Migration
         Schema::create('discounts', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('image')->nullable();
+            $table->string('mime')->default('image/jpeg');
             $table->string('percentage');
-            $table->date('start_date');
-            $table->date('end_date');
-            $table->boolean('is_active');
+            $table->dateTime('start_date')->nullable();
+            $table->dateTime('end_date')->nullable();
+
             $table->timestamps();
         });
     }

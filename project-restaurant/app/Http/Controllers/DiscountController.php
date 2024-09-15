@@ -13,7 +13,9 @@ class DiscountController extends Controller
      */
     public function index()
     {
-        //
+        $discount= discount::all();
+        return view('Discount.index',compact('discount'));
+
     }
 
     /**
@@ -21,7 +23,7 @@ class DiscountController extends Controller
      */
     public function create()
     {
-        //
+        return view('Discount.create2');
     }
 
     /**
@@ -29,7 +31,24 @@ class DiscountController extends Controller
      */
     public function store(StorediscountRequest $request)
     {
-        //
+        $fileMime=null;
+        $filePath=null;
+        $validated=$request->validated();
+        if ($request->hasFile('image')) {
+            $filePath=$request->file('image')->store('discounts','public');
+//            $fileMime = $request->file('file')->getClientMimeType();
+            $fileMime=$request->file('image')->getMimeType();
+        }
+       discount::create([
+           'name'=>$validated['name'],
+           'image'=>$filePath,
+           'mime'=>$fileMime,
+           'percentage'=>$validated ['percentage'],
+           'start_date'=>$validated['start_date'],
+           'end_date'=>$validated['end_date']
+       ]);
+       return redirect()->route('discount');
+
     }
 
     /**
@@ -43,24 +62,38 @@ class DiscountController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(discount $discount)
+    public function edit(discount $discount,string $id)
     {
-        //
+        $edit= discount::FindOrFail($id);
+        return view('Discount.edit',compact('edit'));
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatediscountRequest $request, discount $discount)
+    public function update(UpdatediscountRequest $request, discount $discount,string $id)
     {
-        //
+        $update=$discount::FindOrFail($id);
+        $update=$request->validated();
+        $update->update([
+            'name'=>$update['name'],
+            'percentage'=>$update['percentage'],
+            'start_date'=>$update['start_date'],
+            'end_date'=>$update['end_date']
+
+        ]);
+        return redirect()->route('discount');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(discount $discount)
+    public function destroy(discount $discount,string $id)
     {
-        //
+        $destroy=discount::FindOrFail($id);
+        $destroy->delete();
+        return redirect()->route('discount');
+
     }
 }

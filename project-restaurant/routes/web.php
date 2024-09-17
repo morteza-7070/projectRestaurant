@@ -22,7 +22,6 @@ Route::prefix('/discount')->group(function () {
     Route::get('/create',[DiscountController::class,'create'])->name('discount.create');
     Route::post('/store',[DiscountController::class,'store'])->name('discount.store');
     Route::get('/edit/{id}',[DiscountController::class,'edit'])->name('discount.edit');
-    Route::put('/update/{id}',[DiscountController::class,'update'])->name('discount.update');
-//    Route::delete('destroy/{id}/destroy',[DiscountController::class,'destroy'])->name('discounts.destroy');
+    Route::put('update/{id}/update',[DiscountController::class,'update'])->name('discount.update');
     Route::delete('/discounts/{id}', [DiscountController::class, 'destroy'])->name('discount.destroy');
 });

@@ -23,7 +23,7 @@ class DiscountController extends Controller
      */
     public function create()
     {
-        return view('Discount.create2');
+        return view('Discount.create');
     }
 
     /**
@@ -69,23 +69,25 @@ class DiscountController extends Controller
 
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdatediscountRequest $request, discount $discount,string $id)
-    {
-        $update=$discount::FindOrFail($id);
-        $update=$request->validated();
-        $update->update([
-            'name'=>$update['name'],
-            'percentage'=>$update['percentage'],
-            'start_date'=>$update['start_date'],
-            'end_date'=>$update['end_date']
 
+
+    public function update(UpdatediscountRequest $request, Discount $discount, string $id)
+    {
+
+        $discountToUpdate = $discount::findOrFail($id);
+        $validatedData = $request->validated();
+
+        $discountToUpdate->update([
+            'name' => $validatedData['name'],
+            'percentage' => $validatedData['percentage'],
+            'image' => $validatedData['image'],
+            'start_date' => $validatedData['start_date'],
+            'end_date' => $validatedData['end_date'],
         ]);
+
+
         return redirect()->route('discount');
     }
-
     /**
      * Remove the specified resource from storage.
      */

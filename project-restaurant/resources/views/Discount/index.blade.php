@@ -36,10 +36,6 @@
 <button class="button-78" role="button"><a href="{{route('discount.create')}}">ایجاد تخفیفات</a></button>
     <div class="row">
         <!-- HTML !-->
-
-
-
-
         @foreach($discount as $dis)
         <div class="card col-sm-4">
             <div class="img"><img src="{{ asset('storage/' . $dis->image) }}" alt="discount Image"  class="image"></div>
@@ -49,9 +45,13 @@
                <div class="percentage">
                    <button class="button-73" role="button">{{$dis->percentage}}%</button>
                </div>
+                <div class="start-date">
+                    <h3><span>:تاریخ شروع تخفیف</span><br>{{$dis->startShamsi}}</h3>
+                    <h3><span>:تاریخ پایان تخفیف</span><br>{{$dis->endShamsi}}</h3>
+                </div>
                 <br>
 
-                       <form action="{{route('discount.edit',$dis->id)}}" method="post">
+                       <form action="{{route('discount.edit',$dis->id)}}" method="get">
                            @csrf
 
                            <button class="button-50" role="button">Edit</button>

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CustomerCollection;
+use App\Http\Resources\CustomerResource;
+use App\Http\Resources\UserCollection;
 use App\Models\Customer;
 use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
@@ -13,7 +16,9 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        $customers=Customer::all();
+        return  CustomerResource::collection(Customer::all());
+
     }
 
     /**
@@ -21,7 +26,8 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        return view('customers.create');
+
     }
 
     /**

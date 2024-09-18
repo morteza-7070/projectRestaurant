@@ -132,8 +132,8 @@
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
               </form>
-              <a href="" class="order_online">
-                سفارش آنلاین
+              <a href="{{route('restaurants.create')}}" class="order_online">
+                1سفارش آنلاین
               </a>
             </div>
           </div>

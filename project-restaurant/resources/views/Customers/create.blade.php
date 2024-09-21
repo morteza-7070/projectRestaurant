@@ -34,27 +34,56 @@
 </header>
 
 <div class="container">
-    <form action="" method="post">
-        <div class="name">
-            <input type="text" name="name" placeholder="نام را وارد نمایید">
+    <h1 id="title">فرم ثبت نام مشتری</h1>
+    <form action="{{route('restaurants.store')}}" method="post">
+        @csrf
+        <div id="name">
+            <input type="text" name="name" placeholder="نام را وارد نمایید" class="name"><br>
+{{--            @if($errors->first('name'))--}}
+{{--                <span class="text-light">{{$errors->first('name')}}</span>--}}
+{{--            @endif--}}
+
         </div>
-        <div class="phone">
-            <input type="text" name="phone" placeholder="تلفن را وارد نمایید">
+        <div id="phone">
+            <input type="text" name="phone" placeholder="تلفن را وارد نمایید" class="phone"><br>
+{{--            @if($errors->first('phone'))--}}
+{{--                <span class="text-light">{{$errors->first('phone')}}</span>--}}
+{{--            @endif--}}
         </div>
-        <div class="address">
-            <input type="text" name="address" placeholder="">
+        <div id="address">
+            <input type="text" name="address" placeholder="آدرس را وارد نمایید" class="address"><br>
+{{--            @if($errors->first('address'))--}}
+{{--                <span class="text-light">{{$errors->first('address')}}</span>--}}
+{{--            @endif--}}
         </div>
-        <div class="email">
-            <input type="text" name="email" placeholder="">
+        <div id="email">
+            <input type="text" name="email" placeholder="ایمکیل را وارد نمایید" class="email"><br>
+{{--            @if($errors->first('email'))--}}
+{{--                <span class="text-light">{{$errors->first('email')}}</span>--}}
+{{--            @endif--}}
         </div>
-        <div class="birthday">
-            <input type="date" name="birthday" placeholder="">
+        <div id="birthday">
+            <input type="date" name="birthday" placeholder="تاریخ تولد" class="birthday"><br>
+{{--            @if($errors->first('birthday'))--}}
+{{--                <span class="text-light">{{$errors->first('birthday')}}</span>--}}
+{{--            @endif--}}
         </div>
-        <div class="password">
-            <input type="text" name="password" placeholder="">
+        <div id="password">
+            <input type="text" name="password" placeholder="پسورد را انتخاب کنید" class="password"><br>
+{{--            @if($errors->first('password'))--}}
+{{--                <span class="text-light">{{$errors->first('password')}}</span>--}}
+{{--            @endif--}}
         </div>
-        <!-- HTML !-->
-        <button class="button-72" role="button">Button 72</button>
+{{--        <div id="confirm-password">--}}
+{{--            <input type="text" name="password" placeholder="پسورد را انتخاب کنید" class="password"><br>--}}
+{{--            @if($errors->first('password'))--}}
+{{--                <span class="text-light">{{$errors->first('password')}}</span>--}}
+{{--            @endif--}}
+{{--        </div>--}}
+
+       <div id="button">
+           <button class="button-72" role="button">ثبت نام</button>
+       </div>
 
 
     </form>

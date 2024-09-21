@@ -1,7 +1,24 @@
 
 
-
+.container{text-align: center;justify-content: center;margin-top: 2%;width: 100%;
+    background: rgb(131,58,180);
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);}
+form{margin-top: 5%;}
+#name{margin: 2% 0;}
+.name{  border-radius: 5px 20px 5px;width: 20%;height: 5%;margin-top: 2%;text-align: center}
+#phone{}
+.phone{border-radius: 5px 20px 5px;width: 20%;height: 5%;margin-top: 2%;text-align: center}
+#address{margin: 2% 0}
+.address{border-radius: 5px 20px 5px;width: 20%;height: 5%;margin-top: 2%;text-align: center}
+#email{}
+.email{border-radius: 5px 20px 5px;width: 20%;height: 5%;margin-top: 2%;text-align: center}
+#birthday{margin: 2% 0}
+.birthday{border-radius: 5px 20px 5px;width: 20%;height: 5%;margin-top: 2%;text-align: center}
+#password{}
+.password{border-radius: 5px 20px 5px;width: 20%;height: 5%;margin-top: 2%;text-align: center}
+#button{margin: 2% 45%}
                                                    .button-72 {
+                                                       margin-bottom: 2rem;
                                                        align-items: center;
                                                        background-color: initial;
                                                        background-image: linear-gradient(rgba(179, 132, 201, .84), rgba(57, 31, 91, .84) 50%);
@@ -17,7 +34,7 @@
                                                        justify-content: center;
                                                        letter-spacing: .04em;
                                                        line-height: 16px;
-                                                       margin: 0;
+
                                                        padding: 18px 18px;
                                                        text-align: center;
                                                        text-decoration: none;

@@ -17,7 +17,7 @@ class CustomerController extends Controller
     public function index()
     {
         $customers=Customer::all();
-        return  CustomerResource::collection(Customer::all());
+        return  CustomerResource::collection(Customer::paginate(1));
 
     }
 
@@ -35,15 +35,26 @@ class CustomerController extends Controller
      */
     public function store(StoreCustomerRequest $request)
     {
-        //
+        $validated = $request->validated();
+       $customers= Customer::create([
+            'name'=>$validated['name'],
+            'email'=>$validated['email'],
+            'phone'=>$validated['phone'],
+            'address'=>$validated['address'],
+            'birthday'=>$validated['birthday'],
+            'password'=>bcrypt($validated['password']),
+        ]);
+//        return response()->json($customers,201);
+        return  redirect()->route('index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Customer $customer)
+    public function show(Customer $customer,string $id)
     {
-        //
+        $customers=Customer::FindOrFail('$id');
+        return response()->json($customers);
     }
 
     /**

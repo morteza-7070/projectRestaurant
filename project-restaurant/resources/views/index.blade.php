@@ -60,7 +60,7 @@
                 <a class="nav-link" href="index.html">صفحه اصلی <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="menu.html">منو</a>
+                <a class="nav-link" href="menu.blade.html">منو</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="about.html">درباره ما</a>

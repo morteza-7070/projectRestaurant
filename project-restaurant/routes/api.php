@@ -20,7 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::prefix('/customers')->group(function(){
-    Route::get('/customers', [CustomerController::class,'index'])->name('restaurants.index');
+    Route::get('/', [CustomerController::class,'index'])->name('restaurants.index');
     Route::get('/create',[CustomerController::class,'create'])->name('restaurants.create');
+    Route::post('/store',[CustomerController::class,'store'])->name('restaurants.store');
 
 });

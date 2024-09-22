@@ -19,6 +19,7 @@ class CustomerController extends Controller
         $customers=Customer::all();
         return  CustomerResource::collection(Customer::paginate(1));
 
+
     }
 
     /**
@@ -44,19 +45,19 @@ class CustomerController extends Controller
             'birthday'=>$validated['birthday'],
             'password'=>bcrypt($validated['password']),
         ]);
-//        return response()->json($customers,201);
+
         return  redirect()->route('index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Customer $customer,string $id)
-    {
-        $customers=Customer::FindOrFail('$id');
-        return response()->json($customers);
-    }
 
+    public function show(Customer $customer)
+    {
+        return response()->json($customer);
+
+    }
     /**
      * Show the form for editing the specified resource.
      */
@@ -68,16 +69,47 @@ class CustomerController extends Controller
     /**
      * Update the specified resource in storage.
      */
+//    public function update(UpdateCustomerRequest $request,Customer $customer,string $id)
+//    {
+////        $customers=Customer::FindOrFail($customer);
+//        $validated=$request->validated();
+//        $customers->update([
+//            'name'=>$validated['name'],
+//            'email'=>$validated['email'],
+//            'phone'=>$validated['phone'],
+//            'address'=>$validated['address'],
+//            'birthday'=>$validated['birthday'],
+//            'password'=>bcrypt($validated['password']),
+//        ]);
+//        return response()->json(new CustomerResource($customers));
+//
+//    }
     public function update(UpdateCustomerRequest $request, Customer $customer)
     {
-        //
+        $validated = $request->validated();
+
+        // به‌روزرسانی مشتری
+        $customer->update([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'phone' => $validated['phone'],
+            'address' => $validated['address'],
+            //'birthday' => $validated['birthday'],
+            // فقط اگر پاسورد جدیدی وجود داشته باشد، آن را هش می‌کنیم
+            'password' => $validated['password'] ? bcrypt($validated['password']) : $customer->password,
+        ]);
+
+        return response()->json($customer); // بازگشت پاسخ به‌روز شده
     }
 
     /**
      * Remove the specified resource from storage.
      */
+
     public function destroy(Customer $customer)
     {
-        //
+        $customer->delete(); // حذف مشتری
+
+        return response()->json(null, 204); // بازگشت پاسخ با کد 204
     }
 }

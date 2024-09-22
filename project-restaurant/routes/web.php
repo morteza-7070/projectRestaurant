@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index')->name('index');
+    return view('index');
 });
 Route::prefix('/')->group(function(){
     Route::get('index',[App\Http\Controllers\Controller::class,'index'])->name('index');

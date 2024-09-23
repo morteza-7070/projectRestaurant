@@ -27,7 +27,7 @@ class StoreCustomerRequest extends FormRequest
             'phone' => 'required',
             'address' => 'required',
             'birthday'=>'required',
-            'password'=>'required|min:8|max:20',
+            'password'=>'min:8|max:20',
         ];
 
     }

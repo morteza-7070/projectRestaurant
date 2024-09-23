@@ -28,3 +28,6 @@ Route::prefix('/discount')->group(function () {
     Route::put('update/{id}/update',[DiscountController::class,'update'])->name('discount.update');
     Route::delete('/discounts/{id}', [DiscountController::class, 'destroy'])->name('discount.destroy');
 });
+Route::prefix('/restaurant')->group(function () {
+    Route::get('/',[\App\Http\Controllers\PizzaHivaController::class,'index'])->name('FastFoodHiva');
+});

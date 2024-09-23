@@ -94,7 +94,7 @@ class CustomerController extends Controller
             'email' => $validated['email'],
             'phone' => $validated['phone'],
             'address' => $validated['address'],
-            //'birthday' => $validated['birthday'],
+            'birthday' => $validated['birthday'],
             // فقط اگر پاسورد جدیدی وجود داشته باشد، آن را هش می‌کنیم
             'password' => $validated['password'] ? bcrypt($validated['password']) : $customer->password,
         ]);

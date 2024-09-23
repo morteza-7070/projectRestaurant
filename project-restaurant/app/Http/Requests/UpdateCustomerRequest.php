@@ -24,11 +24,11 @@ class UpdateCustomerRequest extends FormRequest
         return [
             'name' => 'min:3|max:20|',
             'phone' => 'min:2|max:20|',
-
-            'address' => 'min:4|max:60|',
-            //'birthday' => 'date|',
-            'password' => 'min:4|max:30|',
             'email' => 'min:4|max:30|',
+            'address' => '',
+            'birthday' => '',
+            'password' => 'min:4|max:30|',
+
         ];
     }
     public function messages(): array

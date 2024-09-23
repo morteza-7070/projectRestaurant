@@ -60,10 +60,10 @@
                 <a class="nav-link" href="index.html">صفحه اصلی <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="menu.blade.html">منو</a>
+                <a class="nav-link" href="{{route('restaurants.create')}}">ثبت نام مشتری</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="about.html">درباره ما</a>
+                <a class="nav-link" href="{{route('discount')}}">لیست تخفیفات</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="book.html">لیست غذاها</a>

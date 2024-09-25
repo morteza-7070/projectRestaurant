@@ -13,7 +13,8 @@ class PizzaHivaController extends Controller
      */
     public function index()
     {
-        return view('viewPizza_Hiva.index');
+        $buyers=PizzaHiva::all();
+        return view('viewPizza_Hiva.index',compact('buyers'));
     }
 
     /**

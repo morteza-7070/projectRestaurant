@@ -1,128 +1,95 @@
+header {
+    position: relative;
+    background-color: black;
+    height: 75vh;
+    min-height: 25rem;
+    width: 100%;
+    overflow: hidden;
+}
 .container{
-//.header{position: relative;
-//    .img {position: relative;
-//        width: 100%;
-//
-//        .imageHeader {
-//            width: 100%;
-//            height: 50%;
-//            background-color: rgba(0, 0, 0, 0.5);
-//
-//        }
-//        .imageHeader1{height: 100%;width: 100%; background-color: rgba(0, 0, 0, 0.5)}
-//
-//        .text-Header {
-//
-//            .text-white{
-//                position: absolute;
-//                bottom: 20px;
-//                left: 20px;
-//
-//                color: white;
-//                padding-left: 20px;
-//                padding-right: 20px;
-//
-//            }
-//
-//
-//
-//            }
-//        }
-//}
-    .header {
-        width: 100%;
-        position: relative; /* موقعیت والد را تنظیم می‌کند */
+    header{
+        .container {
+            nav{width: 100%;
+                //.navbar-brand{width: 100%;
+                //    img{width: 100%;height: 5%}}
+                .navbar-brand{width: 15%;text-align: center;margin-left: 20rem;
+                .iconTitle{width: 10%;height: 40%;margin-left: 35rem;margin-top: 2%}}
+                button{}
+                .collapse{
+                    .navbar-nav{
+                        img{}
+                        .nav-item{
+                            .nav-link{color: #a0aec0;transform: translateX(15rem)}
+                        }
+                    }
+                }
+            }
+            .d-flex{
+                .w-100{
+                    h1{font-weight: bolder;font-size: 2rem}
+                    p{font-weight: bold;font-size: 1.5rem;margin-top: 2rem}
+                }
+            }
+        }
+
+    }
+}
+
+header img {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+
+header .container {
+    position: relative;
+    z-index: 5;
+}
+
+header .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+/* Media Query for devices withi coarse pointers and no hover functionality */
+
+/* This will use a fallback image instead of a video for devices that commonly do not support the HTML5 video element */
+
+@media (pointer: coarse) and (hover: none) {
+    header {
+        background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
     }
 
-    .img {width: 100%;
-        position: relative; /* برای موقعیت‌دهی فرزندان */
-        display: inline-block; /* اندازه‌گیری تصویر */
+    header video {
+        display: none;
     }
-
-    .imageHeader img {
-        display: block; /* حذف فاصله اضافی */
-        width: 100%; /* تنظیم عرض به 100% */
-        height: 50%; /* حفظ نسبت تصویر */
-    }
-
-    .textHeader {
-        position: absolute; /* موقعیت‌دهی مطلق */
-        top: 10%; /* مرکز عمودی */
-        left: 85%; /* مرکز افقی */
-        transform: translate(-50%, -50%); /* برای تنظیم صحیح متن */
-        color: white; /* رنگ متن */
-        //background-color: rgba(0, 0, 0, 0.5); /* پس‌زمینه شفاف */
-        padding: 10px; /* حاشیه داخلی */
-        border-radius: 5px; /* گوشه‌های گرد */
-        text-align: center; /* مرکز متن */
-    }
-
-
-
-    //@import url('https://fonts.googleapis.com/css?family=Montserrat');
-    //
-    //
-    //body {
-    //    margin: 0;
-    //    text-align:center;
-    //    padding:0;
-    //}
-    //
-    //.header {
-    //    background-image: linear-gradient(to bottom right , rgba(0,0,0,.8),rgba(0,0,0,.6)),url(https://images.pexels.com/photos/700974/pexels-photo-700974.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
-    //    background-size: 100% 100%;
-    //
-    //    height: 100vh;
-    //    width: 100%;
-    //}
-    //
-    //.content {
-    //
-    //    padding: 10%;
-    //}
-    //
-    //.content > h2 {
-    //    font-size: 4em;
-    //    text-transform: uppercase;
-    //    letter-spacing: 2rem;
-    //    color: white;
-    //    font-family: Montserrat;
-    //}
-    //
-    //.content > span {
-    //    font-size: 1em;
-    //    text-transform: uppercase;
-    //    letter-spacing: 1rem;
-    //    color: #ffffffa7;
-    //    font-family: Montserrat;
-    //}
-    //
-    //
-    //@media only screen and (max-width: 600px) {
-    //    .content {
-    //        padding: 35%;
-    //    }
-    //    .content > h2 {
-    //        font-size: 28px;
-    //        letter-spacing: .5rem;
-    //    }
-    //
-    //    .content > span {
-    //        font-size: 16px;
-    //
-    //    }
-    //}
-    .card{;position: absolute;
-
-        .card-img{}
+    .card{width: 20%;
+        .card-img{width: 20%}
         .card-info{
             .text-title{}
             .text-body{}
         }
         .card-footer{
-            .text-title{}
-            .card-button{}
-        }
+            .text-title{
 
+            }
+
+        }
     }
 }
+

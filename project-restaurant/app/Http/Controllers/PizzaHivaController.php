@@ -22,7 +22,7 @@ class PizzaHivaController extends Controller
      */
     public function create()
     {
-        //
+        return view('viewPizza_Hiva.create');
     }
 
     /**
@@ -30,7 +30,18 @@ class PizzaHivaController extends Controller
      */
     public function store(StorePizzaHivaRequest $request)
     {
-        //
+        $validated = $request->validated();
+        if($request->hasFile('image')){
+            $filePath=$request->file('image')->store('pizza_hivas','public');
+            $fileMime=$request->file('image')->getMimeType();
+        }
+        PizzaHiva::create([
+            'name'=>$validated['name'],
+            'price'=>$validated['price'],
+            'image'=>$filePath,
+            'description'=>$validated['description'],
+            'discount_id'=>$validated['discount_id'],
+        ]);
     }
 
     /**

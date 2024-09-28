@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DiscountController;
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\PizzaHivaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,5 +30,11 @@ Route::prefix('/discount')->group(function () {
     Route::delete('/discounts/{id}', [DiscountController::class, 'destroy'])->name('discount.destroy');
 });
 Route::prefix('/restaurant')->group(function () {
-    Route::get('/',[\App\Http\Controllers\PizzaHivaController::class,'index'])->name('FastFoodHiva');
+    Route::get('/',[PizzaHivaController::class,'index'])->name('FastFoodHiva');
+    Route::get('/create',[PizzaHivaController::class,'create'])->name('restaurant.create');
+    Route::post('/store',[PizzaHivaController::class,'store'])->name('restaurant.store');
+    Route::get('/edit/{id}',[PizzaHivaController::class,'edit'])->name('restaurant.edit');
+    Route::put('update/{id}/update',[PizzaHivaController::class,'update'])->name('restaurant.update');
+    Route::delete('/restaurants/{id}', [PizzaHivaController::class, 'destroy'])->name('restaurant.destroy');
+
 });

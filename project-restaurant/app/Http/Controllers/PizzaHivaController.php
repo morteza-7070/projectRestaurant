@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\discount;
 use App\Models\PizzaHiva;
 use App\Http\Requests\StorePizzaHivaRequest;
 use App\Http\Requests\UpdatePizzaHivaRequest;
@@ -22,7 +23,8 @@ class PizzaHivaController extends Controller
      */
     public function create()
     {
-        return view('viewPizza_Hiva.create');
+        $discounts=Discount::all();
+        return view('viewPizza_Hiva.create',compact('discounts'));
     }
 
     /**
@@ -39,9 +41,11 @@ class PizzaHivaController extends Controller
             'name'=>$validated['name'],
             'price'=>$validated['price'],
             'image'=>$filePath,
+            'mime'=>$fileMime,
             'description'=>$validated['description'],
             'discount_id'=>$validated['discount_id'],
         ]);
+        return redirect()->route('FastFoodHiva');
     }
 
     /**

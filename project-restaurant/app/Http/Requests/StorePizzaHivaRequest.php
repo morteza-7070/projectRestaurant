@@ -25,7 +25,7 @@ class StorePizzaHivaRequest extends FormRequest
             'name' => 'required',
             'price' => 'required',
             'description' => 'required',
-            'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image'=>'required',
             'discount_id'=>'required'
         ];
 

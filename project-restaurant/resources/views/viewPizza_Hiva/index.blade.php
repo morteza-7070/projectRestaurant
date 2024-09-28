@@ -26,7 +26,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">درباره ما <span class="sr-only"></span></a>
+                            <a class="nav-link" href="{{route('restaurant.create')}}">ایجاد غذا <span class="sr-only"></span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#productList">لیست محصولات</a>
@@ -51,18 +51,25 @@
 
 
    <div id="productList">
-       @foreach($buyers as $buyer)
-           <div class="card">
-               <div class="card-img"><img src=" {{asset('storage/' ,$buyer->image )}}" alt="PizzaHiva"></div>
-               <div class="card-info">
-                   <p class="text-title">{{$buyer->name}} </p>
-                   <p class="text-body">{{$buyer->description}}</p>
-               </div>
-               <div class="card-footer">
-                   <span class="text-title">{{$buyer->price}}ریال</span>
+       <div class="row">
+         <div class="col-sm-3">
+             @foreach($buyers as $buyer)
+                 <div class="card">
+{{--                     <div class="card-img"><img src="{{asset('storage/' .$buyer->image )}}" alt="PizzaHiva" style="width: 100%"></div>--}}
+                     <img src="{{ asset('storage/' . $buyer->image) }}" alt="PizzaHiva" style="width: 100%">
 
-               </div></div>
-       @endforeach
+                     <div class="card-info">
+                         <p class="text-title">{{$buyer->name}} </p>
+                         <p class="text-body">{{$buyer->description}}</p>
+                     </div>
+                     <div class="card-footer">
+                         <span class="text-title">{{$buyer->price}}ریال</span>
+
+                     </div></div>
+             @endforeach
+         </div>
+       </div>
+
 
    </div>
 </div>

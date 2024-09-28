@@ -1,0 +1,25 @@
+
+
+    .form{
+        background-image: url("https://static.vecteezy.com/system/resources/thumbnails/037/236/579/small_2x/ai-generated-beautuful-fast-food-background-with-copy-space-free-photo.jpg");
+        background-repeat: no-repeat;
+        background-size: 100%;
+        width: 100%;
+        height:100%;
+
+
+        #Form{padding: 2% 15%;
+            #name{
+                .name{text-align: center;width: 40%;margin: 4% 0 2% 0;height: 6%}
+            }
+            #description{.description{text-align: center;width: 40%;margin: 2%;height: 6%}}
+            #image{.image{text-align: center;width: 40%;margin: 2% 10%;height: 6%}}
+            #price{.price{text-align: center;width: 40%;margin: 2%;height: 6%}}
+            #discount{text-align: center;width: 20%;margin: 2% 12%;height: 6%;
+                .discount{}}
+            .btn{margin-left: 20%}
+
+        }
+
+    }
+

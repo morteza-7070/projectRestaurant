@@ -50,26 +50,51 @@
 
 
 
-   <div id="productList">
-       <div class="row">
-         <div class="col-sm-3">
-             @foreach($buyers as $buyer)
-                 <div class="card">
-{{--                     <div class="card-img"><img src="{{asset('storage/' .$buyer->image )}}" alt="PizzaHiva" style="width: 100%"></div>--}}
-                     <img src="{{ asset('storage/' . $buyer->image) }}" alt="PizzaHiva" style="width: 100%">
 
-                     <div class="card-info">
-                         <p class="text-title">{{$buyer->name}} </p>
-                         <p class="text-body">{{$buyer->description}}</p>
-                     </div>
-                     <div class="card-footer">
-                         <span class="text-title">{{$buyer->price}}ریال</span>
+      <div id="productList">
+          <div class="row w-100">
+              @foreach($buyers as $buyer)
+                  <div class="col-sm-3">
+                      <div class="card">
+                          <img src="{{ asset('storage/' . $buyer->image) }}" alt="PizzaHiva" style="width: 100%">
+                          <button class="button-1" role="button">{{$buyer->discount->percentage}}%</button>
 
-                     </div></div>
-             @endforeach
-         </div>
-       </div>
+                          <div class="card-info">
+                              <p class="text-title">{{$buyer->name}} </p>
+                              <p class="text-body">{{$buyer->description}}</p>
+                          </div>
+                          <div class="card-footer">
+                              <span class="text-title">{{$buyer->price}}ریال</span>
+                              <!-- HTML !-->
+
+
+                          </div>
+                          {{--                 <button class="button-1" role="button">{{$buyer->discount->percentage}}<span class="off">%</span> </button>--}}
+                          <span class="price off">{{($buyer->price)-($buyer->price*($buyer->discount->percentage/100))}} ریال</span>
+                         <div class="row">
+                             <div class="col-sm-5">
+                                 <form action="{{route("restaurant.destroy",$buyer->id)}}" method="post">
+                                     @csrf
+                                     @method('DELETE')
+                                     {{$buyer->text}}
+                                     <button type="submit"  class="btn btn-danger">Delete</button>
+
+                                 </form>
+                                 <form action="{{route('restaurant.edit',$buyer->id)}}" method="post">
+                                     @csrf
+                                     <button type="submit" class="btn btn-info">Edit</button>
+                                 </form>
+                             </div>
+                         </div>
+                      </div>
+
+
+                  </div>
+
+              @endforeach
+          </div>
+      </div>
 
 
    </div>
-</div>
+

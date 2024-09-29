@@ -8,7 +8,7 @@ header {
     width: 100%;
     overflow: hidden;
 }
-.container{
+.container{width: 100%;
     header{
         .container {
             nav{width: 100%;
@@ -35,24 +35,88 @@ header {
         }
 
     }
-   #productList{
 
-       .row{
-           .col-sm-3{width: 100%;display: flex;
-               .card{;width: 30%;flex-wrap: nowrap;margin-left: 2.5%;height: auto;
-                   img{width: 100%;height: 40%}
+
+       .row{;width: 100%;text-align: center;justify-content: center;margin: 2% 2%;
+           .col-sm-3{width: 25%;margin-top: 2% ;
+               .card{;flex-wrap: nowrap;
+                   height: 100%;
+                   position: relative;
+                   margin-top: 5%;padding-top: 5%;
+                   img{width: 100%;height: 40%;}
+                   .button-1{position: absolute;width: 30%;
+                       height: 12%;
+                       text-align: center;
+                       margin-left: -3%;
+                       display: flex;
+                       padding-top: 10%;
+                       font-size: 2rem;
+                       .off{text-align: center;flex-direction: row;font-size: 1.5rem}
+
+                   }
                    .card-info{height: 40%;word-wrap: break-word;
                        .text-title{}
                        .text-body{}
                    }
-                   .card-footer{
-                       .text-title{}
+                   .card-footer {
+                       display: flex;
+
+                       .text-title {
+                           text-decoration: line-through;
+                       }
+                   }
+                   .row{
+                       .col-sm-5{
+                           .btn-info{margin-left: 20%}
+                           .btn-primary{margin-left: -10%}
+
+                       }
                    }
                }
+               .button-1 {
+                   background-color: #EA4C89;
+                   border-radius: 50%;
+                   width: 80%;
+                   //font-weight: bolder;
+                  // font-size: 2rem;
+                   flex-direction: row;
+                   border-style: none;
+                   box-sizing: border-box;
+                   color: #FFFFFF;
+                   cursor: pointer;
+                   //display: inline-block;
+                   font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                   //font-size: 14px;
+                   //font-weight: 500;
+                   //height: 80px;
+                   line-height: 20px;
+                   list-style: none;
+                   margin: 0;
+                   outline: none;
+                   padding: 10px 16px;
+                   justify-content: center;
+                   position: relative;
+                   text-align: center;
+                   text-decoration: none;
+                   transition: color 100ms;
+                   vertical-align: baseline;
+                   user-select: none;
+                   -webkit-user-select: none;
+                   touch-action: manipulation;
+
+                   span{font-size: 12px}
+               }
+
+               .button-1:hover,
+               .button-1:focus {
+                   background-color: #F082AC;
+               }
+               .price{font-weight: bolder;font-size: 22px}
+
 
            }
        }
-   }
+
 }
 
 header img {

@@ -13,7 +13,7 @@ class discount extends Model
     use HasFactory;
     protected $fillable=['name','image','percentage','start_date','end_date'];
     public function PizzaHiva(){
-        return $this->hasMany(PizzaHiva::class,'discount_id');
+        return $this->hasOne(PizzaHiva::class,'discount_id');
     }
     public function shamsi(): Attribute
     {

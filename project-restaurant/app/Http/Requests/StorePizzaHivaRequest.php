@@ -33,7 +33,11 @@ class StorePizzaHivaRequest extends FormRequest
     public function messages(): array
     {
         return [
-          'name.required'=>''
+          'name.required'=>'وارد کردن نام الزامی است',
+            'price.required'=>'وارد کردن فیمت الزامی است',
+            'description.required'=>'وارد کردن توضیحات الزامی است',
+            'image.required'=>'وارد کردن عکس الزامی است',
+            'discount_id.required'=>'وارد کردن درصد تخفیف الزامی است'
         ];
     }
 }

@@ -82,7 +82,7 @@ class PizzaHivaController extends Controller
             'image'=>$filePath,
             'mime'=>$fileMime,
             'description'=>$validated['description'],
-            'discount_id'=>$validated['discount_id'],
+
         ]);
         return redirect()->route('FastFoodHiva');
     }

@@ -11,7 +11,7 @@ class UpdatePizzaHivaRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,23 @@ class UpdatePizzaHivaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required',
+            'price' => 'required',
+            'description' => 'required',
+            'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:8000',
+        ];
+    }
+    public function messages(): array
+    {
+        return[
+            'name.required'=>'وارد کردن نام الزامی است',
+            'price.required'=>'وارد کردن قیمت الزامی است',
+            'description.required'=>'وارد کردن توضیحات الزامی است',
+            'image.required'=>'وارد کردن عکس الزامی است',
+            'image.image'=>'فرمت عکس باید از نوع عکس باشد',
+            'image.mimes'=>'فرمت عکس باید jpeg، png، jpg، gif یا svg باشد',
+            'image.max'=>'حجم عکس باید حداکثر 8000 کیلوبایت باشد',
+
         ];
     }
 }

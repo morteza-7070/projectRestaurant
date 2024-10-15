@@ -13,7 +13,8 @@ class FastfoodAtavichController extends Controller
      */
     public function index()
     {
-        //
+        $Ataviches = FastfoodAtavich::all();
+        return view('Ataviches.index', compact('Ataviches'));
     }
 
     /**
@@ -21,7 +22,7 @@ class FastfoodAtavichController extends Controller
      */
     public function create()
     {
-        //
+        return view('Ataviches.create');
     }
 
     /**
@@ -29,7 +30,21 @@ class FastfoodAtavichController extends Controller
      */
     public function store(StorefastfoodAtavichRequest $request)
     {
-        //
+        $filePath=null;
+        $fileMime=null;
+        $validated = $request->validated();
+        if($request->hasFile('image')){
+            $filePath=$request->file('image')->store('fastfood_ataviches','public');
+            $fileMime=$request->file('image')->getMimeType();
+        }
+        fastfoodAtavich::create([
+            'name'=>$validated['name'],
+            'price'=>$validated['price'],
+            'description'=>$validated['description'],
+            'image'=>$filePath,
+            'mime'=>$fileMime,
+            'discount_id'=>$validated['discount_id'],
+        ]);
     }
 
     /**

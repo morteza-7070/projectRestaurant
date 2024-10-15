@@ -3,6 +3,7 @@
 use App\Http\Controllers\DiscountController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\PizzaHivaController;
+use \App\Http\Controllers\FastfoodAtavichController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,4 +38,7 @@ Route::prefix('/restaurant')->group(function () {
     Route::put('update/{id}/update',[PizzaHivaController::class,'update'])->name('restaurant.update');
     Route::delete('/restaurants/{id}', [PizzaHivaController::class, 'destroy'])->name('restaurant.destroy');
 
+});
+Route::prefix('/fastfood')->group(function () {
+    Route::get('/',[FastfoodAtavichController::class,'index'])->name('FastFoodAtavich');
 });

@@ -177,7 +177,7 @@
                     <p>
  فست فود هیوا با پرسنلی مجرب در خدمت همشهریان  عزیز                    </p>
                     <div class="btn-box">
-                      <a href="" class="btn1">
+                      <a href="{{route('FastFoodHiva')}}" class="btn1">
                        سفارش غذا
                       </a>
                     </div>

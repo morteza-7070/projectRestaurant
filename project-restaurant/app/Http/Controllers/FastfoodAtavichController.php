@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\discount;
 use App\Models\fastfoodAtavich;
 use App\Http\Requests\StorefastfoodAtavichRequest;
 use App\Http\Requests\UpdatefastfoodAtavichRequest;
@@ -22,7 +23,8 @@ class FastfoodAtavichController extends Controller
      */
     public function create()
     {
-        return view('Ataviches.create');
+        $discounts=Discount::all();
+        return view('Ataviches.create',compact('discounts'));
     }
 
     /**
@@ -45,6 +47,7 @@ class FastfoodAtavichController extends Controller
             'mime'=>$fileMime,
             'discount_id'=>$validated['discount_id'],
         ]);
+        return redirect()->route('FastFoodAtavich');
     }
 
     /**
@@ -58,17 +61,31 @@ class FastfoodAtavichController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(fastfoodAtavich $fastfoodAtavich)
+    public function edit(fastfoodAtavich $fastfoodAtavich,string $id)
     {
-        //
+        $Ataviches = FastfoodAtavich::FindOrFail($id);
+        return view('Ataviches.Edit',compact('Ataviches'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatefastfoodAtavichRequest $request, fastfoodAtavich $fastfoodAtavich)
+    public function update(UpdatefastfoodAtavichRequest $request, fastfoodAtavich $fastfoodAtavich,string $id)
     {
-        //
+        $Ataviches=fastfoodAtavich::FindOrFail($id);
+        $validated=$request->validated();
+        if($request->hasFile('image')){
+            $filePath=$request->file('image')->store('fastfood_ataviches','public');
+            $fileMime=$request->file('image')->getMimeType();
+        }
+        $Ataviches->update([
+            'name'=>$validated['name'],
+            'price'=>$validated['price'],
+            'description'=>$validated['description'],
+            'image'=>$filePath,
+
+        ]);
+        return redirect()->route('FastFoodAtavich');
     }
 
     /**

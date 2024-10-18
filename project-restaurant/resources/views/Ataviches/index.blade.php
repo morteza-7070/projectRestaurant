@@ -17,8 +17,8 @@
             <ul class="nav">
                 <img src="../../images/iconFastFood.png" alt="">
                 <li class="nav-item"><a href="" class="nav-link">صفحه اصلی</a></li>
-                <li class="nav-item"><a href="#list" class="nav-link">لیست محصولات</a></li>
-                <li class="nav-item"><a href="" class="nav-link">ایجاد</a></li>
+                <li class="nav-item"><a href="#productList" class="nav-link">لیست محصولات</a></li>
+                <li class="nav-item"><a href="{{route('fastfood.create')}}" class="nav-link">ایجاد</a></li>
             </ul>
             <div class="title">
                 <h1 class="title-header">فست فود عطاویچ</h1>
@@ -26,29 +26,66 @@
             </div>
         </div>
     </div>
-    <div id="list">
-        <h2>لیست محصولات</h2>
-        @foreach($Ataviches as $Atavich)
-            <div class="card">
-                <div class="card-title"></div>
-            </div>
-        @endforeach
+
+    <div id="productList">
+        <h1>لیست محصولات</h1>
+        <div class="row w-100">
+            @foreach($Ataviches as $Atavich)
+                <div class="col-sm-3">
+                    <div class="card">
+                        <img src="{{ asset('storage/' .  $Atavich->image) }}" alt="PizzaHiva" style="width: 100%">
+{{--                        <button class="button-1" role="button">{{ $Atavich->discount->percentage}}%</button>--}}
+                        @if(isset($Atavich->discount->percentage))
+                            <button class="button-1" role="button">{{ $Atavich->discount->percentage}}%</button>
+                        @else <button class="button-1" role="button">بدون تخفیف</button>
+                        @endif
+
+                        <div class="card-info">
+                            <p class="text-title">{{ $Atavich->name}} </p>
+                            <p class="text-body">{{ $Atavich->description}}</p>
+
+                        </div>
+
+                        <div class="card-footer">
+                           <div class="text-title">
+                               @if(isset($Atavich->discount) && $Atavich->discount->percentage > 0)
+                                  <h5>قیمت:<span class="text-title price-original">{{ $Atavich->price }} ریال</span></h5>
+                                   <hr>
+                                  قیمت با احتساب تخفیف: <span class="price-off">{{ ($Atavich->price) - ($Atavich->price * ($Atavich->discount->percentage / 100)) }} ریال</span>
+
+                               @else
+                                  <h5>قیمت:<span class="text-title">{{ $Atavich->price }} ریال</span></h5>
+                               @endif
+                           </div>
+                        </div>
+
+
+                        {{--                 <button class="button-1" role="button">{{$buyer->discount->percentage}}<span class="off">%</span> </button>--}}
+{{--                        <span class="price off">{{( $Atavich->price)-( $Atavich->price*( $Atavich->discount->percentage/100))}} ریال</span>--}}
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <form action="{{route("restaurant.destroy", $Atavich->id)}}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    {{ $Atavich->text}}
+                                    <button type="submit"  class="btn btn-danger">Delete</button>
+
+                                </form>
+                                <form action="{{route('restaurant.edit', $Atavich->id)}}" method="post">
+                                    @csrf
+                                    <button type="submit" class="btn btn-info">Edit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            @endforeach
+        </div>
     </div>
 
-</div>
-<main>
-    <div class="container-fluid bg-trasparent my-4 p-3" style="position: relative;">
-        @foreach($Ataviches as $Atavich)
-        <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
-            <div class="col"> <div class="card h-100 shadow-sm">
-                    <img src="{{ asset('storage/' . $Atavich->image) }}" alt="fastfoodAtavich" style="width: 100%">                    <div class="card-body">
-                        <div class="clearfix mb-3">
-                            <span class="float-start badge rounded-pill bg-primary">{{$Atavich->name}}</span>
-                            <span class="float-end price-hp">{{$Atavich->price}}ریال</span> </div>
-                        <h5 class="card-title">{{$Atavich->description}}</h5>
-                        <div class="text-center my-4"> <a href="#" class="btn btn-warning">Check offer</a> </div> </div> </div> </div>
 
-                                </i></span> <span class="float-end"><i class="fas fa-plus"></i></span>
-        </div> </div>
-    @endforeach
-</main>
+</div>
+

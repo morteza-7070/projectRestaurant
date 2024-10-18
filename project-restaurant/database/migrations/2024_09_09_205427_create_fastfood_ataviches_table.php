@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('mime')->default('image/jpeg');
             $table->string('description')->nullable();
             $table->string('price');
-            $table->unsignedBigInteger('discount_id');
+            $table->unsignedBigInteger('discount_id')->nullable();
             $table->foreign('discount_id')->references('id')->on('discounts')->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();

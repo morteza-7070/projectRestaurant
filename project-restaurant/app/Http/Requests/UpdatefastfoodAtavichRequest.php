@@ -11,7 +11,7 @@ class UpdatefastfoodAtavichRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,26 @@ class UpdatefastfoodAtavichRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string',
+            'price' => 'required|numeric',
+            'description' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ];
+    }
+    public function messages(): array
+    {
+        return[
+            'name.required'=>'',
+            'price.required'=>'',
+            'description.required'=>'',
+            'image.required'=>'',
+            'image.image'=>'',
+            'image.mimes'=>'',
+            'image.max'=>'',
+            'name.string'=>'',
+            'price.numeric'=>'',
+            'description.string'=>'',
+            
         ];
     }
 }

@@ -41,4 +41,6 @@ Route::prefix('/restaurant')->group(function () {
 });
 Route::prefix('/fastfood')->group(function () {
     Route::get('/',[FastfoodAtavichController::class,'index'])->name('FastFoodAtavich');
+    Route::get('/create',[FastfoodAtavichController::class,'create'])->name('fastfood.create');
+    Route::post('/store',[FastfoodAtavichController::class,'store'])->name('fastfood.store');
 });

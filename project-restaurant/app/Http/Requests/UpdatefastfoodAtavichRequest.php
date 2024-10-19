@@ -31,17 +31,17 @@ class UpdatefastfoodAtavichRequest extends FormRequest
     public function messages(): array
     {
         return[
-            'name.required'=>'',
-            'price.required'=>'',
-            'description.required'=>'',
-            'image.required'=>'',
-            'image.image'=>'',
-            'image.mimes'=>'',
-            'image.max'=>'',
-            'name.string'=>'',
-            'price.numeric'=>'',
-            'description.string'=>'',
-            
+            'name.required'=>'نام را وارد نمایید',
+            'price.required'=>'وارد کردن قیمت الزامی است',
+            'description.required'=>'وارد کردن توضیحات درباه غذا الزامی است',
+            'image.required'=>'وارد نمودن عکس الزامی است',
+            'image.image'=>'عکس باید از نوعimageباشد',
+            'image.mimes'=>'    نوع فایل باید با فرمت:',
+            'image.max'=>'حداکثر حجم فایل ارساتلی باید کمتر از 5مگابایت باشد',
+            'name.string'=>'نام باید از نوع حروف باشد',
+            'price.numeric'=>'قیمت از نوع عدد باید انتخاب شود',
+            'description.string'=>'توضیحات باید از نوع حروف باشد',
+
         ];
     }
 }

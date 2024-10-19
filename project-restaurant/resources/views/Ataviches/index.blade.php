@@ -37,7 +37,7 @@
 {{--                        <button class="button-1" role="button">{{ $Atavich->discount->percentage}}%</button>--}}
                         @if(isset($Atavich->discount->percentage))
                             <button class="button-1" role="button">{{ $Atavich->discount->percentage}}%</button>
-                        @else <button class="button-1" role="button">بدون تخفیف</button>
+                        @else
                         @endif
 
                         <div class="card-info">
@@ -64,14 +64,14 @@
 {{--                        <span class="price off">{{( $Atavich->price)-( $Atavich->price*( $Atavich->discount->percentage/100))}} ریال</span>--}}
                         <div class="row">
                             <div class="col-sm-5">
-                                <form action="{{route("restaurant.destroy", $Atavich->id)}}" method="post">
+                                <form action="{{route("fastfood.destroy", $Atavich->id)}}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     {{ $Atavich->text}}
                                     <button type="submit"  class="btn btn-danger">Delete</button>
 
                                 </form>
-                                <form action="{{route('restaurant.edit', $Atavich->id)}}" method="post">
+                                <form action="{{route('fastfood.edit', $Atavich->id)}}" method="get">
                                     @csrf
                                     <button type="submit" class="btn btn-info">Edit</button>
                                 </form>

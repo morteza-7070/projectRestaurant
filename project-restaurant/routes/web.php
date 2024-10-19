@@ -43,4 +43,7 @@ Route::prefix('/fastfood')->group(function () {
     Route::get('/',[FastfoodAtavichController::class,'index'])->name('FastFoodAtavich');
     Route::get('/create',[FastfoodAtavichController::class,'create'])->name('fastfood.create');
     Route::post('/store',[FastfoodAtavichController::class,'store'])->name('fastfood.store');
+    Route::get('/edit/{id}',[FastfoodAtavichController::class,'edit'])->name('fastfood.edit');
+    Route::put('update/{id}/update',[FastfoodAtavichController::class,'update'])->name('fastfood.update');
+    Route::delete('fastfoods/{id}', [FastfoodAtavichController::class, 'destroy'])->name('fastfood.destroy');
 });

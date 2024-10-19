@@ -64,14 +64,16 @@ class FastfoodAtavichController extends Controller
     public function edit(fastfoodAtavich $fastfoodAtavich,string $id)
     {
         $Ataviches = FastfoodAtavich::FindOrFail($id);
+
         return view('Ataviches.Edit',compact('Ataviches'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatefastfoodAtavichRequest $request, fastfoodAtavich $fastfoodAtavich,string $id)
+    public function update(UpdatefastfoodAtavichRequest $request,string $id)
     {
+        $discounts=Discount::all();
         $Ataviches=fastfoodAtavich::FindOrFail($id);
         $validated=$request->validated();
         if($request->hasFile('image')){
@@ -83,16 +85,20 @@ class FastfoodAtavichController extends Controller
             'price'=>$validated['price'],
             'description'=>$validated['description'],
             'image'=>$filePath,
+            'mime'=>$fileMime,
+
 
         ]);
-        return redirect()->route('FastFoodAtavich');
+        return redirect()->route('FastFoodAtavich',compact("Ataviches","discounts"));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(fastfoodAtavich $fastfoodAtavich)
+    public function destroy(fastfoodAtavich $fastfoodAtavich,string $id)
     {
-        //
+        $Ataviches=$fastfoodAtavich->FindOrFail($id);
+        $Ataviches->delete();
+        return redirect()->route('FastFoodAtavich');
     }
 }

@@ -86,6 +86,7 @@ class FastfoodAtavichController extends Controller
             'description'=>$validated['description'],
             'image'=>$filePath,
             'mime'=>$fileMime,
+            'type'=>$validated['type'],
 
 
         ]);

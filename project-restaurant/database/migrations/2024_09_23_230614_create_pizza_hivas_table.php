@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('pizza_hivas', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('type')->nullable();
             $table->string('image')->nullable();
             $table->string('mime')->default('image/jpeg');
             $table->string('price');
             $table->text('description');
-            $table->unsignedBigInteger('discount_id');
+            $table->unsignedBigInteger('discount_id')->nullable();
             $table->foreign('discount_id')->references('id')->on('discounts')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

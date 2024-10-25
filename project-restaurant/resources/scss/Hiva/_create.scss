@@ -6,11 +6,22 @@
         background-size: 100%;
         width: 100%;
         height:100%;
+        @media screen and (max-width: 767px){
+            height: 300%;
+
+
+        }
 
 
         #Form{padding: 2% 15%;
             #name{
                 .name{text-align: center;width: 40%;margin: 4% 0 2% 0;height: 6%}
+            }
+            #type{
+               width: 15%;
+                text-align: center;
+                margin-left: 12%;
+                height: 5%;
             }
             #description{.description{text-align: center;width: 40%;margin: 2%;height: 6%}}
             #image{.image{text-align: center;width: 40%;margin: 2% 10%;height: 6%}}

@@ -26,6 +26,7 @@ class UpdatePizzaHivaRequest extends FormRequest
             'price' => 'required',
             'description' => 'required',
             'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:8000',
+            'type' => 'required',
         ];
     }
     public function messages(): array
@@ -38,6 +39,7 @@ class UpdatePizzaHivaRequest extends FormRequest
             'image.image'=>'فرمت عکس باید از نوع عکس باشد',
             'image.mimes'=>'فرمت عکس باید jpeg، png، jpg، gif یا svg باشد',
             'image.max'=>'حجم عکس باید حداکثر 8000 کیلوبایت باشد',
+            'type.required'=>'انتخاب نام غذا الزامی است'
 
         ];
     }

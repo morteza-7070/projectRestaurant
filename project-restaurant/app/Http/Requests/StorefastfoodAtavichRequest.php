@@ -27,6 +27,7 @@ class StorefastfoodAtavichRequest extends FormRequest
             'description'=>'required|string',
             'image'=>'required|image|mimes:jpeg,png,jpg,gif|max:5000',
             'discount_id'=>'nullable|exists:discounts,id',
+            'type'=>'required|string',
 
         ];
     }

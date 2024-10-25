@@ -1,0 +1,37 @@
+#Edit{
+background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2ImuLYD9uxJJB8XPmRG44jaZGGbr77xfFHw&s");
+    background-repeat: no-repeat;
+    position: relative;
+    background-size: cover;
+    width: 80%;
+    justify-content: center;text-align: center;
+    margin-left: 10%;
+    height: 100%;
+    a{text-decoration: none;
+        h3{text-align: start}
+    }
+
+    .form-Edit{
+        position: absolute;
+        width: 40%;
+        margin-left: 30%;
+        background: #f7b731;
+        margin-top: 5%;
+        border-radius: 35%;
+
+
+        #image{
+            .imageFast{margin-top: 5%;width: 80%;border-radius: 50%}
+            .image{margin-top: 3%;width: 35%}
+            .title-image{position: absolute;margin-top: 3%;}
+        }
+        #name{.name{margin-top: 3%;width: 40%;text-align: center} .title-name{position: absolute;margin-top: 3%;}}
+        #price{.price{margin-top: 3%;width: 40%;text-align: center} .title-price{position: absolute;margin-top: 3%;}}
+        #description{
+            .description{margin-top: 3%;width: 40%;text-align: center}
+            .title-description{position: absolute;margin-top: 3%;}
+        }
+        #button{.btn{margin: 3% 0}}
+
+    }
+}

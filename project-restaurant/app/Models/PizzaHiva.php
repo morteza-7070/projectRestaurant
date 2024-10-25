@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class PizzaHiva extends Model
 {
     use HasFactory;
-    protected $fillable=['name','description','price','image','discount_id'];
+    protected $fillable=['name','type','description','price','image','discount_id'];
     public function discount() : BelongsTo
     {
         return $this->belongsTo(Discount::class,'discount_id');

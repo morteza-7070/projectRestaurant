@@ -30,24 +30,51 @@ class PizzaHivaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+//    public function store(StorePizzaHivaRequest $request)
+//    {
+//        $validated = $request->validated();
+//        $filePath = null;
+//        $fileMime = null;
+//
+//        if ($request->hasFile('image')) {
+//            $filePath = $request->file('image')->store('pizza_hivas', 'public');
+//            $fileMime = $request->file('image')->getMimeType();
+//        }
+//
+//        PizzaHiva::create([
+//            'name' => $validated['name'],
+//            'type' => $validated['type']??null,
+//            'price' => $validated['price'],
+//            'image' => $filePath,
+////            'mime' => $fileMime,
+//            'description' => $validated['description'],
+//            'discount_id' => $validated['discount_id']??null,
+//        ]);
+//
+//        return redirect()->route('FastFoodHiva');
+//    }
     public function store(StorePizzaHivaRequest $request)
     {
         $validated = $request->validated();
-        if($request->hasFile('image')){
-            $filePath=$request->file('image')->store('pizza_hivas','public');
-            $fileMime=$request->file('image')->getMimeType();
+        $filePath = null;
+        $fileMime = null;
+
+        if ($request->hasFile('image')) {
+            $filePath = $request->file('image')->store('pizza_hivas', 'public');
+            $fileMime = $request->file('image')->getMimeType();
         }
+
         PizzaHiva::create([
-            'name'=>$validated['name'],
-            'price'=>$validated['price'],
-            'image'=>$filePath,
-            'mime'=>$fileMime,
-            'description'=>$validated['description'],
-            'discount_id'=>$validated['discount_id'],
+            'name' => $validated['name'],
+            'type' => $validated['type'] ?? null,
+            'price' => $validated['price'],
+            'image' => $filePath,
+            'description' => $validated['description'],
+            'discount_id' => $validated['discount_id'] ?? null,
         ]);
+
         return redirect()->route('FastFoodHiva');
     }
-
     /**
      * Display the specified resource.
      */
@@ -82,6 +109,7 @@ class PizzaHivaController extends Controller
             'image'=>$filePath,
             'mime'=>$fileMime,
             'description'=>$validated['description'],
+            'type'=>$validated['type'],
 
         ]);
         return redirect()->route('FastFoodHiva');

@@ -1,6 +1,6 @@
 <head>
 
-    <link rel="stylesheet" href="../../css/PizzaHiva/style.css">
+    <link rel="stylesheet" href="../../css/Atavich/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     @vite([
                  'resources/css/app.css', 'resources/scss/Atavich/style.scss',
@@ -21,8 +21,8 @@
                 <li class="nav-item"><a href="{{route('fastfood.create')}}" class="nav-link">ایجاد</a></li>
             </ul>
             <div class="title">
-                <h1 class="title-header">فست فود عطاویچ</h1>
-                <p class="title-body"><span>فست فود عطاویچ همراه با کادری مجرب همراه با بهترین مواد اولیه در محیطی امن و ایمن در خدمت خانواده های و همشهریان عزیز </span></p>
+                <h1 class="title-header">فست فود  عطاویچ</h1>
+                <p class="title-body"><span>فست فود عطاویچ  همراه با کادری مجرب همراه با بهترین مواد اولیه در محیطی امن و ایمن در خدمت خانواده های و همشهریان عزیز </span></p>
             </div>
         </div>
     </div>

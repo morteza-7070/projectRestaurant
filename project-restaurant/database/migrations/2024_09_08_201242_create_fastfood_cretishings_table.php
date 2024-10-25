@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('fastfood_cretishings', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('type')->nullable();
             $table->string('image')->nullable();
             $table->string('mime')->default('image/jpeg');
             $table->string('description')->nullable();
             $table->string('price');
-            $table->unsignedBigInteger('discount_id');
+            $table->unsignedBigInteger('discount_id')->nullable( );
             $table->foreign('discount_id')->references('id')->on('discounts')->onUpdate('cascade')->onDelete('cascade');
 
 

@@ -1,0 +1,108 @@
+
+@import "create";
+@import "Edit";
+.container{direction: rtl;
+    .header{;position: relative;
+        .navbar-nav{;width: 100%;height: 20%;
+            .img{
+                img{width: 100%;;position: absolute;height: 300%; }}
+            .nav{position: absolute;height: 20%;width: 100%;margin-top: 2%;
+                img{margin: 2% 5%;width: 20%;height: 400%}
+                .nav-item{width: 10%;vertical-align: center;overflow: hidden;
+
+                    .nav-link{;color: #34495e;text-align: center;width: 100%;margin-left: 2%;}
+                    .nav-link:hover{border-bottom: 2px solid #f1c40f;}
+                }
+            }
+            .title{position: absolute;color:black;width: 100%;margin: 5% 10%;
+                .title-header{;margin: 15% 2%  3%;font-weight: bolder;font-size: 3rem}
+                .title-body{span{margin-right: 15%;font-size: 1.5rem;font-weight: bolder;display: flex;margin-left: 15%;line-height: 250%}}
+            }
+        }
+    }
+    #productList{position: relative;margin-top: 30%;
+        h1{}
+        .row{;width: 100%;text-align: center;margin: 2% 2%;background-color:#f7b731;
+            .col-sm-3{width: 25%;margin-top: 2% ;
+                .card{
+                    height: 100%;
+                    position: relative;
+                    margin-top: 5%;padding-top: 5%;
+                    img{width: 100%;height: 40%;}
+                    .button-1{position: absolute;width: 30%;
+                        height: 12%;
+                        text-align: center;
+                        margin-left: -3%;
+                        display: flex;
+                        padding-top: 10%;
+                        font-size: 2rem;
+                        .off{text-align: center;flex-direction: row;font-size: 1.5rem}
+
+                    }
+                    .card-info{height: 40%;word-wrap: break-word;
+                        .text-title{}
+                        .text-body{}
+                    }
+                    .card-footer {
+                        display: flex;
+
+                        .text-title {word-break: break-word;height: 30٪;
+                            .price-original{
+                                text-decoration: line-through;
+                            }
+                        }
+                    }
+                    .row{background-color: #9ca3af;
+                        .col-sm-5{
+                            .btn-info{margin-left: 20%}
+                            .btn-primary{margin-left: -10%}
+
+                        }
+                    }
+                }
+                .button-1 {
+                    background-color: #EA4C89;
+                    border-radius: 50%;
+                    width: 80%;
+                    //font-weight: bolder;
+                    // font-size: 2rem;
+                    flex-direction: row;
+                    border-style: none;
+                    box-sizing: border-box;
+                    color: #FFFFFF;
+                    cursor: pointer;
+                    //display: inline-block;
+                    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                    //font-size: 14px;
+                    //font-weight: 500;
+                    //height: 80px;
+                    line-height: 20px;
+                    list-style: none;
+                    margin: 0;
+                    outline: none;
+                    padding: 10px 16px;
+                    justify-content: center;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    transition: color 100ms;
+                    vertical-align: baseline;
+                    user-select: none;
+                    -webkit-user-select: none;
+                    touch-action: manipulation;
+
+                    span{font-size: 12px}
+                }
+
+                .button-1:hover,
+                .button-1:focus {
+                    background-color: #F082AC;
+                }
+                .price{font-weight: bolder;font-size: 22px}
+
+
+            }
+        }
+    }
+
+}

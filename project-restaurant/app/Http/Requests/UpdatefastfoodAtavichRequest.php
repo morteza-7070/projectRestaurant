@@ -25,7 +25,8 @@ class UpdatefastfoodAtavichRequest extends FormRequest
             'name' => 'required|string',
             'price' => 'required|numeric',
             'description' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5000',
+            'type'=>'required'
         ];
     }
     public function messages(): array
@@ -41,6 +42,7 @@ class UpdatefastfoodAtavichRequest extends FormRequest
             'name.string'=>'نام باید از نوع حروف باشد',
             'price.numeric'=>'قیمت از نوع عدد باید انتخاب شود',
             'description.string'=>'توضیحات باید از نوع حروف باشد',
+            'type.required'=>'نوع غذا را انتخاب نمایید'
 
         ];
     }

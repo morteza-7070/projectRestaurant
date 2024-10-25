@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\PizzaHivaController;
 use \App\Http\Controllers\FastfoodAtavichController;
 
+use \App\Http\Controllers\FastfoodCretishingController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,4 +49,12 @@ Route::prefix('/fastfood')->group(function () {
     Route::get('/edit/{id}',[FastfoodAtavichController::class,'edit'])->name('fastfood.edit');
     Route::put('update/{id}/update',[FastfoodAtavichController::class,'update'])->name('fastfood.update');
     Route::delete('fastfoods/{id}', [FastfoodAtavichController::class, 'destroy'])->name('fastfood.destroy');
+});
+Route::prefix('/Boof')->group(function () {
+    Route::get('/',[FastfoodCretishingController::class,'index'])->name('FastFoodBoof');
+    Route::get('/create',[FastfoodCretishingController::class,'create'])->name('Boof.create');
+    Route::post('/store',[FastfoodCretishingController::class,'store'])->name('Boof.store');
+    Route::get('/edit/{id}',[FastfoodCretishingController::class,'edit'])->name('Boof.edit');
+    Route::put('update/{id}/update',[FastfoodCretishingController::class,'update'])->name('Boof.update');
+    Route::delete('Boof/{id}', [FastfoodCretishingController::class, 'destroy'])->name('Boof.destroy');
 });

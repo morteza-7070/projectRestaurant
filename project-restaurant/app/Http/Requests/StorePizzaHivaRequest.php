@@ -19,16 +19,28 @@ class StorePizzaHivaRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
+//    public function rules(): array
+//    {
+//        return [
+//            'name' => 'required',
+//            'price' => 'required',
+//            'description' => 'required',
+//            'image'=>'required',
+//            'discount_id'=>'required|nullable',
+//            'type'=>'nullable'
+//        ];
+//
+//    }
     public function rules(): array
     {
         return [
-            'name' => 'required',
-            'price' => 'required',
-            'description' => 'required',
-            'image'=>'required',
-            'discount_id'=>'required'
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric',
+            'description' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'discount_id' => 'nullable|exists:discounts,id', // اجازه می‌دهد که خالی باشد
+            'type' => 'nullable|string',
         ];
-
     }
     public function messages(): array
     {
@@ -37,7 +49,8 @@ class StorePizzaHivaRequest extends FormRequest
             'price.required'=>'وارد کردن فیمت الزامی است',
             'description.required'=>'وارد کردن توضیحات الزامی است',
             'image.required'=>'وارد کردن عکس الزامی است',
-            'discount_id.required'=>'وارد کردن درصد تخفیف الزامی است'
+            'discount_id.required'=>'وارد کردن درصد تخفیف الزامی است',
+            'type.required'=>'نوع غذا ار انتخاب نمایید'
         ];
     }
 }

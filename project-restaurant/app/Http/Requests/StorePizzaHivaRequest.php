@@ -19,18 +19,7 @@ class StorePizzaHivaRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-//    public function rules(): array
-//    {
-//        return [
-//            'name' => 'required',
-//            'price' => 'required',
-//            'description' => 'required',
-//            'image'=>'required',
-//            'discount_id'=>'required|nullable',
-//            'type'=>'nullable'
-//        ];
-//
-//    }
+
     public function rules(): array
     {
         return [

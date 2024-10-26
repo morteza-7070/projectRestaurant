@@ -27,7 +27,7 @@ class StorefastfoodAtavichRequest extends FormRequest
             'description'=>'required|string',
             'image'=>'required|image|mimes:jpeg,png,jpg,gif|max:5000',
             'discount_id'=>'nullable|exists:discounts,id',
-            'type'=>'required|string',
+            'type'=>'required|nullable',
 
         ];
     }
@@ -45,6 +45,9 @@ class StorefastfoodAtavichRequest extends FormRequest
             'image.mimes'=>'نوع فایل باید از نوع:  باشد jpeg, png, jpg, gif',
             'image.max'=>'حداکثر حجم فایل باید 5 مگابایت باشد',
             'discount_id.nullable'=>'لطفا یک تخفیف معتبر را انتخاب کنید یا "بدون تخفیف" را انتخاب کنید',
+            'type.nullable'=>'فیلد میتواند خالی باشد',
+            'type.required'=>'انتخاب دسته بندی غذا الزامی است'
+
 
 
 

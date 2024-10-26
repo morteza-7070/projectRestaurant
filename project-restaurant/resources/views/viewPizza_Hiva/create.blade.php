@@ -34,10 +34,11 @@
                 <option value="ساندویچ" {{ old('type') == 'ساندویچ' ? 'selected' : '' }}>ساندویچ</option>
                 <option value="سوخاری" {{ old('type') == 'سوخاری' ? 'selected' : '' }}>سوخاری</option>
                 <option value="پاستا" {{ old('type') == 'پاستا' ? 'selected' : '' }}>پاستا</option>
+                @if($errors->first('type'))
+                    <span class="text-white">{{$errors->first('type')}}</span>
+                @endif
             </select>
-            @if($errors->first('type'))
-                <span class="text-white">{{$errors->first('type')}}</span>
-            @endif
+
             <div id="image">
                 <input class="image" type="file" value="{{old('image')}}" name="image"><br>
                 @if($errors->first('image'))
@@ -56,17 +57,7 @@
                     <span class="text-white">{{$errors->first('price')}}</span>
                 @endif
             </div>
-{{--            <select id="discount" name="discount_id">--}}
-{{--                <option value="" disabled selected >بدون تخفیف</option>--}}
-{{--                @foreach($discounts as $discount)--}}
-{{--                    <option class="discount" value="{{ $discount->id }}" {{old('discount_id') ==$discount->id ?'selected': ""}} >{{ $discount->percentage }} </option>--}}
-{{--                    <br>--}}
-{{--                    @if($errors->first('discount_id'))--}}
-{{--                        <span class="text-white">{{$errors->first('discount_id')}}</span>--}}
-{{--                    @endif--}}
 
-{{--                @endforeach--}}
-{{--            </select><br>--}}
             <select id="discount" name="discount_id">
                 <option value="" disabled selected>بدون تخفیف</option>
                 @foreach($discounts as $discount)
@@ -74,10 +65,11 @@
                         {{ $discount->percentage }}
                     </option>
                 @endforeach
-            </select>
-            @if($errors->first('discount_id'))
-                <span class="text-white">{{$errors->first('discount_id')}}</span>
-            @endif
+                @if($errors->first('discount_id'))
+                    <span class="text-white">{{$errors->first('discount_id')}}</span>
+                @endif
+            </select><br>
+
             <button type="submit" class="btn btn-success">ارسال</button>
         </form>
     </div>

@@ -12,7 +12,7 @@
     <div class="header">
         <div class="navbar-nav">
             <div class="img">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVww7kKPSnSy-t23cUs6niBoCGednpuo4GVQ&s" alt="">
+                <img src="https://cdn.pixabay.com/photo/2023/07/08/17/43/food-8114884_640.jpg" alt="">
             </div>
             <ul class="nav">
                 <img src="../../images/iconFastFood.png" alt="">
@@ -42,6 +42,7 @@
 
                         <div class="card-info">
                             <p class="text-title">{{ $Atavich->name}} </p>
+                            <p class="text-type">{{$Atavich->type}} <span>:دسته بندی</span> </p>
                             <p class="text-body">{{ $Atavich->description}}</p>
 
                         </div>

@@ -12,8 +12,7 @@
     <div class="header">
         <div class="navbar-nav">
             <div class="img">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTjfE5_txUeMw-oTCyhl_F6ykLpU3Pqh10tA&s" alt="">
-            </div>
+                <img src="https://cdn.pixabay.com/photo/2019/05/24/11/18/burger-4226039_640.jpg" alt="">            </div>
             <ul class="nav">
                 <img src="../../images/iconheader3.png" alt="">
                 <li class="nav-item"><a href="{{route('index')}}" class="nav-link">صفحه اصلی</a></li>

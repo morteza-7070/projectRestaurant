@@ -41,6 +41,7 @@ class FastfoodAtavichController extends Controller
         }
         fastfoodAtavich::create([
             'name'=>$validated['name'],
+            'type'=>$validated['type'],
             'price'=>$validated['price'],
             'description'=>$validated['description'],
             'image'=>$filePath,

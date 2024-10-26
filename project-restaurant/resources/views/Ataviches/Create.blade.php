@@ -23,6 +23,16 @@
                   <span class="text-danger">{{$errors->first('name')}}</span>
               @endif
           </div>
+          <select name="type" id="type">
+              <option value="" disabled selected>نوع</option>
+              <option value="پیتزا" {{ old('type') == 'پیتزا' ? 'selected' : '' }}>پیتزا</option>
+              <option value="ساندویچ" {{ old('type') == 'ساندویچ' ? 'selected' : '' }}>ساندویچ</option>
+              <option value="سوخاری" {{ old('type') == 'سوخاری' ? 'selected' : '' }}>سوخاری</option>
+              <option value="پاستا" {{ old('type') == 'پاستا' ? 'selected' : '' }}>پاستا</option>
+              @if($errors->first('type'))
+                  <span class="text-white">{{$errors->first('type')}}</span>
+              @endif
+          </select>
           <div id="price">
               <input type="text" class="price" placeholder="قیمت مورد نظر را وارد نمایید" name="price">
               @if($errors->first('price'))

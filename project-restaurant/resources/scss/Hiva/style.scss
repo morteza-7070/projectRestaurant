@@ -38,9 +38,9 @@ header {
 
 
        .row{;width: 100%;text-align: center;justify-content: center;margin: 2% 2%;
-           .col-sm-3{width: 25%;margin-top: 2% ;
+           .col-sm-3{width: 25%;margin-top: 2% ;height: auto;
                .card{;flex-wrap: nowrap;
-                   height: 100%;
+                   height: auto;
                    position: relative;
                    margin-top: 5%;padding-top: 5%;
                    img{width: 100%;height: 40%;}
@@ -56,11 +56,17 @@ header {
                    }
                    .card-info{height: 40%;word-wrap: break-word;
                        .text-title{}
-                       .text-body{}
+                       .text-body{font-weight: bold;}
                        .text-type{}
                    }
-                   .card-footer {
-                       display: flex;
+                   .card-footer {display: block;
+
+                       h5{
+                           .text-title{width: 100%;font-size: 20px;font-weight: bolder;
+                           }
+                           .text-title1{}
+                       }
+                       .price-off{width: 100%;}
 
                        .text-title {
                            text-decoration: line-through;
@@ -164,7 +170,7 @@ header .overlay {
         .card-img{width: 20%}
         .card-info{
             .text-title{}
-            .text-body{}
+            .text-body{height: auto;margin-bottom: 1%}
         }
         .card-footer{
             .text-title{text-align: center;

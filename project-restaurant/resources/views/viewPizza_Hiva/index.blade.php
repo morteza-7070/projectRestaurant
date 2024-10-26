@@ -12,7 +12,6 @@
 <div class="container">
     <header>
 
-        <!-- This div is  intentionally blank. It creates the transparent black overlay over the video which you can modify in the CSS -->
         <div class="overlay"></div>
 
         <img src="https://img.freepik.com/free-photo/view-3d-burger-meal-with-french-fries_23-2150914759.jpg" alt="">
@@ -57,7 +56,6 @@
                   <div class="col-sm-3">
                       <div class="card">
                           <img src="{{ asset('storage/' . $buyer->image) }}" alt="PizzaHiva" style="width: 100%">
-{{--                          <button class="button-1" role="button">{{$buyer->discount->percentage}}%</button>--}}
                           @if(isset($buyer->discount->percentage))
                               <button class="button-1" role="button">{{ $buyer->discount->percentage}}%</button>
                           @else
@@ -65,25 +63,23 @@
 
                           <div class="card-info">
                               <p class="text-title">{{$buyer->name}} </p>
-                              <p class="text-type">{{$buyer->type}} </p>
+                              <p class="text-type">{{$buyer->type}} <span>:دسته بندی</span> </p>
                               <p class="text-body">{{$buyer->description}}</p>
                           </div>
                           <div class="card-footer">
-{{--                              <span class="text-title">{{$buyer->price}}ریال</span>--}}
                               @if(isset($buyer->discount) && $buyer->discount->percentage > 0)
                                   <h5>قیمت:<span class="text-title price-original">{{ $buyer->price }} ریال</span></h5>
+                                  <br>
                                   <hr>
                                   قیمت با احتساب تخفیف: <span class="price-off">{{ ($buyer->price) - ($buyer->price * ($buyer->discount->percentage / 100)) }} ریال</span>
+                                  <br>
 
                               @else
-                                  <h5>قیمت:<span class="text-title1">{{ $buyer->price }} ریال</span></h5>
+                                  <h5>قیمت:<span class="text-title1">{{ $buyer->price }} ریال</span></h5><br>
                               @endif
-                              <!-- HTML !-->
 
 
                           </div>
-                          {{--                 <button class="button-1" role="button">{{$buyer->discount->percentage}}<span class="off">%</span> </button>--}}
-{{--                          <span class="price off">{{($buyer->price)-($buyer->price*($buyer->discount->percentage/100))}} ریال</span>--}}
                          <div class="row">
                              <div class="col-sm-5">
                                  <form action="{{route("restaurant.destroy",$buyer->id)}}" method="post">

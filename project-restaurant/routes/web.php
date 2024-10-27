@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\DiscountController;
+use App\Http\Controllers\type\SandwichController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\PizzaHivaController;
 use \App\Http\Controllers\FastfoodAtavichController;
+use \App\Http\Controllers\type\ListFoodsController;
 
 use \App\Http\Controllers\FastfoodCretishingController;
 
@@ -57,4 +59,8 @@ Route::prefix('/Boof')->group(function () {
     Route::get('/edit/{id}',[FastfoodCretishingController::class,'edit'])->name('Boof.edit');
     Route::put('update/{id}/update',[FastfoodCretishingController::class,'update'])->name('Boof.update');
     Route::delete('Boof/{id}', [FastfoodCretishingController::class, 'destroy'])->name('Boof.destroy');
+});
+Route::prefix('/ListFoods')->group(function () {
+    Route::get('/pizza',[ListFoodsController::class,'pizza'])->name('Pizza');
+    Route::get('/sandwich',[ListFoodsController::class,'sandwich'])->name('Sandwich');
 });

@@ -10,4 +10,31 @@
              ])
 
 </head>
-
+<div class="container">
+   <div class="row">
+       <div class="col-sm-3">
+           @foreach($fastAtavich as $Atavich)
+               <div class="card">
+                   <div class="card-image"> <img src="{{ asset('storage/' .  $Atavich->image) }}" alt="PizzaHiva" style="width: 100%"></div>
+                   <div class="card-title">{{$Atavich->name}}</div>
+                   <div class="card-body">
+                       <p>{{$Atavich->description}}</p>
+                       <div class="button">{{$Atavich->price}}</div>
+                   </div>
+               </div>
+           @endforeach
+       </div>
+       <div class="col-sm-3">
+           @foreach($fastHiva as $Hiva)
+               <div class="card">
+                   <div class="card-image"> <img src="{{ asset('storage/' .  $Hiva->image) }}" alt="PizzaHiva" style="width: 100%"></div>
+                   <div class="card-title">{{$Hiva->name}}</div>
+                   <div class="card-body">
+                       <p>{{$Hiva->description}}</p>
+                       <div class="button">{{$Hiva->price}}</div>
+                   </div>
+               </div>
+           @endforeach
+       </div>
+   </div>
+</div>

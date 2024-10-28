@@ -26,6 +26,9 @@ Route::get('/', function () {
 });
 Route::prefix('/')->group(function(){
     Route::get('index',[App\Http\Controllers\Controller::class,'index'])->name('index');
+    Route::get('',[App\Http\Controllers\Controller::class,'home'])->name('home');
+
+
 });
 Route::prefix('/discount')->group(function () {
     Route::get('/',[DiscountController::class,'index'])->name('discount');
@@ -60,7 +63,7 @@ Route::prefix('/Boof')->group(function () {
     Route::put('update/{id}/update',[FastfoodCretishingController::class,'update'])->name('Boof.update');
     Route::delete('Boof/{id}', [FastfoodCretishingController::class, 'destroy'])->name('Boof.destroy');
 });
-Route::prefix('/ListFoods')->group(function () {
-    Route::get('/pizza',[ListFoodsController::class,'pizza'])->name('Pizza');
-    Route::get('/sandwich',[ListFoodsController::class,'sandwich'])->name('Sandwich');
-});
+//Route::prefix('/ListFoods')->group(function () {
+//    Route::get('/pizza',[ListFoodsController::class,'pizza'])->name('Pizza');
+//    Route::get('/sandwich',[ListFoodsController::class,'sandwich'])->name('Sandwich');
+//});

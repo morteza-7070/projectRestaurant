@@ -56,16 +56,24 @@ class Controller extends BaseController
         $pastaItems = FastfoodAtavich::where('type', 'پاستا')->get()
             ->merge(PizzaHiva::where('type', 'پاستا')->get())
             ->merge(FastfoodCretishing::where('type', 'پاستا')->get());;
-        $sandwiches = FastfoodCretishing::where('type', 'ساندویچ')->get()
+        $sandwiches = FastfoodAtavich::where('type', 'ساندویچ')->get()
             ->merge(PizzaHiva::where('type', 'ساندویچ')->get())
             ->merge(FastfoodCretishing::where('type', 'ساندویچ')->get());;
         $friedItems = PizzaHiva::where('type', 'سوخاری')->get()
-            ->merge(PizzaHiva::where('type', 'سوخاری')->get())
+            ->merge(FastfoodAtavich::where('type', 'سوخاری')->get())
             ->merge(FastfoodCretishing::where('type', 'سوخاری')->get());;
         $pizzas = FastfoodAtavich::where('type', 'پیتزا')->get()
             ->merge(PizzaHiva::where('type', 'پیتزا')->get())
             ->merge(FastfoodCretishing::where('type', 'پیتزا')->get());
 
         return view('index', compact('pastaItems', 'pizzas', 'sandwiches', 'friedItems'));
+    }
+//    public function dashboard($pastaItems, $sandwiches, $friedItems,$pizzas)
+//    {
+//        return view('List.index', compact('pastaItems', 'pizzas', 'sandwiches', 'friedItems'));
+//    }
+    public function dashboard()
+    {
+        return view('List.index');
     }
 }

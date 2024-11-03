@@ -11,19 +11,20 @@
 
 </head>
 <div class="container">
-   <div class="row">
-       <div class="col-sm-3">
-           @foreach( $friedItems as $Atavich)
-               <div class="card">
-                   <div class="card-image"> <img src="{{ asset('storage/' .  $Atavich->image) }}" alt="PizzaHiva" style="width: 100%"></div>
-                   <div class="card-title">{{$Atavich->name}}</div>
-                   <div class="card-body">
-                       <p>{{$Atavich->description}}</p>
-                       <div class="button">{{$Atavich->price}}</div>
-                   </div>
-               </div>
-           @endforeach
-       </div>
+    <h1>morteza</h1>
+{{--   <div class="row">--}}
+{{--       <div class="col-sm-3">--}}
+{{--           @foreach( $pastaItems as $Atavich)--}}
+{{--               <div class="card">--}}
+{{--                   <div class="card-image"> <img src="{{ asset('storage/' .  $Atavich->image) }}" alt="PizzaHiva" style="width: 100%"></div>--}}
+{{--                   <div class="card-title">{{$Atavich->name}}</div>--}}
+{{--                   <div class="card-body">--}}
+{{--                       <p>{{$Atavich->description}}</p>--}}
+{{--                       <div class="button">{{$Atavich->price}}</div>--}}
+{{--                   </div>--}}
+{{--               </div>--}}
+{{--           @endforeach--}}
+{{--       </div>--}}
 {{--       <div class="col-sm-3">--}}
 {{--           @foreach($fastHiva as $Hiva)--}}
 {{--               <div class="card">--}}
@@ -36,5 +37,5 @@
 {{--               </div>--}}
 {{--           @endforeach--}}
 {{--       </div>--}}
-   </div>
+{{--   </div>--}}
 </div>

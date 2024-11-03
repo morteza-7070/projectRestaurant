@@ -6,6 +6,7 @@ use App\Models\discount;
 use App\Models\fastfoodAtavich;
 use App\Http\Requests\StorefastfoodAtavichRequest;
 use App\Http\Requests\UpdatefastfoodAtavichRequest;
+use App\Models\product;
 
 class FastfoodAtavichController extends Controller
 {
@@ -14,7 +15,7 @@ class FastfoodAtavichController extends Controller
      */
     public function index()
     {
-        $Ataviches = FastfoodAtavich::all();
+        $Ataviches = product::where('name_restaurant','عطاویچ')->get();
         return view('Ataviches.index', compact('Ataviches'));
     }
 

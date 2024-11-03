@@ -26,11 +26,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
   <!-- font awesome style -->
   <link href="css/font-awesome.min.css" rel="stylesheet" />
+    @vite([
+                'resources/css/app.css', 'resources/scss/index/style.scss',
+                'resources/js/app.js',
+            ])
 
   <!-- Custom styles for this template -->
   <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
+
 
 </head>
 
@@ -62,6 +67,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="{{route('restaurants.create')}}">ثبت نام مشتری</a>
               </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('restaurants.create')}}">ثبت نام رستوران دار</a>
+                </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{route('discount')}}">لیست تخفیفات</a>
               </li>
@@ -386,89 +394,166 @@
         <li data-filter=".pasta">پاستا</li>
         <li data-filter=".fries">سوخاری</li>
       </ul>
-
-
-      <div class="filters-content">
         <div class="row grid">
+            @foreach($pastaItems as $pasta)
+            <div class="col-sm-6 col-lg-4 all  pasta">
 
+                    <div class="cart">
+                        <img src="{{asset('storage/' . $pasta->image)}}" alt="imagePasta" class="image">
+                        @if(isset($pasta->discount->percentage))
+                            <button class="button-1" role="button">{{ $pasta->discount->percentage}}%</button>
+                        @else
+                        @endif
+                       <div class="cart-body">
+                           <div class="cart-title">
+                               <h2>{{$pasta->name}}</h2>
+                           </div>
+                           <div class="cart-des">
+                              <p class="description">{{$pasta->description}}</p>
+                           </div>
+                          <div class="row">
+                              <div class="col-sm-6">
+                                  <div class="cart-price">
+{{--                                      <div class="price">قیمت</div>--}}
+{{--                                      <button class="btn btn-info">تومان{{$pasta->price}}</button>--}}
+                                      @if(isset($pasta->discount) && $pasta->discount->percentage > 0)
+                                          <h5>قیمت:<span class="text-title price-original">{{ $pasta->price }} ریال</span></h5>
+                                          <hr>
+                                          قیمت با احتساب تخفیف: <span class="price-off">{{ ($pasta->price) - ($pasta->price * ($pasta->discount->percentage / 100)) }} ریال</span>
 
-          <div class="col-sm-6 col-lg-4 all pasta">
-            <div class="box">
-                @foreach($pastaItems as $pasta)
-              <div>
-                <div class="img-box">
-                    <img src="{{ asset('storage/' .  $pasta->image) }}" alt="pasta" style="width: 100%">
-                </div>
-                <div class="detail-box">
-                  <h5>
-{{--                   پیتزا مخلوط--}}
-                      {{$pasta->name}}
-                  </h5>
-                    <p>{{$pasta->description}}</p>
-                  <div class="options">
-                    <h6>
+                                      @else
+                                          <h5>قیمت:<span class="text-title">{{ $pasta->price }} ریال</span></h5>
+                                      @endif
+                                  </div>
+                                  <div class="shopping-cart">
 
-                    </h6>
-                    <a href="">
-                      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
-                        <g>
-                          <g>
-                            <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                         c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                          </g>
-                        </g>
-                        <g>
-                          <g>
-                            <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                         C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                         c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                         C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                          </g>
-                        </g>
-                        <g>
-                          <g>
-                            <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                         c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                          </g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
+                                      <a href=""><img src="images/shoping-cart2.png" alt="" class="image-icon"></a>
+                                  </div>
+                              </div>
+                          </div>
+                       </div>
+                    </div>
+
             </div>
-              @endforeach
-          </div>
+            @endforeach
+                @foreach($sandwiches as $sandwich)
+                    <div class="col-sm-6 col-lg-4 all  burger">
+
+                        <div class="cart cart-sandwich">
+                            <img src="{{asset('storage/' . $sandwich->image)}}" alt="imageSandwich" class="image">
+                            <div class="cart-body">
+                                <div class="cart-title">
+                                    <h2>{{$sandwich->name}}</h2>
+                                </div>
+                                <div class="cart-des">
+                                    <p class="description">{{$sandwich->description}}</p>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="cart-price">
+                                            <div class="price">قیمت</div>
+                                            <button class="btn btn-info">تومان{{$sandwich->price}}</button>
+                                        </div>
+                                        <div class="shopping-cart">
+
+                                            <a href=""><img src="images/shoping-cart2.png" alt="" class="image-icon"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                @endforeach
+        </div>
+
+    </div>
+
+
+  </section>
+
+
+{{--      <div class="filters-content">--}}
+{{--        <div class="row grid">--}}
+
+
+{{--          <div class="col-sm-6 col-lg-4 all pasta">--}}
+{{--            <div class="box">--}}
+{{--                @foreach($pastaItems as $pasta)--}}
+{{--              <div>--}}
+{{--                <div class="img-box">--}}
+{{--                    <img src="{{ asset('storage/' .  $pasta->image) }}" alt="pasta" style="width: 100%">--}}
+{{--                </div>--}}
+{{--                <div class="detail-box">--}}
+{{--                  <h5>--}}
+{{--                   پیتزا مخلوط--}}
+{{--                      {{$pasta->name}}--}}
+{{--                  </h5>--}}
+{{--                    <p>{{$pasta->description}}</p>--}}
+{{--                  <div class="options">--}}
+{{--                    <h6>--}}
+
+{{--                    </h6>--}}
+{{--                    <a href="">--}}
+{{--                      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">--}}
+{{--                        <g>--}}
+{{--                          <g>--}}
+{{--                            <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248--}}
+{{--                         c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />--}}
+{{--                          </g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                          <g>--}}
+{{--                            <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48--}}
+{{--                         C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064--}}
+{{--                         c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4--}}
+{{--                         C457.728,97.71,450.56,86.958,439.296,84.91z" />--}}
+{{--                          </g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                          <g>--}}
+{{--                            <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296--}}
+{{--                         c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />--}}
+{{--                          </g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                      </svg>--}}
+{{--                    </a>--}}
+{{--                  </div>--}}
+{{--                </div>--}}
+{{--              </div>--}}
+{{--            </div>--}}
+{{--              @endforeach--}}
+{{--          </div>--}}
 {{--          <div class="col-sm-6 col-lg-4 all burger">--}}
 {{--              <div class="box">--}}
 {{--                  <div>--}}
@@ -544,81 +629,81 @@
 {{--                  </div>--}}
 {{--              </div>--}}
 {{--          </div>--}}
-            <div class="col-sm-6 col-lg-4 all burger">
-            <div class="box mt-4">
-              <div>
-                <div class="img-box">
-                  <img src="images/مارگاریتا.png" alt="">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    پیتزا مارگاریتا
-                  </h5>
-                  <p>
-                      مواد تشکیل‌دهنده پیتزا مارگاریتا، معمولاً گوجه، پنیر پیتزا، روغن‌زیتون و ریحان هستند و البته پیتزا مارگاریتا دارای خمیر مخصوصی نیز هست که باید به‌خوبی تهیه شود تا بتوانید از خوردن این پیتزا لذت بیشتری ببرید.                  </p>
-                  <div class="options">
-                    <h6>
-                      189500تومان
-                    </h6>
-                    <a href="">
-                      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
-                        <g>
-                          <g>
-                            <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                         c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                          </g>
-                        </g>
-                        <g>
-                          <g>
-                            <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                         C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                         c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                         C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                          </g>
-                        </g>
-                        <g>
-                          <g>
-                            <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                         c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                          </g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+{{--            <div class="col-sm-6 col-lg-4 all burger">--}}
+{{--            <div class="box mt-4">--}}
+{{--              <div>--}}
+{{--                <div class="img-box">--}}
+{{--                  <img src="images/مارگاریتا.png" alt="">--}}
+{{--                </div>--}}
+{{--                <div class="detail-box">--}}
+{{--                  <h5>--}}
+{{--                    پیتزا مارگاریتا--}}
+{{--                  </h5>--}}
+{{--                  <p>--}}
+{{--                      مواد تشکیل‌دهنده پیتزا مارگاریتا، معمولاً گوجه، پنیر پیتزا، روغن‌زیتون و ریحان هستند و البته پیتزا مارگاریتا دارای خمیر مخصوصی نیز هست که باید به‌خوبی تهیه شود تا بتوانید از خوردن این پیتزا لذت بیشتری ببرید.                  </p>--}}
+{{--                  <div class="options">--}}
+{{--                    <h6>--}}
+{{--                      189500تومان--}}
+{{--                    </h6>--}}
+{{--                    <a href="">--}}
+{{--                      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">--}}
+{{--                        <g>--}}
+{{--                          <g>--}}
+{{--                            <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248--}}
+{{--                         c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />--}}
+{{--                          </g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                          <g>--}}
+{{--                            <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48--}}
+{{--                         C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064--}}
+{{--                         c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4--}}
+{{--                         C457.728,97.71,450.56,86.958,439.296,84.91z" />--}}
+{{--                          </g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                          <g>--}}
+{{--                            <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296--}}
+{{--                         c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />--}}
+{{--                          </g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                      </svg>--}}
+{{--                    </a>--}}
+{{--                  </div>--}}
+{{--                </div>--}}
+{{--              </div>--}}
+{{--            </div>--}}
+{{--          </div>--}}
 {{--          <div class="col-sm-6 col-lg-4 all pizza">--}}
 {{--              <div class="box">--}}
 {{--                  <div>--}}
@@ -998,166 +1083,166 @@
 {{--                    </div>--}}
 {{--                </div>--}}
 {{--            </div>--}}
-          <div class="col-sm-6 col-lg-4 all pizza">
-            <div class="box">
-                @foreach($pizzas as $pizza)
-              <div>
-                <div class="img-box">
-                    <img src="{{asset('storage/' . $pizza->id)}}" alt="pizza">                </div>
-                <div class="detail-box">
-                  <h5>
-                    {{$pizza->name}}
-                  </h5>
-                  <p>
-{{$pizza->description}}                  </p>
-                  <div class="options">
-                      <div>
-                          @if(isset($pizza->discount) && $pizza->discount->percentage > 0)
-                              <h5>قیمت:<span class="text-title price-original">{{ $pizza->price }} ریال</span></h5>
-                              <hr>
-                              قیمت با احتساب تخفیف: <span class="price-off">{{ ($pizza->price - ($pizza->price * ($pizza->discount->percentage / 100))) }} ریال</span>
-                          @else
-                              <h5>قیمت:<span class="text-title">{{ $pizza->price }} ریال</span></h5>
-                          @endif
-                      </div>
-                    <a href="">
-                      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
-                        <g>
-                          <g>
-                            <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                         c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                          </g>
-                        </g>
-                        <g>
-                          <g>
-                            <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                         C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                         c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                         C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                          </g>
-                        </g>
-                        <g>
-                          <g>
-                            <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                         c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                          </g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-              @endforeach
-          </div>
-          <div class="col-sm-6 col-lg-4 all fries">
-            <div class="box">
-                @foreach($friedItems as $fried)
-              <div>
-                <div class="img-box">
-                    <img src="{{ asset('storage/' .  $fried->image) }}" alt="fried" style="width: 100%">
-                </div>
-                <div class="detail-box">
-                  <h5>
-                    {{$fried->name}}
-                  </h5>
-                  <p>
-{{$fried->description}}                  </p>
-                  <div class="options">
-                    <h6>
-                        {{$fried->price}}
-                    </h6>
-                    <a href="">
-                      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
-                        <g>
-                          <g>
-                            <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                         c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                          </g>
-                        </g>
-                        <g>
-                          <g>
-                            <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                         C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                         c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                         C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                          </g>
-                        </g>
-                        <g>
-                          <g>
-                            <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                         c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                          </g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                        <g>
-                        </g>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-                @endforeach
-            </div>
+{{--          <div class="col-sm-6 col-lg-4 all pizza">--}}
+{{--            <div class="box">--}}
+{{--                @foreach($pizzas as $pizza)--}}
+{{--              <div>--}}
+{{--                <div class="img-box">--}}
+{{--                    <img src="{{asset('storage/' . $pizza->id)}}" alt="pizza">                </div>--}}
+{{--                <div class="detail-box">--}}
+{{--                  <h5>--}}
+{{--                    {{$pizza->name}}--}}
+{{--                  </h5>--}}
+{{--                  <p>--}}
+{{--{{$pizza->description}}                  </p>--}}
+{{--                  <div class="options">--}}
+{{--                      <div>--}}
+{{--                          @if(isset($pizza->discount) && $pizza->discount->percentage > 0)--}}
+{{--                              <h5>قیمت:<span class="text-title price-original">{{ $pizza->price }} ریال</span></h5>--}}
+{{--                              <hr>--}}
+{{--                              قیمت با احتساب تخفیف: <span class="price-off">{{ ($pizza->price - ($pizza->price * ($pizza->discount->percentage / 100))) }} ریال</span>--}}
+{{--                          @else--}}
+{{--                              <h5>قیمت:<span class="text-title">{{ $pizza->price }} ریال</span></h5>--}}
+{{--                          @endif--}}
+{{--                      </div>--}}
+{{--                    <a href="">--}}
+{{--                      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">--}}
+{{--                        <g>--}}
+{{--                          <g>--}}
+{{--                            <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248--}}
+{{--                         c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />--}}
+{{--                          </g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                          <g>--}}
+{{--                            <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48--}}
+{{--                         C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064--}}
+{{--                         c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4--}}
+{{--                         C457.728,97.71,450.56,86.958,439.296,84.91z" />--}}
+{{--                          </g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                          <g>--}}
+{{--                            <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296--}}
+{{--                         c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />--}}
+{{--                          </g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                      </svg>--}}
+{{--                    </a>--}}
+{{--                  </div>--}}
+{{--                </div>--}}
+{{--              </div>--}}
+{{--            </div>--}}
+{{--              @endforeach--}}
+{{--          </div>--}}
+{{--          <div class="col-sm-6 col-lg-4 all fries">--}}
+{{--            <div class="box">--}}
+{{--                @foreach($friedItems as $fried)--}}
+{{--              <div>--}}
+{{--                <div class="img-box">--}}
+{{--                    <img src="{{ asset('storage/' .  $fried->image) }}" alt="fried" style="width: 100%">--}}
+{{--                </div>--}}
+{{--                <div class="detail-box">--}}
+{{--                  <h5>--}}
+{{--                    {{$fried->name}}--}}
+{{--                  </h5>--}}
+{{--                  <p>--}}
+{{--{{$fried->description}}                  </p>--}}
+{{--                  <div class="options">--}}
+{{--                    <h6>--}}
+{{--                        {{$fried->price}}--}}
+{{--                    </h6>--}}
+{{--                    <a href="">--}}
+{{--                      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">--}}
+{{--                        <g>--}}
+{{--                          <g>--}}
+{{--                            <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248--}}
+{{--                         c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />--}}
+{{--                          </g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                          <g>--}}
+{{--                            <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48--}}
+{{--                         C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064--}}
+{{--                         c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4--}}
+{{--                         C457.728,97.71,450.56,86.958,439.296,84.91z" />--}}
+{{--                          </g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                          <g>--}}
+{{--                            <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296--}}
+{{--                         c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />--}}
+{{--                          </g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                        <g>--}}
+{{--                        </g>--}}
+{{--                      </svg>--}}
+{{--                    </a>--}}
+{{--                  </div>--}}
+{{--                </div>--}}
+{{--              </div>--}}
+{{--                @endforeach--}}
+{{--            </div>--}}
 
-          </div>
+{{--          </div>--}}
 {{--            <div class="col-sm-6 col-lg-4 all fries">--}}
 {{--                <div class="box">--}}
 {{--                    <div>--}}
@@ -1546,9 +1631,13 @@
 {{--        </a>--}}
 {{--      </div>--}}
 {{--    </div>--}}
-  </section>
+{{--      <div class="row">--}}
+{{--          --}}
+{{--      </div>--}}
+{{--  </section>--}}
 
   <!-- end food section -->
+
 
   <!-- about section -->
 
@@ -1568,6 +1657,7 @@
                 We Are Feane
               </h2>
             </div>
+
             <p>
               There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration
               in some form, by injected humour, or randomised words which don't look even slightly believable. If you

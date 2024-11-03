@@ -20,8 +20,13 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\PreventRequestsDuringMaintenance::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
-        \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,];
+//        'user.type' => \App\Http\Middleware\User_TypeMiddleware::class,
+    protected $routeMiddleware = [
+        // ...
+        'user.type' => \App\Http\Middleware\User_TypeMiddleware::class,
     ];
+
 
     /**
      * The application's route middleware groups.

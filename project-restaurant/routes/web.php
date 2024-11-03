@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DiscountController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\type\SandwichController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\PizzaHivaController;
@@ -23,6 +24,9 @@ use \App\Http\Controllers\FastfoodCretishingController;
 
 Route::get('/', function () {
     return view('index');
+});
+Route::group(['middleware' => 'user.type:مشتری'], function () {
+    Route::get('/customer/dashboard', [App\Http\Controllers\Controller::class, 'dashboard'])->name('customer.dashboard');
 });
 Route::prefix('/')->group(function(){
     Route::get('index',[App\Http\Controllers\Controller::class,'index'])->name('index');
@@ -67,3 +71,6 @@ Route::prefix('/Boof')->group(function () {
 //    Route::get('/pizza',[ListFoodsController::class,'pizza'])->name('Pizza');
 //    Route::get('/sandwich',[ListFoodsController::class,'sandwich'])->name('Sandwich');
 //});
+Route::prefix('/products')->group(function () {
+    Route::get('/',[ProductController::class,'index'])->name('products');
+});

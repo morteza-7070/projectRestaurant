@@ -15,6 +15,10 @@ class discount extends Model
     public function PizzaHiva(){
         return $this->hasOne(PizzaHiva::class,'discount_id');
     }
+    public function product()
+    {
+        return $this->hasOne(product::class);
+    }
     public function shamsi(): Attribute
     {
         return Attribute::make(

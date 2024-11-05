@@ -6,6 +6,7 @@ use App\Models\discount;
 use App\Models\fastfoodCretishing;
 use App\Http\Requests\StorefastfoodCretishingRequest;
 use App\Http\Requests\UpdatefastfoodCretishingRequest;
+use App\Models\product;
 
 class FastfoodCretishingController extends Controller
 {
@@ -14,7 +15,7 @@ class FastfoodCretishingController extends Controller
      */
     public function index()
     {
-        $fastfoodCretishes = fastfoodCretishing::all();
+        $fastfoodCretishes = product::where("name_restaurant",'فست فود باران')->get();
         return view('Critieshing.index', compact('fastfoodCretishes'));
     }
 

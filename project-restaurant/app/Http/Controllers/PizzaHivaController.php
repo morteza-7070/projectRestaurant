@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Models\discount;
 use App\Models\PizzaHiva;
 use App\Http\Requests\StorePizzaHivaRequest;
 use App\Http\Requests\UpdatePizzaHivaRequest;
+use App\Models\product;
 
 class PizzaHivaController extends Controller
 {
@@ -14,7 +17,7 @@ class PizzaHivaController extends Controller
      */
     public function index()
     {
-        $buyers=PizzaHiva::all();
+        $buyers=product::where('name_restaurant','پیتزا هیوا')->get();
         return view('viewPizza_Hiva.index',compact('buyers'));
     }
 
@@ -31,24 +34,26 @@ class PizzaHivaController extends Controller
      * Store a newly created resource in storage.
      */
 
-    public function store(StorePizzaHivaRequest $request)
+    public function store(StoreProductRequest $request)
     {
         $validated = $request->validated();
         $filePath = null;
         $fileMime = null;
 
         if ($request->hasFile('image')) {
-            $filePath = $request->file('image')->store('pizza_hivas', 'public');
+            $filePath = $request->file('image')->store('products', 'public');
             $fileMime = $request->file('image')->getMimeType();
         }
 
-        PizzaHiva::create([
+        product::create([
             'name' => $validated['name'],
+            'name_restaurant' => $validated['name_restaurant'],
             'type' => $validated['type'] ?? null,
             'price' => $validated['price'],
             'image' => $filePath,
             'description' => $validated['description'],
             'discount_id' => $validated['discount_id'] ?? null,
+            'mime' => $fileMime,
         ]);
 
         return redirect()->route('FastFoodHiva');
@@ -66,23 +71,24 @@ class PizzaHivaController extends Controller
      */
     public function edit(PizzaHiva $pizzaHiva, string $id)
     {
-        $buyers=PizzaHiva::FindOrFail($id);
+        $buyers=product::FindOrFail($id);
         return view('viewPizza_Hiva.edit',compact('buyers'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePizzaHivaRequest $request, PizzaHiva $pizzaHiva,string $id)
+    public function update(UpdateProductRequest $request, PizzaHiva $pizzaHiva,string $id)
     {
-        $buyers=PizzaHiva::FindOrFail($id);
+        $buyers=product::FindOrFail($id);
         $validated=$request->validated();
         if($request->hasFile('image')){
-            $filePath=$request->file('image')->store('pizza_hivas','public');
+            $filePath=$request->file('image')->store('products','public');
             $fileMime=$request->file('image')->getMimeType();
         }
         $buyers->update([
             'name'=>$validated['name'],
+            'name_restaurant'=>$validated['name_restaurant'],
             'price'=>$validated['price'],
             'image'=>$filePath,
             'mime'=>$fileMime,
@@ -98,7 +104,7 @@ class PizzaHivaController extends Controller
      */
     public function destroy(PizzaHiva $pizzaHiva,string $id)
     {
-        $pizza=PizzaHiva::FindOrFail($id);
+        $pizza=product::FindOrFail($id);
         $pizza->delete();
         return redirect()->route('FastFoodHiva');
     }

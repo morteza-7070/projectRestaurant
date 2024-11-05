@@ -42,6 +42,7 @@
 
                         <div class="card-info">
                             <p class="text-title">{{ $Atavich->name}} </p>
+                            <p class="text-name-restaurant">{{$Atavich->name_restaurant}} <span>:نام رستوران</span> </p>
                             <p class="text-type">{{$Atavich->type}} <span>:دسته بندی</span> </p>
                             <p class="text-body">{{ $Atavich->description}}</p>
 

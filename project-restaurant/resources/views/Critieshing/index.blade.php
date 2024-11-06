@@ -41,6 +41,8 @@
 
                         <div class="card-info">
                             <p class="text-title">{{ $fast->name}} </p>
+                            <p class="text-name-restaurant">{{$fast->name_restaurant}} <span>:نام رستوران</span> </p>
+
                             <p class="text-body">{{ $fast->description}}</p>
 
                         </div>

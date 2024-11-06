@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\fastfoodAtavich;
 use App\Models\fastfoodCretishing;
 use App\Models\PizzaHiva;
+use App\Models\product;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
@@ -53,18 +54,14 @@ class Controller extends BaseController
     public function home()
     {
         // بارگذاری داده‌های مختلف
-        $pastaItems = FastfoodAtavich::where('type', 'پاستا')->get()
-            ->merge(PizzaHiva::where('type', 'پاستا')->get())
-            ->merge(FastfoodCretishing::where('type', 'پاستا')->get());;
-        $sandwiches = FastfoodAtavich::where('type', 'ساندویچ')->get()
-            ->merge(PizzaHiva::where('type', 'ساندویچ')->get())
-            ->merge(FastfoodCretishing::where('type', 'ساندویچ')->get());;
-        $friedItems = PizzaHiva::where('type', 'سوخاری')->get()
-            ->merge(FastfoodAtavich::where('type', 'سوخاری')->get())
-            ->merge(FastfoodCretishing::where('type', 'سوخاری')->get());;
-        $pizzas = FastfoodAtavich::where('type', 'پیتزا')->get()
-            ->merge(PizzaHiva::where('type', 'پیتزا')->get())
-            ->merge(FastfoodCretishing::where('type', 'پیتزا')->get());
+        $pastaItems = product::where('type', 'پاستا')->get();
+
+        $sandwiches = product::where('type', 'ساندویچ')->get();
+
+        $friedItems = product::where('type', 'سوخاری')->get();
+
+        $pizzas = product::where('type', 'پیتزا')->get();
+
 
         return view('index', compact('pastaItems', 'pizzas', 'sandwiches', 'friedItems'));
     }

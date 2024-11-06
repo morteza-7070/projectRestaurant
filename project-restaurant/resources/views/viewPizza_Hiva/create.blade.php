@@ -17,17 +17,18 @@
                     <span class="text-white">{{$errors->first('name')}}</span>
                 @endif
             </div>
+            <select name="name_restaurant" id="name-restaurant">
+                <option value="" disabled selected>نام رستوران</option>
+                <option value="عطاویچ" {{ old('name_restaurant') == 'عطاویچ' ? 'selected' : '' }}>عطاویچ</option>
+                <option value="فست فود باران" {{ old('name_restaurant') == 'فست فود باران' ? 'selected' : '' }}>فست فود باران</option>
+                <option value="پیتزا هیوا" {{ old('name_restaurant') == 'پیتزا هیوا' ? 'selected' : '' }}>پیتزا هیوا</option>
 
-{{--            <select name="type" id="type">--}}
-{{--                <option value="نوع" disabled selected>نوع</option>--}}
-{{--                <option value="پیتزا" {{ old('type') == 'پیتزا' ? 'selected' : '' }}>پیتزا</option>--}}
-{{--                <option value="ساندویچ" {{ old('type') == 'ساندویچ' ? 'selected' : '' }}>ساندویچ</option>--}}
-{{--                <option value="سوخاری" {{ old('type') == 'سوخاری' ? 'selected' : '' }}>سوخاری</option>--}}
-{{--                <option value="پاستا" {{ old('type') == 'پاستا' ? 'selected' : '' }}>پاستا</option>--}}
-{{--                @if($errors->first('type'))--}}
-{{--                    <span class="text-white">{{$errors->first('type')}}</span>--}}
-{{--                @endif--}}
-{{--            </select>--}}
+                @if($errors->first('name_restaurant'))
+                    <span class="text-white">{{$errors->first('name_restaurant')}}</span>
+                @endif
+            </select><br>
+
+
             <select name="type" id="type">
                 <option value="" disabled selected>نوع</option>
                 <option value="پیتزا" {{ old('type') == 'پیتزا' ? 'selected' : '' }}>پیتزا</option>

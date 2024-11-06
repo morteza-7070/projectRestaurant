@@ -63,6 +63,7 @@
 
                           <div class="card-info">
                               <p class="text-title">{{$buyer->name}} </p>
+                              <p class="text-name-restaurant">{{$buyer->name_restaurant}} <span>:نام رستوران</span> </p>
                               <p class="text-type">{{$buyer->type}} <span>:دسته بندی</span> </p>
                               <p class="text-body">{{$buyer->description}}</p>
                           </div>

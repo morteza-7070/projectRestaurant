@@ -78,7 +78,7 @@ class FastfoodAtavichController extends Controller
      */
     public function update(UpdateProductRequest $request,string $id)
     {
-        $Ataviches=fastfoodAtavich::FindOrFail($id);
+        $Ataviches=product::FindOrFail($id);
         $validated=$request->validated();
         if($request->hasFile('image')){
             $filePath=$request->file('image')->store('products','public');
@@ -86,12 +86,11 @@ class FastfoodAtavichController extends Controller
         }
         $Ataviches->update([
             'name'=>$validated['name'],
-            'name_restaurant'=>$validated['name_restaurant'],
             'price'=>$validated['price'],
             'description'=>$validated['description'],
             'image'=>$filePath,
             'mime'=>$fileMime,
-            'type'=>$validated['type'],
+
 
 
         ]);

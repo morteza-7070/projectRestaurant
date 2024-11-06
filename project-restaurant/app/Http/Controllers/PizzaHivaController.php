@@ -17,7 +17,7 @@ class PizzaHivaController extends Controller
      */
     public function index()
     {
-        $buyers=product::where('name_restaurant','پیتزا هیوا')->get();
+        $buyers = product::where("name_restaurant",'پیتزا هیوا')->get();
         return view('viewPizza_Hiva.index',compact('buyers'));
     }
 
@@ -36,24 +36,22 @@ class PizzaHivaController extends Controller
 
     public function store(StoreProductRequest $request)
     {
+        $filePath=null;
+        $fileMime=null;
         $validated = $request->validated();
-        $filePath = null;
-        $fileMime = null;
-
-        if ($request->hasFile('image')) {
-            $filePath = $request->file('image')->store('products', 'public');
-            $fileMime = $request->file('image')->getMimeType();
+        if($request->hasFile('image')){
+            $filePath=$request->file('image')->store('products','public');
+            $fileMime=$request->file('image')->getMimeType();
         }
-
         product::create([
-            'name' => $validated['name'],
-            'name_restaurant' => $validated['name_restaurant'],
-            'type' => $validated['type'] ?? null,
-            'price' => $validated['price'],
-            'image' => $filePath,
-            'description' => $validated['description'],
-            'discount_id' => $validated['discount_id'] ?? null,
-            'mime' => $fileMime,
+            'name'=>$validated['name'],
+            'name_restaurant'=>$validated['name_restaurant'],
+            'type'=>$validated['type'],
+            'price'=>$validated['price'],
+            'description'=>$validated['description'],
+            'image'=>$filePath,
+            'mime'=>$fileMime,
+            'discount_id'=>$validated['discount_id']??null,
         ]);
 
         return redirect()->route('FastFoodHiva');
@@ -88,12 +86,10 @@ class PizzaHivaController extends Controller
         }
         $buyers->update([
             'name'=>$validated['name'],
-            'name_restaurant'=>$validated['name_restaurant'],
             'price'=>$validated['price'],
             'image'=>$filePath,
             'mime'=>$fileMime,
             'description'=>$validated['description'],
-            'type'=>$validated['type'],
 
         ]);
         return redirect()->route('FastFoodHiva');

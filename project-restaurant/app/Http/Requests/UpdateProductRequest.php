@@ -23,18 +23,17 @@ class UpdateProductRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'name_restaurant' => 'required',
             'price' => 'required|numeric',
             'description' => 'required|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5000',
-            'type'=>'required'
+
         ];
     }
     public function messages(): array
     {
         return[
             'name.required'=>'نام را وارد نمایید',
-            'name_restaurant.required'=>'لطفا رستوران مورد مظر خود را انتخاب نمایید',
+
             'price.required'=>'وارد کردن قیمت الزامی است',
             'description.required'=>'وارد کردن توضیحات درباه غذا الزامی است',
             'image.required'=>'وارد نمودن عکس الزامی است',
@@ -44,7 +43,7 @@ class UpdateProductRequest extends FormRequest
             'name.string'=>'نام باید از نوع حروف باشد',
             'price.numeric'=>'قیمت از نوع عدد باید انتخاب شود',
             'description.string'=>'توضیحات باید از نوع حروف باشد',
-            'type.required'=>'نوع غذا را انتخاب نمایید'
+
         ];
     }
 }

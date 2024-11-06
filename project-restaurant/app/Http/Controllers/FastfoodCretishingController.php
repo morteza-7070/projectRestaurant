@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Models\discount;
 use App\Models\fastfoodCretishing;
 use App\Http\Requests\StorefastfoodCretishingRequest;
@@ -15,7 +17,7 @@ class FastfoodCretishingController extends Controller
      */
     public function index()
     {
-        $fastfoodCretishes = product::where("name_restaurant",'فست فود باران')->get();
+        $fastfoodCretishes = product::where("name_restaurant",'فست فود لقمه کش')->get();
         return view('Critieshing.index', compact('fastfoodCretishes'));
     }
 
@@ -32,16 +34,17 @@ class FastfoodCretishingController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorefastfoodCretishingRequest $request)
+    public function store(StoreProductRequest $request)
     {
 
         $validated=$request->validated();
         if ($request->hasFile('image')){
-            $filePath=$request->file('image')->store('fastfood_cretishings','public');
+            $filePath=$request->file('image')->store('products','public');
             $fileMime=$request->file('image')->getMimeType();
         }
-        fastfoodCretishing::create([
+        product::create([
             'name'=>$validated['name'],
+            'name_restaurant'=>$validated['name_restaurant'],
             'description'=>$validated['description'],
             'image'=>$filePath,
             'price'=>$validated['price'],
@@ -56,7 +59,7 @@ class FastfoodCretishingController extends Controller
      */
     public function show(fastfoodCretishing $fastfoodCretishing)
     {
-        //
+        return view('Critieshing.show',compact('fastfoodCretishing'));
     }
 
     /**
@@ -64,19 +67,19 @@ class FastfoodCretishingController extends Controller
      */
     public function edit(fastfoodCretishing $fastfoodCretishing,string $id)
     {
-        $fasts=fastfoodCretishing::FindOrFail($id);
+        $fasts=product::FindOrFail($id);
         return view('Critieshing.edit',compact('fasts'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatefastfoodCretishingRequest $request, fastfoodCretishing $fastfoodCretishing,string $id)
+    public function update(UpdateProductRequest $request, fastfoodCretishing $fastfoodCretishing,string $id)
     {
-        $fasts=fastfoodCretishing::FindOrFail($id);
+        $fasts=product::FindOrFail($id);
         $validated=$request->validated();
         if ($request->hasFile('image')){
-            $filePath=$request->file('image')->store('fastfood_cretishings','public');
+            $filePath=$request->file('image')->store('products','public');
             $fileMime=$request->file('image')->getMimeType();
         }
         $fasts->update([
@@ -84,7 +87,6 @@ class FastfoodCretishingController extends Controller
             'description'=>$validated['description'],
             'image'=>$filePath,
             'price'=>$validated['price'],
-            'type'=>$validated['type'],
 
         ]);
         return redirect()->route('FastFoodBoof');
@@ -95,7 +97,7 @@ class FastfoodCretishingController extends Controller
      */
     public function destroy(fastfoodCretishing $fastfoodCretishing,string $id)
     {
-        $fasts=fastfoodCretishing::FindOrFail($id);
+        $fasts=product::FindOrFail($id);
         $fasts->delete();
         return redirect()->route('FastFoodBoof');
     }

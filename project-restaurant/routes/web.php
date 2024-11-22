@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\type\SandwichController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\PizzaHivaController;
@@ -59,18 +60,29 @@ Route::prefix('/fastfood')->group(function () {
     Route::put('update/{id}/update',[FastfoodAtavichController::class,'update'])->name('fastfood.update');
     Route::delete('fastfoods/{id}', [FastfoodAtavichController::class, 'destroy'])->name('fastfood.destroy');
 });
-Route::prefix('/Boof')->group(function () {
-    Route::get('/',[FastfoodCretishingController::class,'index'])->name('FastFoodBoof');
-    Route::get('/create',[FastfoodCretishingController::class,'create'])->name('Boof.create');
-    Route::post('/store',[FastfoodCretishingController::class,'store'])->name('Boof.store');
-    Route::get('/edit/{id}',[FastfoodCretishingController::class,'edit'])->name('Boof.edit');
-    Route::put('update/{id}/update',[FastfoodCretishingController::class,'update'])->name('Boof.update');
-    Route::delete('Boof/{id}', [FastfoodCretishingController::class, 'destroy'])->name('Boof.destroy');
+//Route::prefix('/Boof')->middleware("CheckRole:admin")->group(function () {
+//    Route::get('/',[FastfoodCretishingController::class,'index'])->name('FastFoodBoof');
+//    Route::get('/create',[FastfoodCretishingController::class,'create'])->name('Boof.create');
+//    Route::post('/store',[FastfoodCretishingController::class,'store'])->name('Boof.store');
+//    Route::get('/edit/{id}',[FastfoodCretishingController::class,'edit'])->name('Boof.edit');
+//    Route::put('update/{id}/update',[FastfoodCretishingController::class,'update'])->name('Boof.update');
+//    Route::delete('Boof/{id}', [FastfoodCretishingController::class, 'destroy'])->name('Boof.destroy');
+//});
+Route::prefix('/Boof')->middleware("checkRole:مشتری")->group(function () {
+    Route::get('/', [FastfoodCretishingController::class, 'index'])->name('FastFoodBoof');
+    Route::get('/create', [FastfoodCretishingController::class, 'create'])->name('Boof.create');
+    Route::post('/store', [FastfoodCretishingController::class, 'store'])->name('Boof.store');
+    Route::get('/edit/{id}', [FastfoodCretishingController::class, 'edit'])->name('Boof.edit');
+    Route::put('/update/{id}', [FastfoodCretishingController::class, 'update'])->name('Boof.update');
+    Route::delete('/{id}', [FastfoodCretishingController::class, 'destroy'])->name('Boof.destroy');
 });
+
 //Route::prefix('/ListFoods')->group(function () {
 //    Route::get('/pizza',[ListFoodsController::class,'pizza'])->name('Pizza');
 //    Route::get('/sandwich',[ListFoodsController::class,'sandwich'])->name('Sandwich');
 //});
-Route::prefix('/products')->group(function () {
-    Route::get('/',[ProductController::class,'index'])->name('products');
+
+Route::prefix('cart')->group(function () {
+    Route::post('/add/{id}',[ProductController::class,'addToCart'])->name('cart');
+    Route::get('/show',[productController::class,'showCart'])->name('cart.show');
 });

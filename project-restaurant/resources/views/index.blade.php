@@ -439,8 +439,12 @@
                 @foreach($sandwiches as $sandwich)
                     <div class="col-sm-6 col-lg-4 all  burger">
 
-                        <div class="cart cart-sandwich">
-                            <img src="{{asset('storage/' . $sandwich->image)}}" alt="imageSandwich" class="image">
+                        <div class="cart">
+                            <img src="{{asset('storage/' . $sandwich->image)}}" alt="imagePasta" class="image">
+                            @if(isset($sandwich->discount->percentage))
+                                <button class="button-1" role="button">{{ $sandwich->discount->percentage}}%</button>
+                            @else
+                            @endif
                             <div class="cart-body">
                                 <div class="cart-title">
                                     <h2>{{$sandwich->name}}</h2>
@@ -451,8 +455,16 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="cart-price">
-                                            <div class="price">قیمت</div>
-                                            <button class="btn btn-info">تومان{{$sandwich->price}}</button>
+                                            {{--                                      <div class="price">قیمت</div>--}}
+                                            {{--                                      <button class="btn btn-info">تومان{{$pasta->price}}</button>--}}
+                                            @if(isset($sandwich->discount) && $sandwich->discount->percentage > 0)
+                                                <h5>قیمت:<span class="text-title price-original">{{ $sandwich->price }} ریال</span></h5>
+                                                <hr>
+                                                قیمت با احتساب تخفیف: <span class="price-off">{{ ($sandwich->price) - ($sandwich->price * ($sandwich->discount->percentage / 100)) }} ریال</span>
+
+                                            @else
+                                                <h5>قیمت:<span class="text-title">{{ $sandwich->price }} ریال</span></h5>
+                                            @endif
                                         </div>
                                         <div class="shopping-cart">
 
@@ -465,6 +477,100 @@
 
                     </div>
                 @endforeach
+                @foreach($pizzas as $pizza)
+                    <div class="col-sm-6 col-lg-4 all  pizza">
+
+                        <div class="cart">
+                            <img src="{{asset('storage/' . $pizza->image)}}" alt="imagePasta" class="image">
+                            @if(isset($sandwich->discount->percentage))
+                                <button class="button-1" role="button">{{ $pizza->discount->percentage}}%</button>
+                            @else
+                            @endif
+                            <div class="cart-body">
+                                <div class="cart-title">
+                                    <h2>{{$pizza->name}}</h2>
+                                </div>
+                                <div class="cart-des">
+                                    <p class="description">{{$pizza->description}}</p>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="cart-price">
+                                            {{--                                      <div class="price">قیمت</div>--}}
+                                            {{--                                      <button class="btn btn-info">تومان{{$pasta->price}}</button>--}}
+                                            @if(isset($pizza->discount) && $pizza->discount->percentage > 0)
+                                                <h5>قیمت:<span class="text-title price-original">{{ $pizza->price }} ریال</span></h5>
+                                                <hr>
+                                                قیمت با احتساب تخفیف: <span class="price-off">{{ ($pizza->price) - ($pizza->price * ($pizza->discount->percentage / 100)) }} ریال</span>
+
+                                            @else
+                                                <h5>قیمت:<span class="text-title">{{ $pizza->price }} ریال</span></h5>
+                                            @endif
+                                        </div>
+                                        <div class="shopping-cart">
+
+{{--                                            <a href=""><img src="images/shoping-cart2.png" alt="" class="image-icon"></a>--}}
+                                            <form action="{{ route('cart', $pizza->id) }}" method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                <button type="submit">
+                                                    <img src="images/shoping-cart2.png" alt="" class="image-icon">
+                                                </button>
+                                            </form>
+{{--                                            <form action="cart/cart/add/{{ $pizza->id }}" method="POST">--}}
+{{--                                                @csrf--}}
+{{--                                                <input type="number" name="quantity" min="1" value="1">--}}
+{{--                                                <button type="submit">Add to Cart</button>--}}
+{{--                                            </form>--}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                @endforeach
+                @foreach($friedItems as $fried)
+                    <div class="col-sm-6 col-lg-4 all  pasta">
+
+                        <div class="cart">
+                            <img src="{{asset('storage/' . $fried->image)}}" alt="imagePasta" class="image">
+                            @if(isset($fried->discount->percentage))
+                                <button class="button-1" role="button">{{ $fried->discount->percentage}}%</button>
+                            @else
+                            @endif
+                            <div class="cart-body">
+                                <div class="cart-title">
+                                    <h2>{{$fried->name}}</h2>
+                                </div>
+                                <div class="cart-des">
+                                    <p class="description">{{$fried->description}}</p>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="cart-price">
+                                            {{--                                      <div class="price">قیمت</div>--}}
+                                            {{--                                      <button class="btn btn-info">تومان{{$pasta->price}}</button>--}}
+                                            @if(isset($fried->discount) && $fried->discount->percentage > 0)
+                                                <h5>قیمت:<span class="text-title price-original">{{ $fried->price }} ریال</span></h5>
+                                                <hr>
+                                                قیمت با احتساب تخفیف: <span class="price-off">{{ ($fried->price) - ($fried->price * ($fried->discount->percentage / 100)) }} ریال</span>
+
+                                            @else
+                                                <h5>قیمت:<span class="text-title">{{ $fried->price }} ریال</span></h5>
+                                            @endif
+                                        </div>
+                                        <div class="shopping-cart">
+
+                                            <a href=""><img src="images/shoping-cart2.png" alt="" class="image-icon"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                @endforeach
+
         </div>
 
     </div>

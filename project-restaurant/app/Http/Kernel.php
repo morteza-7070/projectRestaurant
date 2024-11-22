@@ -20,12 +20,15 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\PreventRequestsDuringMaintenance::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
-        \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,];
-//        'user.type' => \App\Http\Middleware\User_TypeMiddleware::class,
-    protected $routeMiddleware = [
-        // ...
-        'user.type' => \App\Http\Middleware\User_TypeMiddleware::class,
+        \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+//        'checkRole' => \App\Http\Middleware\User_TypeMiddleware::class,
     ];
+    protected $routeMiddleware = [
+        // سایر میدلورها
+        'checkRole' => \App\Http\Middleware\User_TypeMiddleware::class,
+    ];
+//        'user.type' => \App\Http\Middleware\User_TypeMiddleware::class,
+
 
 
     /**

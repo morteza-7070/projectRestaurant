@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\product;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,40 @@ class ProductController extends Controller
     {
         $products= Product::all();
         return view('product.index',compact('products'));
+//        $pastaItems = product::where('type', 'پاستا')->get();
+//
+//        $sandwiches = product::where('type', 'ساندویچ')->get();
+//
+//        $friedItems = product::where('type', 'سوخاری')->get();
+//
+//        $pizzas = product::where('type', 'پیتزا')->get();
+//
+//
+//        return view('index', compact('pastaItems', 'pizzas', 'sandwiches', 'friedItems'));
 
+    }
+
+    public function addToCart(Product $product, Request $request,string $id)
+    {
+//        $oldCart = $request->session()->has('cart') ? $request->session()->get('cart') : null;
+//        $cart = new Cart($oldCart);
+//        $cart->addToCart($product);
+//        $request->session()->put('cart', $cart);
+//        return redirect()->back();
+        $products = Product::FindOrFail($id);
+        $cart=session()->has('cart') ? session()->get('cart') : [];
+        $cart->addToCart($products);
+        session()->put('cart',$cart);
+        return redirect()->back();
+
+    }
+
+
+    public function showCart(Request $request,Product $product)
+    {
+        $cart = $request->session()->get('cart', new cart());
+        dd($cart);
+//        return view('cart.show', ['cart' => $cart]);
     }
 
     /**

@@ -14,42 +14,51 @@ class ProductController extends Controller
     public function index()
     {
         $products= Product::all();
-        return view('product.index',compact('products'));
-//        $pastaItems = product::where('type', 'پاستا')->get();
-//
-//        $sandwiches = product::where('type', 'ساندویچ')->get();
-//
-//        $friedItems = product::where('type', 'سوخاری')->get();
-//
-//        $pizzas = product::where('type', 'پیتزا')->get();
-//
-//
-//        return view('index', compact('pastaItems', 'pizzas', 'sandwiches', 'friedItems'));
+        return view('cart.showCart',compact('products'));
+
 
     }
 
-    public function addToCart(Product $product, Request $request,string $id)
+//    public function addToCart(Product $product, Request $request,string $id)
+//    {
+//
+//        $products = Product::FindOrFail($id);
+//        $cart=session()->has('cart') ? session()->get('cart') : [];
+//        $cart->addToCart($products);
+//        session()->put('cart',$cart);
+//        return redirect()->route('index');
+//
+//    }
+    public function addToCart(Product $product, Request $request, string $id)
     {
-//        $oldCart = $request->session()->has('cart') ? $request->session()->get('cart') : null;
-//        $cart = new Cart($oldCart);
-//        $cart->addToCart($product);
-//        $request->session()->put('cart', $cart);
-//        return redirect()->back();
-        $products = Product::FindOrFail($id);
-        $cart=session()->has('cart') ? session()->get('cart') : [];
+        $products = Product::findOrFail($id);
+
+        // اگر سشن کارتی ندارد، نمونه جدیدی از Cart ایجاد کنید
+        $cart = $request->session()->has('cart') ? $request->session()->get('cart') : new Cart();
+
+        // اضافه کردن محصول به سبد خرید
         $cart->addToCart($products);
-        session()->put('cart',$cart);
+
+        // ذخیره‌سازی کارت در سشن
+        $request->session()->put('cart', $cart);
+
         return redirect()->back();
-
     }
-
-
-    public function showCart(Request $request,Product $product)
+    public function showCart(Request $request)
     {
-        $cart = $request->session()->get('cart', new cart());
-        dd($cart);
-//        return view('cart.show', ['cart' => $cart]);
+        $cart = $request->session()->get('cart', new Cart());
+        return view('cart.showCart', compact('cart'));
     }
+
+
+
+//    public function showCart(Request $request,Product $products)
+//    {
+//        $cart = $request->session()->get('cart', new cart());
+//        dd($cart);
+////        return view('cart.showCart', ['cart' => $cart],compact("cart"));
+////        return view('cart.showCart',compact('products'));
+//    }
 
     /**
      * Show the form for creating a new resource.

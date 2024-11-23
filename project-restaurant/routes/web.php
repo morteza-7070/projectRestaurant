@@ -83,6 +83,7 @@ Route::prefix('/Boof')->middleware("checkRole:مشتری")->group(function () {
 //});
 
 Route::prefix('cart')->group(function () {
+
     Route::post('/add/{id}',[ProductController::class,'addToCart'])->name('cart');
     Route::get('/show',[productController::class,'showCart'])->name('cart.show');
 });

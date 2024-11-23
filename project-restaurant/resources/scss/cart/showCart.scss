@@ -1,0 +1,31 @@
+.container{background-color: #c8d6e5;
+    h2{text-align: center;justify-content: center}
+    .table{margin-top: 5%;
+        thead{
+            tr{
+                th{background-color: #2c6ed5;margin: 0 5%;border: 2px solid red;text-align: center}
+            }
+        }
+        tbody{
+            tr{text-align: center;
+
+                .name{width: 10%;p{font-size: 1.5rem;margin-top: 25%}}
+                .image{width: 40%;
+                    img{width: 40%;height: 30%;}}
+                .price{width: 20%;p{margin-top: 20%;font-size: 1.5rem;}}
+                .count{width: 20%;p{
+                    margin-top: 20%;font-size: 1.5rem;
+                }}
+
+            }
+            tr:nth-child(odd) {
+                background-color: #c8d6e5;
+                color: black;
+            }
+            tr:nth-child(even) {
+                background-color: #8395a7;
+                color: black;}
+            }
+    }
+    .total-price{background-color: #1dd1a1;width: 25%;height: 10%;font-size: 2rem;font-weight: bolder}
+}

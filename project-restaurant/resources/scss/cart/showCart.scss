@@ -9,13 +9,37 @@
         tbody{
             tr{text-align: center;
 
-                .name{width: 10%;p{font-size: 1.5rem;margin-top: 25%}}
-                .image{width: 40%;
-                    img{width: 40%;height: 30%;}}
-                .price{width: 20%;p{margin-top: 20%;font-size: 1.5rem;}}
-                .count{width: 20%;p{
-                    margin-top: 20%;font-size: 1.5rem;
+                .name{width: 10%;
+                    p{font-size: 1.5rem;margin-top: 25%;padding-top: 40%}}
+                .image{width: 25%;margin-top: 30%;
+                    img{width: 80%;height: 30%;margin-top: 20%}}
+                .price{width: 15%;p{margin-top: 20%;font-size: 1.5rem;padding-top: 40%}}
+                .count{width: 15%;p{
+                    margin-top: 20%;font-size: 1.5rem;padding-top: 40%
                 }}
+                .icon-delete{width: 15%;
+                   form{margin-top: 30%;
+                       .btn{width: 100%;
+                           .icon{
+                               width: 80%;
+                               height: 55%;
+                               vertical-align: center;
+                           }
+                       }
+                   }
+                }
+                .Edit{height: 100%;
+                    form{margin-top: 20%;height: 50%;
+                        .btn{height: 100%;
+                            .iconUpdate{
+                                width: 80%;
+                                height: 100%;
+                                vertical-align: center;
+
+                            }
+                        }
+                    }
+                }
 
             }
             tr:nth-child(odd) {

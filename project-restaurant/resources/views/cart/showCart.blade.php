@@ -11,6 +11,7 @@
 
 
     <div class="container">
+        <form action="{{route('cart.clear')}}" method="POST">@csrf<button class="btn " type="submit">پاک کردن کل سبد خرید</button></form>
         <h2>سبد خرید</h2>
         @if($cart->products)
             <table class="table">
@@ -20,6 +21,8 @@
                     <th>عکس</th>
                     <th>تعداد</th>
                     <th>قیمت</th>
+                    <th>حذف</th>
+                    <th>ویرایش</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -29,6 +32,23 @@
                         <td class="image"><img src="{{asset('storage/'.$item['product']->image)}}" alt=""></td>
                         <td class="count"><p class="count-body">{{ $item['count'] }}</p></td>
                         <td class="price"><p>{{ $item['price'] }}</p></td>
+                        <td class="icon-delete">
+                            <form action="{{ route('cart.remove', $item['product']->id) }}" method="POST">
+                                @csrf
+                                <button class="btn btn-danger" type="submit">
+                                    <img src="../../Icon/iconDelete2.png" alt="" class="icon">
+                                </button>
+                            </form>
+                        </td>
+                        <td class="Edit">
+                            <form action="{{route('cart.update',$item['product']->id)}}" method="post">
+                                @csrf
+                                <button class="btn btn-success" type="submit">
+                                    <img src="../../Icon/iconUpdate3.png" alt="" class="iconUpdate">
+                                </button>
+                            </form>
+                        </td>
+
 
                     </tr>
                 @endforeach

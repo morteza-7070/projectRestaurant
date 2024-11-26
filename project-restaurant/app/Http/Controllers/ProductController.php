@@ -19,29 +19,13 @@ class ProductController extends Controller
 
     }
 
-//    public function addToCart(Product $product, Request $request,string $id)
-//    {
-//
-//        $products = Product::FindOrFail($id);
-//        $cart=session()->has('cart') ? session()->get('cart') : [];
-//        $cart->addToCart($products);
-//        session()->put('cart',$cart);
-//        return redirect()->route('index');
-//
-//    }
+
     public function addToCart(Product $product, Request $request, string $id)
     {
         $products = Product::findOrFail($id);
-
-        // اگر سشن کارتی ندارد، نمونه جدیدی از Cart ایجاد کنید
         $cart = $request->session()->has('cart') ? $request->session()->get('cart') : new Cart();
-
-        // اضافه کردن محصول به سبد خرید
         $cart->addToCart($products);
-
-        // ذخیره‌سازی کارت در سشن
         $request->session()->put('cart', $cart);
-
         return redirect()->back();
     }
     public function showCart(Request $request)
@@ -50,47 +34,49 @@ class ProductController extends Controller
         return view('cart.showCart', compact('cart'));
     }
 
+    public function remove(Request $request, $id)
+    {
+
+        $cart = $request->session()->get('cart', new Cart());
 
 
-//    public function showCart(Request $request,Product $products)
-//    {
-//        $cart = $request->session()->get('cart', new cart());
-//        dd($cart);
-////        return view('cart.showCart', ['cart' => $cart],compact("cart"));
-////        return view('cart.showCart',compact('products'));
-//    }
+        $cart->removeFromCart($id);
+
+
+        $request->session()->put('cart', $cart);
+
+        return redirect()->back()->with('success', 'محصول با موفقیت حذف شد');
+    }
+    public function clearCart(Request $request)
+    {
+        $request->session()->forget('cart');
+        return redirect()->route('index')->with('success','سبد خرید شما خالی است');
+    }
+    public function UpdateToCart(Request $request, $id)
+    {
+        $count=$request->input('count');
+        $cart=$request->session()->get('cart',new cart());
+       if($count>0)
+           $cart->update($count,$id);
+       else
+           $cart->removeFromCart($id);
+       $request->session()->put('cart',$cart);
+       return redirect()->back();
+    }
+
+
+
+
+
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
+
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.

@@ -427,8 +427,12 @@
                                   </div>
                                   <div class="shopping-cart">
 
-                                      <a href=""><img src="images/shoping-cart2.png" alt="" class="image-icon"></a>
-                                  </div>
+                                      <form action="{{ route('cart', $pasta->id) }}" method="POST" enctype="multipart/form-data">
+                                          @csrf
+                                          <button type="submit">
+                                              <img src="images/shoping-cart2.png" alt="" class="image-icon">
+                                          </button>
+                                      </form>                                  </div>
                               </div>
                           </div>
                        </div>
@@ -468,8 +472,12 @@
                                         </div>
                                         <div class="shopping-cart">
 
-                                            <a href=""><img src="images/shoping-cart2.png" alt="" class="image-icon"></a>
-                                        </div>
+                                            <form action="{{ route('cart', $sandwich->id) }}" method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                <button type="submit">
+                                                    <img src="images/shoping-cart2.png" alt="" class="image-icon">
+                                                </button>
+                                            </form>                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -482,7 +490,7 @@
 
                         <div class="cart">
                             <img src="{{asset('storage/' . $pizza->image)}}" alt="imagePasta" class="image">
-                            @if(isset($sandwich->discount->percentage))
+                            @if(isset($pizza->discount->percentage))
                                 <button class="button-1" role="button">{{ $pizza->discount->percentage}}%</button>
                             @else
                             @endif
@@ -509,18 +517,13 @@
                                         </div>
                                         <div class="shopping-cart">
 
-{{--                                            <a href=""><img src="images/shoping-cart2.png" alt="" class="image-icon"></a>--}}
                                             <form action="{{ route('cart', $pizza->id) }}" method="POST" enctype="multipart/form-data">
                                                 @csrf
                                                 <button type="submit">
                                                     <img src="images/shoping-cart2.png" alt="" class="image-icon">
                                                 </button>
                                             </form>
-{{--                                            <form action="cart/cart/add/{{ $pizza->id }}" method="POST">--}}
-{{--                                                @csrf--}}
-{{--                                                <input type="number" name="quantity" min="1" value="1">--}}
-{{--                                                <button type="submit">Add to Cart</button>--}}
-{{--                                            </form>--}}
+
                                         </div>
                                     </div>
                                 </div>
@@ -561,8 +564,12 @@
                                         </div>
                                         <div class="shopping-cart">
 
-                                            <a href=""><img src="images/shoping-cart2.png" alt="" class="image-icon"></a>
-                                        </div>
+                                            <form action="{{ route('cart', $fried->id) }}" method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                <button type="submit">
+                                                    <img src="images/shoping-cart2.png" alt="" class="image-icon">
+                                                </button>
+                                            </form>                                        </div>
                                     </div>
                                 </div>
                             </div>

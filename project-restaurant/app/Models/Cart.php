@@ -23,6 +23,7 @@ class Cart
 
         }
     }
+    protected $fillable=['name','name_restaurant','type','image','discount_id'];
 
     public function addToCart($product)
     {
@@ -43,6 +44,27 @@ class Cart
         $this->count++;
 
     }
+    public function removeFromCart($id)
+    {
+
+        if (isset($this->products[$id])) {
+
+            $this->count -= $this->products[$id]['count'];
+            $this->price -= $this->products[$id]['price'];
+
+
+            unset($this->products[$id]);
+        }
+    }
+    public function updateCart($id, $count){
+        if(isset($this->products[$id])) {
+            $this->products[$id]['count'] = $count;
+            $this->products[$id]['price'] = $count*$this->products[$id]['price'];
+            $this->count+=$this->products[$id]['count'];
+            $this->price+=$this->$this->products[$id]['count']*$this->products[$id]['price'];
+        }
+    }
+
 
 }
 

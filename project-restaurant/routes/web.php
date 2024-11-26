@@ -34,6 +34,7 @@ Route::prefix('/')->group(function(){
     Route::get('',[App\Http\Controllers\Controller::class,'home'])->name('home');
 
 
+
 });
 Route::prefix('/discount')->group(function () {
     Route::get('/',[DiscountController::class,'index'])->name('discount');
@@ -86,4 +87,8 @@ Route::prefix('cart')->group(function () {
 
     Route::post('/add/{id}',[ProductController::class,'addToCart'])->name('cart');
     Route::get('/show',[productController::class,'showCart'])->name('cart.show');
+    Route::post('/cart/update/{id}', [ProductController::class, 'UpdateToCart'])->name('cart.update');
+    Route::post('/cart/remove/{id}', [ProductController::class, 'remove'])->name('cart.remove');
+    Route::post('/clear', [ProductController::class, 'clearCart'])->name('cart.clear');
+
 });

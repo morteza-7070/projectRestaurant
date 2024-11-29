@@ -7,21 +7,23 @@
             }
         }
         tbody{
-            tr{text-align: center;
+            tr{text-align: center;height: 20%;
 
                 .name{width: 10%;
                     p{font-size: 1.5rem;margin-top: 25%;padding-top: 40%}}
-                .image{width: 25%;margin-top: 30%;
-                    img{width: 80%;height: 30%;margin-top: 20%}}
-                .price{width: 15%;p{margin-top: 20%;font-size: 1.5rem;padding-top: 40%}}
-                .count{width: 15%;p{
-                    margin-top: 20%;font-size: 1.5rem;padding-top: 40%
-                }}
+                .image{width: 25%;margin-top: 30%;height: 20%;
+                    img{width: 80%;height: 20%;margin-top: 20%}}
+                .price{width: 15%;p{margin-top: 30%;font-size: 1.5rem;}}
+             .count{width: 15%;
+                 .count-body{
+                     text-align: center;margin-top: 30%;font-weight: bolder;font-size: 1.5rem;
+                 }
+             }
                 .icon-delete{width: 15%;
                    form{margin-top: 30%;
-                       .btn{width: 100%;
+                       .btn{width: 60%;
                            .icon{
-                               width: 80%;
+                               width:60% ;
                                height: 55%;
                                vertical-align: center;
                            }
@@ -29,8 +31,11 @@
                    }
                 }
                 .Edit{height: 100%;
-                    form{margin-top: 20%;height: 50%;
-                        .btn{height: 100%;
+                    form{margin-top: 20%;
+                        .form-Edit{
+                            width: 40%;
+                        }
+                        .btn{height: 40%;
                             .iconUpdate{
                                 width: 80%;
                                 height: 100%;

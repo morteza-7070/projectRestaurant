@@ -464,7 +464,10 @@
                                             @if(isset($sandwich->discount) && $sandwich->discount->percentage > 0)
                                                 <h5>قیمت:<span class="text-title price-original">{{ $sandwich->price }} ریال</span></h5>
                                                 <hr>
-                                                قیمت با احتساب تخفیف: <span class="price-off">{{ ($sandwich->price) - ($sandwich->price * ($sandwich->discount->percentage / 100)) }} ریال</span>
+                                                <h5 class="off">
+                                                    قیمت با احتساب تخفیف: <span class="price-off">{{ ($sandwich->price) - ($sandwich->price * ($sandwich->discount->percentage / 100)) }} ریال</span>
+
+                                                </h5>
 
                                             @else
                                                 <h5>قیمت:<span class="text-title">{{ $sandwich->price }} ریال</span></h5>
@@ -533,7 +536,7 @@
                     </div>
                 @endforeach
                 @foreach($friedItems as $fried)
-                    <div class="col-sm-6 col-lg-4 all  pasta">
+                    <div class="col-sm-6 col-lg-4 all  fries">
 
                         <div class="cart">
                             <img src="{{asset('storage/' . $fried->image)}}" alt="imagePasta" class="image">

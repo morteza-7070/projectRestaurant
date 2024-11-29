@@ -13,6 +13,6 @@ class product extends Model
         return $this->belongsTo(discount::class,'discount_id');
     }
     public function orders(){
-        return $this->belongsToMany(order::class,'order_product')->withPivot('quantity','price');
+        return $this->belongsToMany(order::class,'order_product')->withPivot('count','price');
     }
 }

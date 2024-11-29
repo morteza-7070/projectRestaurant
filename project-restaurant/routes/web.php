@@ -31,7 +31,8 @@ Route::group(['middleware' => 'user.type:مشتری'], function () {
 });
 Route::prefix('/')->group(function(){
     Route::get('index',[App\Http\Controllers\Controller::class,'index'])->name('index');
-    Route::get('',[App\Http\Controllers\Controller::class,'home'])->name('home');
+    Route::get('/',[App\Http\Controllers\Controller::class,'home'])->name('home');
+
 
 
 
@@ -61,14 +62,14 @@ Route::prefix('/fastfood')->group(function () {
     Route::put('update/{id}/update',[FastfoodAtavichController::class,'update'])->name('fastfood.update');
     Route::delete('fastfoods/{id}', [FastfoodAtavichController::class, 'destroy'])->name('fastfood.destroy');
 });
-//Route::prefix('/Boof')->middleware("CheckRole:admin")->group(function () {
-//    Route::get('/',[FastfoodCretishingController::class,'index'])->name('FastFoodBoof');
-//    Route::get('/create',[FastfoodCretishingController::class,'create'])->name('Boof.create');
-//    Route::post('/store',[FastfoodCretishingController::class,'store'])->name('Boof.store');
-//    Route::get('/edit/{id}',[FastfoodCretishingController::class,'edit'])->name('Boof.edit');
-//    Route::put('update/{id}/update',[FastfoodCretishingController::class,'update'])->name('Boof.update');
-//    Route::delete('Boof/{id}', [FastfoodCretishingController::class, 'destroy'])->name('Boof.destroy');
-//});
+Route::prefix('/Boof')->group(function () {
+    Route::get('/',[FastfoodCretishingController::class,'index'])->name('FastFoodBoof');
+    Route::get('/create',[FastfoodCretishingController::class,'create'])->name('Boof.create');
+    Route::post('/store',[FastfoodCretishingController::class,'store'])->name('Boof.store');
+    Route::get('/edit/{id}',[FastfoodCretishingController::class,'edit'])->name('Boof.edit');
+    Route::put('update/{id}/update',[FastfoodCretishingController::class,'update'])->name('Boof.update');
+    Route::delete('Boof/{id}', [FastfoodCretishingController::class, 'destroy'])->name('Boof.destroy');
+});
 Route::prefix('/Boof')->middleware("checkRole:مشتری")->group(function () {
     Route::get('/', [FastfoodCretishingController::class, 'index'])->name('FastFoodBoof');
     Route::get('/create', [FastfoodCretishingController::class, 'create'])->name('Boof.create');
@@ -90,5 +91,7 @@ Route::prefix('cart')->group(function () {
     Route::post('/cart/update/{id}', [ProductController::class, 'UpdateToCart'])->name('cart.update');
     Route::post('/cart/remove/{id}', [ProductController::class, 'remove'])->name('cart.remove');
     Route::post('/clear', [ProductController::class, 'clearCart'])->name('cart.clear');
+    Route::post('/order', [ProductController::class, 'storeProduct'])->name('cart.store');
+
 
 });

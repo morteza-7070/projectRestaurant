@@ -53,7 +53,7 @@ class Controller extends BaseController
 
     public function home()
     {
-        // بارگذاری داده‌های مختلف
+
         $pastaItems = product::where('type', 'پاستا')->get();
 
         $sandwiches = product::where('type', 'ساندویچ')->get();

@@ -73,9 +73,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="{{route('discount')}}">لیست تخفیفات</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="book.html">لیست غذاها</a>
-              </li>
+{{--              <li class="nav-item">--}}
+{{--                <a class="nav-link" href="book.html">لیست غذاها</a>--}}
+{{--              </li>--}}
             </ul>
             <div class="user_option">
               <a href="" class="user_link">
@@ -414,8 +414,7 @@
                           <div class="row">
                               <div class="col-sm-6">
                                   <div class="cart-price">
-{{--                                      <div class="price">قیمت</div>--}}
-{{--                                      <button class="btn btn-info">تومان{{$pasta->price}}</button>--}}
+
                                       @if(isset($pasta->discount) && $pasta->discount->percentage > 0)
                                           <h5>قیمت:<span class="text-title price-original">{{ $pasta->price }} ریال</span></h5>
                                           <hr>

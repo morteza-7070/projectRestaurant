@@ -18,23 +18,24 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th>محصول</th>
+{{--                    <th>محصول</th>--}}
                     <th>عکس</th>
                     <th>تعداد</th>
                     <th>قیمت</th>
                     <th>حذف</th>
-                    <th>ویرایش</th>
+                    <th> ویرایش</th>
+                    <th>ارسال</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($cart->products as $item)
                     <tr>
-                        <td  class='name' name="name" ><p >{{ $item['product']->name }} </p></td>
+{{--                        <td  class='name'  ><p name="name">{{ $item['product']->name }} </p></td>--}}
                         <td class="image" name="image"><img src="{{asset('storage/'.$item['product']->image)}}" alt=""></td>
                         <td class="count" ><p class="count-body" name="count">{{ $item['count'] }}</p></td>
                         <td class="price" ><p name="price">{{ $item['price'] }}</p></td>
                         <td class="icon-delete">
-                            <form action="{{ route('cart.remove', $item['product']->id) }}" method="POST">
+                            <form action="{{ route('cart.remove', $item['product']->id) }}" method="POST" id="Delete">
                                 @csrf
                                 <button class="btn btn-danger" type="submit">
                                     <img src="../../Icon/iconDelete2.png" alt="" class="icon">
@@ -42,24 +43,24 @@
                             </form>
                         </td>
                         <td class="Edit">
-                            <form action="{{route('cart.update',$item['product']->id)}}" method="post">
+                            <form action="{{route('cart.update',$item['product']->id)}}" method="post" id="edit">
                                 @csrf
                                 <input type="number" name="count" value="{{ $item['count'] }}" class="form-Edit" min="1" required>
                                 <button class="btn btn-success" type="submit">
-{{--                                    <img src="../../Icon/iconUpdate3.png" alt="" class="iconUpdate">--}}
-                                    ارسال
+                                    ویرایش تعداد
                                 </button>
                             </form>
                         </td>
                         <td>
-{{--                            <form action="{{route('cart.store',$item['product']->id)}}" method="post" enctype="multipart/form-data">--}}
-{{--                                @csrf--}}
-{{--                                <button class="btn" type="submit">سفارش</button>--}}
-{{--                            </form>--}}
-                            <form action="{{ route('cart.store') }}" method="post" enctype="multipart/form-data">
-                                @csrf
-                                <button class="btn btn-primary" type="submit">ثبت سفارش</button>
-                            </form>
+
+
+                                <form action="{{ route('cart.store') }}" method="post" id="sendDatabase">
+                                    @csrf
+                                    <input type="text" name="name" placeholder="Order Name" required value="{{$item['product']->name}}" readonly>
+                                    <button type="submit" class="btn btn-info">Submit Order</button>
+                                </form>
+
+
 
                         </td>
 

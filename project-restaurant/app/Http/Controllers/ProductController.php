@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Order;
 use App\Models\product;
 use Illuminate\Http\Request;
 
@@ -75,52 +76,116 @@ class ProductController extends Controller
 
         return redirect()->back()->with('success', $message);
     }
-//public function storeProduct(Request $request)
-//{
-//    $cart = $request->session()->get('cart', new Cart());
-//    $request->validate([]);
-//    $order=product::create([
-//        'name'=>$request->name,
-//        'product_id'=>$request->product_id,
-//        'count'=>$request->count,
-//        'price'=>$request->input('price','null'),
-//    ]);
-//    foreach ($cart->products as $item) {
-//        $order->products()->attach($item['product']->id, [
-//            'count' => $item['count'],
-//            'price' => $item['price'] / $item['count'],
+
+//    public function storeProduct(Request $request)
+//    {
+//        // دریافت سبد خرید از سشن
+//        $cart = $request->session()->get('cart', new Cart());
+//
+//        // بررسی خالی بودن سبد خرید
+//        if (!$cart || count($cart->products) === 0) {
+//            return redirect()->back()->with('error', 'سبد خرید خالی است.');
+//        }
+//
+//        // ایجاد سفارش جدید
+//        $order = Order::create([
+//            'user_id' => auth()->id(), // فرض می‌کنیم کاربر وارد شده است
+//            'price' => $cart->price, // قیمت کل سبد خرید
 //        ]);
+//
+//        // ارسال محصولات به جدول میانی order_product
+//        foreach ($cart->products as $item) {
+//            $order->products()->attach($item['product']->id, [
+//                'count' => $item['count'],
+//                'price' => $item['price'] / $item['count'], // قیمت هر واحد محصول
+//            ]);
+//        }
+//
+//        // پاک کردن سبد خرید از سشن
+//        $request->session()->forget('cart');
+//
+//        return redirect()->route('order.success'); // به صفحه تایید سفارش منتقل می‌شود
+//    }
+//    public function storeProduct(Request $request)
+//    {
+//        // دریافت سبد خرید از سشن
+//        $cart = $request->session()->get('cart', new Cart());
+//
+//        // بررسی خالی بودن سبد خرید
+//        if (!$cart || count($cart->products) === 0) {
+//            return redirect()->back()->with('error', 'سبد خرید خالی است.');
+//        }
+//
+//        try {
+//            // ایجاد سفارش جدید
+//            $order = Order::create([
+//                'user_id' => auth()->id(), // فرض می‌کنیم کاربر وارد شده است
+//                'price' => $cart->price, // قیمت کل سبد خرید
+//
+//                'count' => array_sum(array_column($cart->products, 'count')), // محاسبه تعداد کل محصولات
+//                'name' => $cart->name,
+//                // سایر فیلدهای لازم مانند name و address را نیز می‌توانید اضافه کنید
+//            ]);
+//
+//            // ارسال محصولات به جدول میانی order_product
+//            foreach ($cart->products as $item) {
+//                $order->products()->attach($item['product']->id, [
+//                    'user_id'=> $item["user_id"],
+//                    'name' => $item['product']->name,
+//                    'count' => $item['count'],
+//                    'price' => $item['price'] / $item['count'], // قیمت هر واحد محصول
+////                    'name'=> $item['name'],  //نام غذا
+//                ]);
+//            }
+//
+//            // پاک کردن سبد خرید از سشن
+//            $request->session()->forget('cart');
+//
+//            return redirect()->route('order.success'); // به صفحه تایید سفارش منتقل می‌شود
+//        } catch (\Exception $e) {
+//            return redirect()->back()->with('error', 'خطا در ثبت سفارش: ' . $e->getMessage());
+//        }
 //    }
     public function storeProduct(Request $request)
     {
+        // دریافت سبد خرید از سشن
         $cart = $request->session()->get('cart', new Cart());
 
         // بررسی خالی بودن سبد خرید
         if (!$cart || count($cart->products) === 0) {
             return redirect()->back()->with('error', 'سبد خرید خالی است.');
         }
-        $request->validate([
-//            'name' => 'required',
-            'price' => 'required',
-            'count' => 'required',
-        ]);
 
-
-        $order = product::create([
-//            'user_id' => auth()->id(), // در صورت نیاز
-            'name' => $request->input('name'),
-            'price' => $cart->price,
-            'count' => $cart->count,
-        ]);
-
-        foreach ($cart->products as $item) {
-            $order->products()->attach($item['product']->id, [
-                'count' => $item['count'],
-                'price' => $item['price'] / $item['count'],
+        try {
+            // ایجاد سفارش جدید
+            $order = Order::create([
+                'user_id' => auth()->id(),
+                'price' => $cart->price,
+                'count' => array_sum(array_column($cart->products, 'count')),
+                'name' => $cart->name ?? $request->input('name'), // مقداردهی صحیح
             ]);
-        }
 
+            // ارسال محصولات به جدول میانی order_product
+            foreach ($cart->products as $item) {
+                $order->products()->attach($item['product']->id, [
+                    'user_id' => auth()->id(),
+                    'name' => $item['product']->name, // مقداردهی صحیح
+                    'count' => $item['count'],
+                    'price' => $item['price'] / $item['count'],
+                ]);
+            }
+
+            // پاک کردن سبد خرید از سشن
+            $request->session()->forget('cart');
+
+            return redirect()->route('order.success')->with('success', 'سفارش شما با موفقیت ثبت شد.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'خطا در ثبت سفارش: ' . $e->getMessage());
+        }
     }
+
+
+
 
 
 

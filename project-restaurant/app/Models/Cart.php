@@ -26,26 +26,6 @@ class Cart
     }
     protected $fillable=['name','name_restaurant','type','image','discount_id'];
 
-//    public function addToCart($product)
-//    {
-//        $discount=$product->discount->percentage ?? $product->price;
-//        if (isset($this->products[$product->id])) {
-//            $this->products[$product->id]['count'] += 1;
-//            $this->products[$product->id]['price'] += $discount;
-//
-//        } else {
-//            $this->products[$product->id] = [
-//                "product" => $product,
-//                "count" => 1,
-//                "price" => $discount,
-//
-//            ];
-//        }
-//
-//        $this->price += $discount;
-//        $this->count++;
-//
-//    }
     public function addToCart($product)
     {
         $discount = isset($product->discount->percentage)

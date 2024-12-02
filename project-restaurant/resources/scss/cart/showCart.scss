@@ -8,43 +8,68 @@
         }
         tbody{
             tr{text-align: center;height: 20%;
-
-                .name{width: 10%;
-                    p{font-size: 1.5rem;margin-top: 25%;padding-top: 40%}}
-                .image{width: 25%;margin-top: 30%;height: 20%;
-                    img{width: 80%;height: 20%;margin-top: 20%}}
-                .price{width: 15%;p{margin-top: 30%;font-size: 1.5rem;}}
-             .count{width: 15%;
-                 .count-body{
-                     text-align: center;margin-top: 30%;font-weight: bolder;font-size: 1.5rem;
+             td {width: 20%;
+                 p {
+                     font-size: 1.5rem;
+                     margin-top: 25%;
+                     padding-top: 15%
+                     ;font-weight: bolder;
                  }
-             }
-                .icon-delete{width: 15%;
-                   form{margin-top: 30%;
-                       .btn{width: 60%;
-                           .icon{
-                               width:60% ;
-                               height: 55%;
-                               vertical-align: center;
-                           }
-                       }
-                   }
-                }
-                .Edit{height: 100%;
-                    form{margin-top: 20%;
-                        .form-Edit{
-                            width: 40%;
-                        }
-                        .btn{height: 40%;
-                            .iconUpdate{
-                                width: 80%;
-                                height: 100%;
-                                vertical-align: center;
+             ;
 
-                            }
-                        }
-                    }
-                }
+                 img {
+                     width: 80%;
+                     height: 20%;
+                     margin-top: 20%
+                 }
+             ;
+
+                 .count-body {
+                     text-align: center;
+                     margin-top: 30%;
+                     font-weight: bolder;
+                     font-size: 1.5rem;
+                 }
+
+                 #Delete {
+                     margin-top: 30%;
+
+                     .btn {
+                         width: 60%;
+
+                         .icon {
+                             width: 60%;
+                             height: 55%;
+                             vertical-align: center;
+                         }
+                     }
+                 }
+
+                 #edit {
+                     margin-top: 20%;
+
+                     .form-Edit {
+                         width: 40%;
+                     }
+
+                     .btn {
+                         height: 40%;
+
+                         .iconUpdate {
+                             width: 80%;
+                             height: 100%;
+                             vertical-align: center;
+
+                         }
+                     }
+
+                     #sendDatabase {
+
+                     }
+                 }
+
+
+             }
 
             }
             tr:nth-child(odd) {

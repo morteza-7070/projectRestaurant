@@ -3,6 +3,11 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
  use \App\Http\Controllers\CustomerController;
+ use \App\Http\Controllers\MapController;
+use Illuminate\Support\Facades\Http;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +33,9 @@ Route::prefix('/customers')->group(function(){
     Route::delete('/delete/{customer}', [CustomerController::class, 'destroy'])->name('restaurants.delete');
 
 });
+//Route::post('/search-address', [MapController::class, 'searchAddress']);
+Route::match(['GET', 'POST'], '/search-address', [MapController::class, 'searchAddress']);
+
+Route::post('/reverse-geocode', [MapController::class, 'reverseGeocode']);
+Route::post('/get-coordinates', [MapController::class, 'getCoordinates']);
+

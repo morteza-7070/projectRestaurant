@@ -56,6 +56,8 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
+    'key' => env('NESHAN_API_KEY'),
+
 
     'asset_url' => env('ASSET_URL'),
 

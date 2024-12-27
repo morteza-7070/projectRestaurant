@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\PizzaHivaController;
 use \App\Http\Controllers\FastfoodAtavichController;
 use \App\Http\Controllers\type\ListFoodsController;
+use \App\Http\Controllers\NeshanController;
 
 use \App\Http\Controllers\FastfoodCretishingController;
 
@@ -93,5 +94,5 @@ Route::prefix('cart')->group(function () {
     Route::post('/clear', [ProductController::class, 'clearCart'])->name('cart.clear');
     Route::post('/order', [ProductController::class, 'storeProduct'])->name('cart.store');
 
-
 });
+

@@ -12,6 +12,7 @@
 
     <div class="container">
         <form action="{{route('cart.clear')}}" method="POST">@csrf<button class="btn " type="submit">پاک کردن کل سبد خرید</button></form>
+        <a href="{{route('orderProducts')}}" class="order-product">برگشت به صفحه محصولات</a>
 
         <h2>سبد خرید</h2>
         @if($cart->products)
@@ -70,6 +71,7 @@
                 @endforeach
                 </tbody>
             </table>
+            <p class="totalCount">تعداد کل محصولات: {{ $totalCount }}</p>
             <p class="total-price">جمع کل: {{ $cart->price }}تومان</p>
         @else
             <p>سبد خرید شما خالی است.</p>

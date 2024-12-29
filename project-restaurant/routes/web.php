@@ -3,12 +3,13 @@
 use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ListProductController;
+
 use App\Http\Controllers\type\SandwichController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\PizzaHivaController;
 use \App\Http\Controllers\FastfoodAtavichController;
 use \App\Http\Controllers\type\ListFoodsController;
-use \App\Http\Controllers\NeshanController;
 
 use \App\Http\Controllers\FastfoodCretishingController;
 
@@ -95,4 +96,13 @@ Route::prefix('cart')->group(function () {
     Route::post('/order', [ProductController::class, 'storeProduct'])->name('cart.store');
 
 });
+//Route::get('/order-products',function (){
+//    return view('orderProducts.order-hiva');
+//});
+//Route::get('/order-products',[ListProductController::class,'showOrder'])->name('orderProducts');
+
+Route::prefix('/products')->group(function () {
+    Route::get('/',[ListProductController::class,'showOrder'])->name('products');
+});
+
 

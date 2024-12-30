@@ -33,7 +33,6 @@ class ProductController extends Controller
     public function showCart(Request $request)
     {
         $cart = $request->session()->get('cart', new Cart());
-//        $itemCount=count($cart->items);
         $totalCount = 0;
 
         if (isset($cart->products)) {
@@ -45,21 +44,7 @@ class ProductController extends Controller
         view()->share('totalCount', $totalCount);
         return view('cart.showCart',);
     }
-//    public function showOrder(Request $request)
-//    {
-//        $cart = $request->session()->get('cart', new Cart());
-////        $itemCount=count($cart->items);
-//        $totalCount = 0;
-//
-//        if (isset($cart->products)) {
-//            foreach ($cart->products as $item) {
-//                $totalCount += $item['count'];
-//            }
-//        }
-//        view()->share('cart', $cart);
-//        view()->share('totalCount', $totalCount);
-//        return view('orderProducts.order-hiva',);
-//    }
+
 
     public function remove(Request $request, $id)
     {

@@ -102,7 +102,7 @@ Route::prefix('cart')->group(function () {
 //Route::get('/order-products',[ListProductController::class,'showOrder'])->name('orderProducts');
 
 Route::prefix('/products')->group(function () {
-    Route::get('/',[ListProductController::class,'showOrder'])->name('products');
+    Route::get('/hiva',[ListProductController::class,'showOrder'])->name('products');
     Route::get('/Atavich',[ListProductController::class,'showOrderAtavich'])->name('Atavitch');
     Route::get('/Morsel',[ListProductController::class,'orderMorsel'])->name('Morsel');
 });

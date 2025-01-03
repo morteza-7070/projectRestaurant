@@ -161,7 +161,7 @@
                     <h1>
                      فست فود لقمه کش
                     </h1>
-                    <p>
+                    <p style=" font-size: 2rem; font-weight: bolder;">
                      فست فود لقمه کش با ابسش از 30 سال سابقه کار درخشان در صنعت فست فود و با بهترین کیفین در خدمت همشهریان عزیز یباشد
                     </p>
                     <div class="btn-box">
@@ -182,7 +182,7 @@
                     <h1>
                       فست فود هیوا
                     </h1>
-                    <p>
+                    <p style=" font-size: 2rem; font-weight: bolder;">
  فست فود هیوا با پرسنلی مجرب در خدمت همشهریان  عزیز                    </p>
                     <div class="btn-box">
                       <a href="{{route('products')}}" class="btn1">
@@ -202,7 +202,7 @@
                     <h1>
                      ساندویچی عطاویچ
                     </h1>
-                    <p>
+                    <p style=" font-size: 2rem; font-weight: bolder;">
 ساندویچی عطاویچ با بیش از 15 سال سابقه کار درخحشان در تهران در خدمت همشهریان عزیز                    </p>
                     <div class="btn-box">
                       <a href="{{route('Atavitch')}}" class="btn1">
@@ -233,19 +233,35 @@
     <div class="offer_container">
       <div class="container ">
         <div class="row">
-          <div class="col-md-6  ">
+
+          <div class="col-md-6 ">
+{{--           @foreach($sandwiches as $sandwich)--}}
             <div class="box ">
               <div class="img-box">
-                <img src="images/o1.jpg" alt="">
+{{--                <img src="images/o1.jpg" alt="">--}}
+                  <img src="{{"storage/".$sandwiches[0]->image}}" alt="">
               </div>
               <div class="detail-box">
-                <h5>ساندویچ همبرگر
+                <h5>
+{{--                    ساندویچ همبرگر--}}
+                    {{$sandwiches[0]->name}}
                 </h5>
                 <h6>
-                  <span>20%</span> Off
+                    @if ($sandwiches->first()?->discount?->percentage > 0)
+                        <span>{{ $sandwiches->first()?->discount->percentage }}</span>
+                    @else
+                        <span>بدون تخفیف</span>
+                    @endif
                 </h6>
                 <a href="">
-                 سفارش <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
+{{--                    @foreach ($pizzas as $pizza)--}}
+                        <form action="{{ route('cart', $sandwiches->first()->id) }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <button type="submit" class="btn ">سفارش</button>
+                        </form>
+{{--                    @endforeach--}}
+
+                  <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                     <g>
                       <g>
                         <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
@@ -299,22 +315,38 @@
                   </svg>
                 </a>
               </div>
+
             </div>
+
           </div>
           <div class="col-md-6  ">
             <div class="box ">
+
               <div class="img-box">
-                <img src="images/o2.jpg" alt="">
+                  <img src="{{"storage/".$pizzas[0]->image}}" alt="">
               </div>
               <div class="detail-box">
                 <h5>
-                 پیتزا گوشت و مرغ
+
+                       {{$pizzas[0]->name}}
+
                 </h5>
                 <h6>
-                  <span>15%</span> Off
+
+                    @if ($pizzas->first()?->discount?->percentage > 0)
+                        <span>{{ $pizzas->first()?->discount->percentage }}</span>
+                    @else
+                        <span>بدون تخفیف</span>
+                    @endif
                 </h6>
                 <a href="">
-                  سفارش <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
+
+
+                        <form action="{{ route('cart', $pizzas->first()->id) }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <button type="submit" class="btn ">سفارش</button>
+                        </form>
+                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                     <g>
                       <g>
                         <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248

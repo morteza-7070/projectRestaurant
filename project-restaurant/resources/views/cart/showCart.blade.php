@@ -38,8 +38,8 @@
                         <td class="icon-delete">
                             <form action="{{ route('cart.remove', $item['product']->id) }}" method="POST" id="Delete">
                                 @csrf
-                                <button class="btn btn-danger" type="submit">
-                                    <img src="../../Icon/iconDelete2.png" alt="" class="icon">
+                                <button class="btn " type="submit">
+                                    <img src="../../Icon/delete3.png" alt="" class="icon">
                                 </button>
                             </form>
                         </td>
@@ -52,13 +52,15 @@
                                 </button>
                             </form>
                         </td>
-                        <td>
+                        <td class="data">
 
 
                                 <form action="{{ route('cart.store') }}" method="post" id="sendDatabase">
                                     @csrf
-                                    <input type="text" name="name" placeholder="Order Name" required value="{{$item['product']->name}}" readonly>
-                                    <button type="submit" class="btn btn-info">Submit Order</button>
+                                   <div>
+                                       <input type="text" name="name" class="order" placeholder="Order Name" required value="{{$item['product']->name}}" readonly>
+
+                                   </div>
                                 </form>
 
 
@@ -73,6 +75,12 @@
             </table>
             <p class="totalCount">تعداد کل محصولات: {{ $totalCount }}</p>
             <p class="total-price">جمع کل: {{ $cart->price }}تومان</p>
+            <form action="{{ route('cart.store') }}" method="post" enctype="multipart/form-data" id="sendOrders">
+                @csrf
+                <input type="hidden" name="name" class="order" placeholder="Order Name" required value="{{$item['product']->name}}" readonly >
+
+                <button type="submit" class="btn btn-success"> ارسال سفارش</button>
+            </form>
         @else
             <p>سبد خرید شما خالی است.</p>
         @endif

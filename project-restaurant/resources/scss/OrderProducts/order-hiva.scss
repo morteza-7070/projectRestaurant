@@ -40,15 +40,14 @@ body{
             }
         }
 
-       .row{display: flex;
-           .col{
+       .cart1{
+           .col-sm-3{border: 2px solid red;
+               .card{margin-top: 20px;
 
-               .card{height: 500px;margin-top: 20px;
-
-                   img{}
+                   img{height: 400px}
                    .card-body{
-                       .card-title{}
-                       .card-des{}
+                       .card-title{font-weight: bold;font-size: 2rem}
+                       .card-des{line-height: 1.5rem}
                        form{}
                    }
                }

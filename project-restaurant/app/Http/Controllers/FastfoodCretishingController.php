@@ -46,6 +46,7 @@ class FastfoodCretishingController extends Controller
             'name'=>$validated['name'],
             'name_restaurant'=>$validated['name_restaurant'],
             'description'=>$validated['description'],
+            'type'=>$validated['type'],
             'image'=>$filePath,
             'price'=>$validated['price'],
             'discount_id'=>$validated['discount_id'],

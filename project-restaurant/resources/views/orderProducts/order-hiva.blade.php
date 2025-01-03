@@ -29,14 +29,14 @@
         </div>
     </div>
 
-   <div class="row">
+   <div class="row cart1">
        @foreach($products as $product)
-           <div class="col-sm-3">
+           <div class="col-sm-3 lg col-sm-4 sm mt-4">
               <div class="card">
-                  <img src="{{asset('storage/'.$product->image)}}" alt="">
+                  <img src="{{asset('storage/'.$product->image)}}" alt="" >
                   <div class="card-body">
                       <div class="card-title">{{$product->name}}</div>
-                      <div class="card-des">{{$product->description}}</div>
+                      <div class="card-des mb-3">{{$product->description}}</div>
                       <form action="{{ route('cart', $product->id) }}" method="POST" enctype="multipart/form-data">
                           @csrf
                           <button type="submit" class="btn btn-primary">افزودن به سبد خرید

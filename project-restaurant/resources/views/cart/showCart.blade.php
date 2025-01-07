@@ -25,7 +25,7 @@
                     <th>قیمت</th>
                     <th>حذف</th>
                     <th> ویرایش</th>
-                    <th>ارسال</th>
+                    <th>نام</th>
                 </tr>
                 </thead>
                 <tbody>

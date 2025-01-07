@@ -107,4 +107,6 @@ Route::prefix('/products')->group(function () {
     Route::get('/Morsel',[ListProductController::class,'orderMorsel'])->name('Morsel');
 });
 
-
+Route::get('/article',function (){
+   return view('Article.aboute2');
+});

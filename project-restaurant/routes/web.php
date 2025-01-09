@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\CartController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\ListProductController;
 
 use App\Http\Controllers\type\SandwichController;
@@ -32,11 +32,10 @@ Route::group(['middleware' => 'user.type:مشتری'], function () {
     Route::get('/customer/dashboard', [App\Http\Controllers\Controller::class, 'dashboard'])->name('customer.dashboard');
 });
 Route::prefix('/')->group(function(){
-    Route::get('index',[App\Http\Controllers\Controller::class,'index'])->name('index');
-    Route::get('/',[App\Http\Controllers\Controller::class,'home'])->name('home');
-
-
-
+    Route::get('index',[Controller::class,'index'])->name('index');
+    Route::get('/',[Controller::class,'home'])->name('home');
+    Route::get('articles',[Controller::class,'article'])->name('article');
+    Route::post('/',[Controller::class,'store'])->name('store');
 
 });
 Route::prefix('/discount')->group(function () {

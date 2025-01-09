@@ -25,6 +25,7 @@ return new class extends Migration
             $table->foreign('discount_id')->references('id')->on('discounts')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
+        }
 
     /**
      * Reverse the migrations.

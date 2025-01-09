@@ -37,7 +37,7 @@ class CustomerController extends Controller
     public function store(StoreCustomerRequest $request)
     {
         $validated = $request->validated();
-       $customers= Customer::create([
+        Customer::create([
             'name'=>$validated['name'],
             'email'=>$validated['email'],
             'phone'=>$validated['phone'],

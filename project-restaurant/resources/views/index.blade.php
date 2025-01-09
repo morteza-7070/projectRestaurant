@@ -632,23 +632,8 @@
         <div class="col-md-6">
           <div class="detail-box">
             <div class="heading_container">
-{{--              <h2>--}}
-{{--               درباره ما--}}
-{{--              </h2>--}}
+
             </div>
-
-{{--            <p>--}}
-{{--              There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration--}}
-{{--              in some form, by injected humour, or randomised words which don't look even slightly believable. If you--}}
-{{--              are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in--}}
-{{--              the middle of text. All--}}
-{{--            </p>--}}
-
-
-
-
-
-
               <p>
                   @include('Article.about')
               </p>
@@ -656,8 +641,8 @@
 
 
 
-            <a href="">
-              Read More
+            <a href="{{route('article')}}">
+              <button class="btn ">بیشتر</button>
             </a>
           </div>
         </div>
@@ -672,47 +657,48 @@
     <div class="container">
       <div class="heading_container">
         <h2>
-          Book A Table
+          رزرو میز
         </h2>
       </div>
       <div class="row">
         <div class="col-md-6">
           <div class="form_container">
-            <form action="">
-              <div>
-                <input type="text" class="form-control" placeholder="Your Name" />
+            <form action="{{route('store')}}" method="POST" enctype="multipart/form-data">
+                @csrf
+              <div >
+                <input type="text"  name="name" class="form-control" placeholder="نام" />
               </div>
               <div>
-                <input type="text" class="form-control" placeholder="Phone Number" />
+                <input type="text" class="form-control" placeholder="شماره تماس"  name="phone"/>
               </div>
               <div>
-                <input type="email" class="form-control" placeholder="Your Email" />
+                <input type="text" class="form-control" placeholder="ایمیل"  name="email"/>
               </div>
               <div>
-                <select class="form-control nice-select wide">
+                <select class="form-control nice-select wide" name="number">
                   <option value="" disabled selected>
-                    How many persons?
+                    چند نفر؟
                   </option>
-                  <option value="">
+                  <option value="2">
                     2
                   </option>
-                  <option value="">
+                  <option value="3">
                     3
                   </option>
-                  <option value="">
+                  <option value="4">
                     4
                   </option>
-                  <option value="">
+                  <option value="5">
                     5
                   </option>
                 </select>
               </div>
               <div>
-                <input type="date" class="form-control">
+                <input type="date" class="form-control" name="date">
               </div>
               <div class="btn_box">
                 <button>
-                  Book Now
+                  اکنون رزرو کنید
                 </button>
               </div>
             </form>
@@ -734,7 +720,7 @@
     <div class="container">
       <div class="heading_container heading_center psudo_white_primary mb_45">
         <h2>
-          What Says Our Customers
+          مشتریان در مورد ما چه نظری دارند
         </h2>
       </div>
       <div class="carousel-wrap row ">

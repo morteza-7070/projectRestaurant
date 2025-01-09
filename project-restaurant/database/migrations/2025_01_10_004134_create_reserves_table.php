@@ -11,15 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('discounts', function (Blueprint $table) {
+        Schema::create('reserves', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('image')->nullable();
-            $table->string('mime')->default('image/jpeg');
-            $table->string('percentage');
-            $table->dateTime('start_date')->nullable();
-            $table->dateTime('end_date')->nullable();
-
+            $table->string('phone');
+            $table->string('email');
+            $table->string('number');
+            $table->dateTime('date');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('discounts');
+        Schema::dropIfExists('reserves');
     }
 };

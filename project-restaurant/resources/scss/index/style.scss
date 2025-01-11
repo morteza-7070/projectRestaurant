@@ -83,3 +83,24 @@
 
     }
 }
+footer{
+    .container{
+        .row{
+            .col{
+                .footer_contact{
+                    .contact_link_box{
+                        a{
+                            span{
+
+                            }
+                            &:hover{
+
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

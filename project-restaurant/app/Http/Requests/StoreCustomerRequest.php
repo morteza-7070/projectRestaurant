@@ -22,7 +22,7 @@ class StoreCustomerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
+            'name' => 'required|min:3',
             'email' => 'required|email',
             'phone' => 'required',
             'address' => 'required',
@@ -35,6 +35,7 @@ class StoreCustomerRequest extends FormRequest
     {
         return [
             'name.required'=>'وارد کردن نام الزامی است',
+            'name.min'=>'حداقل تعداد کاراکتر وارد شده3 است',
             'email.required'=>'وارد کردن ایمیل الزامی است',
             'email.email'=>'ایمیل از نوع ایمیل باشد',
             'phone.required'=>'وارد کردن شماره تلفن الزامی است',

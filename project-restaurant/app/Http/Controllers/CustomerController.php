@@ -36,7 +36,7 @@ class CustomerController extends Controller
      */
     public function store(StoreCustomerRequest $request)
     {
-        $validated = $request->validated();
+        $validated = $request->validate();
         Customer::create([
             'name'=>$validated['name'],
             'email'=>$validated['email'],
@@ -46,7 +46,7 @@ class CustomerController extends Controller
             'password'=>bcrypt($validated['password']),
         ]);
 
-        return  redirect()->route('index');
+        return  redirect()->route('home');
     }
 
     /**

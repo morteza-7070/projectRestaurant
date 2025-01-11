@@ -729,13 +729,12 @@
             <div class="box">
               <div class="detail-box">
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                </p>
+                    دکوراسیون رستوران خیلی زیبا و آرامش‌بخش بود. فضای مناسبی برای قرارهای دوستانه و خانوادگی داشت.                </p>
                 <h6>
-                  Moana Michell
+                  حمید خوشه چین
                 </h6>
                 <p>
-                  magna aliqua
+
                 </p>
               </div>
               <div class="img-box">
@@ -747,13 +746,11 @@
             <div class="box">
               <div class="detail-box">
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                </p>
+                    غذاها بسیار خوشمزه و با کیفیت بودند. تنوع منو هم عالی بود.                </p>
                 <h6>
-                  Mike Hamell
+                  حمید حمیدی
                 </h6>
                 <p>
-                  magna aliqua
                 </p>
               </div>
               <div class="img-box">
@@ -775,22 +772,23 @@
         <div class="col-md-4 footer-col">
           <div class="footer_contact">
             <h4>
-              Contact Us
+              ارتباط با ما
             </h4>
             <div class="contact_link_box">
-              <a href="">
+              <a href="" >
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                 <span>
-                  Location
+                  آدرس
                 </span>
+                  <span class="tooltip-text">تهران، خیابان ولیعصر، پلاک 123</span>
               </a>
               <a href="">
                 <i class="fa fa-phone" aria-hidden="true"></i>
                 <span>
-                  Call +01 1234567890
+                  تلفن تماس 0529892323
                 </span>
               </a>
-              <a href="">
+              <a href="mailto:demo@gmail.com">
                 <i class="fa fa-envelope" aria-hidden="true"></i>
                 <span>
                   demo@gmail.com
@@ -802,10 +800,9 @@
         <div class="col-md-4 footer-col">
           <div class="footer_detail">
             <a href="" class="footer-logo">
-              Feane
+
             </a>
             <p>
-              Necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with
             </p>
             <div class="footer_social">
               <a href="">
@@ -836,14 +833,7 @@
           </p>
         </div>
       </div>
-      <div class="footer-info">
-        <p>
-          &copy; <span id="displayYear"></span> All Rights Reserved By
-          <a href="https://html.design/">Free Html Templates</a><br><br>
-          &copy; <span id="displayYear"></span> Distributed By
-          <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
-        </p>
-      </div>
+
     </div>
   </footer>
   <!-- footer section -->

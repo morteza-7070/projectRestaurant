@@ -11,5 +11,8 @@
         "sass": "^1.79.3",
         "sass-embedded": "^1.79.1",
         "vite": "^5.0.0"
+    },
+    "dependencies": {
+        "persian-datepicker": "^1.2.0"
     }
 }

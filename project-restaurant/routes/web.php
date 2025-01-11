@@ -4,7 +4,7 @@ use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ListProductController;
-
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\type\SandwichController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\PizzaHivaController;
@@ -29,13 +29,13 @@ Route::get('/', function () {
     return view('index');
 });
 Route::group(['middleware' => 'user.type:مشتری'], function () {
-    Route::get('/customer/dashboard', [App\Http\Controllers\Controller::class, 'dashboard'])->name('customer.dashboard');
+    Route::get('/customer/dashboard', [Controller::class, 'dashboard'])->name('customer.dashboard');
 });
 Route::prefix('/')->group(function(){
     Route::get('index',[Controller::class,'index'])->name('index');
     Route::get('/',[Controller::class,'home'])->name('home');
     Route::get('articles',[Controller::class,'article'])->name('article');
-    Route::post('/',[Controller::class,'store'])->name('store');
+    Route::post('/',[IndexController::class,'store'])->name('store');
 
 });
 Route::prefix('/discount')->group(function () {
@@ -109,3 +109,4 @@ Route::prefix('/products')->group(function () {
 Route::get('/article',function (){
    return view('Article.aboute2');
 });
+

@@ -54,6 +54,25 @@
               فست فود و ساندویچی
             </span>
           </a>
+            @if (Route::has('login'))
+                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
+                    @auth
+                        <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 ">Dashboard</a>
+                    @else
+                        <a href="{{ route('login') }}"
+                           class="font-semibold text-white hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                            ورود
+                        </a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}"
+                               class="ml-4 font-semibold text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                                ثبت نام
+                            </a>
+                        @endif
+                    @endauth
+                </div>
+            @endif
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class=""> </span>
@@ -65,7 +84,7 @@
                 <a class="nav-link" href="index.html">صفحه اصلی <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{route('restaurants.create')}}">ثبت نام مشتری</a>
+                <a class="nav-link text-white" href="{{route('restaurants.create')}}">ثبت نام مشتری</a>
               </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('restaurants.create')}}">ثبت نام رستوران دار</a>

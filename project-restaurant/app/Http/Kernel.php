@@ -22,12 +22,13 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
 //        'checkRole' => \App\Http\Middleware\User_TypeMiddleware::class,
+//        \App\Http\middleware\CheckUserType::class,
     ];
     protected $routeMiddleware = [
-        // سایر میدلورها
-        'checkRole' => \App\Http\Middleware\User_TypeMiddleware::class,
+
+        'checkRole' => \App\Http\Middleware\CheckUserType::class,
     ];
-//        'user.type' => \App\Http\Middleware\User_TypeMiddleware::class,
+
 
 
 

@@ -1,18 +1,24 @@
 <?php
 
-use App\Http\Controllers\DiscountController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\Controller;
-use App\Http\Controllers\ListProductController;
 use App\Http\Controllers\IndexController;
-use App\Http\Controllers\type\SandwichController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\DiscountController;
+use App\Http\Controllers\FastfoodCretishingController;
+use App\Http\Controllers\FastfoodAtavichController;
+use App\Http\Controllers\ListProductController;
+use App\Http\Controllers\MapController;
+use App\Http\Controllers\PizzaHivaController;
+use App\Http\Controllers\ProductController;
+
+
+
+
+
+
+
+
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\PizzaHivaController;
-use \App\Http\Controllers\FastfoodAtavichController;
-use \App\Http\Controllers\type\ListFoodsController;
-
-use \App\Http\Controllers\FastfoodCretishingController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -28,17 +34,26 @@ use \App\Http\Controllers\FastfoodCretishingController;
 Route::get('/', function () {
     return view('index');
 });
-Route::group(['middleware' => 'user.type:مشتری'], function () {
-    Route::get('/customer/dashboard', [Controller::class, 'dashboard'])->name('customer.dashboard');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/home',[Controller::class,'PageHome'])->name('homePage');
+
+Route::prefix('/')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::prefix('/')->group(function(){
+
+Route::prefix('/')->middleware(['auth','verified'])->group(function(){
     Route::get('index',[Controller::class,'index'])->name('index');
     Route::get('/',[Controller::class,'home'])->name('home');
     Route::get('articles',[Controller::class,'article'])->name('article');
     Route::post('/',[IndexController::class,'store'])->name('store');
 
 });
-Route::prefix('/discount')->group(function () {
+Route::prefix('/discount')->middleware(['auth','checkRole:مشتری'])->group(function () {
     Route::get('/',[DiscountController::class,'index'])->name('discount');
     Route::get('/create',[DiscountController::class,'create'])->name('discount.create');
     Route::post('/store',[DiscountController::class,'store'])->name('discount.store');
@@ -46,7 +61,7 @@ Route::prefix('/discount')->group(function () {
     Route::put('update/{id}/update',[DiscountController::class,'update'])->name('discount.update');
     Route::delete('/discounts/{id}', [DiscountController::class, 'destroy'])->name('discount.destroy');
 });
-Route::prefix('/restaurant')->group(function () {
+Route::prefix('/Heeva')->group(function () {
     Route::get('/',[PizzaHivaController::class,'index'])->name('FastFoodHiva');
     Route::get('/create',[PizzaHivaController::class,'create'])->name('restaurant.create');
     Route::post('/store',[PizzaHivaController::class,'store'])->name('restaurant.store');
@@ -55,7 +70,7 @@ Route::prefix('/restaurant')->group(function () {
     Route::delete('/restaurants/{id}', [PizzaHivaController::class, 'destroy'])->name('restaurant.destroy');
 
 });
-Route::prefix('/fastfood')->group(function () {
+Route::prefix('/Atavich')->group(function () {
     Route::get('/',[FastfoodAtavichController::class,'index'])->name('FastFoodAtavich');
     Route::get('/create',[FastfoodAtavichController::class,'create'])->name('fastfood.create');
     Route::post('/store',[FastfoodAtavichController::class,'store'])->name('fastfood.store');
@@ -63,7 +78,7 @@ Route::prefix('/fastfood')->group(function () {
     Route::put('update/{id}/update',[FastfoodAtavichController::class,'update'])->name('fastfood.update');
     Route::delete('fastfoods/{id}', [FastfoodAtavichController::class, 'destroy'])->name('fastfood.destroy');
 });
-Route::prefix('/Boof')->group(function () {
+Route::prefix('/bite')->group(function () {
     Route::get('/',[FastfoodCretishingController::class,'index'])->name('FastFoodBoof');
     Route::get('/create',[FastfoodCretishingController::class,'create'])->name('Boof.create');
     Route::post('/store',[FastfoodCretishingController::class,'store'])->name('Boof.store');
@@ -71,19 +86,9 @@ Route::prefix('/Boof')->group(function () {
     Route::put('update/{id}/update',[FastfoodCretishingController::class,'update'])->name('Boof.update');
     Route::delete('Boof/{id}', [FastfoodCretishingController::class, 'destroy'])->name('Boof.destroy');
 });
-//Route::prefix('/Boof')->middleware("checkRole:مشتری")->group(function () {
-//    Route::get('/', [FastfoodCretishingController::class, 'index'])->name('FastFoodBoof');
-//    Route::get('/create', [FastfoodCretishingController::class, 'create'])->name('Boof.create');
-//    Route::post('/store', [FastfoodCretishingController::class, 'store'])->name('Boof.store');
-//    Route::get('/edit/{id}', [FastfoodCretishingController::class, 'edit'])->name('Boof.edit');
-//    Route::put('/update/{id}', [FastfoodCretishingController::class, 'update'])->name('Boof.update');
-//    Route::delete('/{id}', [FastfoodCretishingController::class, 'destroy'])->name('Boof.destroy');
-//});
 
-//Route::prefix('/ListFoods')->group(function () {
-//    Route::get('/pizza',[ListFoodsController::class,'pizza'])->name('Pizza');
-//    Route::get('/sandwich',[ListFoodsController::class,'sandwich'])->name('Sandwich');
-//});
+
+
 
 Route::prefix('cart')->group(function () {
 
@@ -95,10 +100,7 @@ Route::prefix('cart')->group(function () {
     Route::post('/order', [ProductController::class, 'storeProduct'])->name('cart.store');
 
 });
-//Route::get('/order-products',function (){
-//    return view('orderProducts.order-hiva');
-//});
-//Route::get('/order-products',[ListProductController::class,'showOrder'])->name('orderProducts');
+
 
 Route::prefix('/products')->group(function () {
     Route::get('/hiva',[ListProductController::class,'showOrder'])->name('products');
@@ -107,6 +109,10 @@ Route::prefix('/products')->group(function () {
 });
 
 Route::get('/article',function (){
-   return view('Article.aboute2');
+    return view('Article.aboute2');
+});
+Route::fallback(function (){
+    return "<h1>notFount</h1>";
 });
 
+require __DIR__.'/auth.php';

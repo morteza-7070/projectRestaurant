@@ -45,5 +45,8 @@ class Controller extends BaseController
     public function article(){
         return view('Article.aboute2');
     }
+    public function PageHome(){
+        return view('Login.main');
+    }
 
 }

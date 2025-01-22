@@ -40,14 +40,14 @@
 {{--          {{$discount->text}}--}}
          <div class="form-row">
             <div class="input-data">
-               <input type="text" required name="name" placeholder="Enter NameFood"><br>
+               <input type="text" required name="name" placeholder="نام غذا را وارد نمایید"><br>
                 @if($errors->first('name'))
                     <span class="text-light">{{$errors->first('name')}}</span>
                 @endif
 
             </div>
             <div class="input-data">
-               <input type="file"  name="image" placeholder="Enter FileImage"><br>
+               <input type="file"  name="image" placeholder="عکس غذا را وارد نمایید"><br>
                 @if($errors->first('image'))
                     <span class="text-light">{{$errors->first('image')}}</span>
                 @endif
@@ -56,7 +56,7 @@
          </div>
          <div class="form-row">
             <div class="input-data">
-               <input type="text" required  name="percentage" placeholder="EnterPercentage"><br>
+               <input type="text" required  name="percentage" placeholder="درصد تخفیف"><br>
                 @if($errors->first('percentage'))
                     <span class="text-light">{{$errors->first('percentage')}}</span>
                 @endif
@@ -64,7 +64,7 @@
             </div>
              <br>
             <div class="input-data">شروع تخفیفات از:
-                <input type="date" name="start_date" placeholder="EnterStartDateDiscount"><br>
+                <input type="date" name="start_date" placeholder="شروع تخفیف"><br>
                 @if($errors->first('start_date'))
                     <span class="text-light">{{$errors->first('start_date')}}</span>
                 @endif
@@ -72,7 +72,7 @@
             </div>
              <br>
              <div class="input-data">اتمام تخفیفات:
-                 <input type="date" name="end_date" placeholder="EnterEndDateDiscount"><br>
+                 <input type="date" name="end_date" placeholder="پایان تخفیف"><br>
                  @if($errors->first('end_date'))
                      <span class="text-light">{{$errors->first('end_date')}}</span>
                  @endif

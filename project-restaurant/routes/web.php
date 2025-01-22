@@ -46,14 +46,14 @@ Route::prefix('/')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::prefix('/')->middleware(['auth','verified'])->group(function(){
+Route::prefix('/')->group(function(){
     Route::get('index',[Controller::class,'index'])->name('index');
     Route::get('/',[Controller::class,'home'])->name('home');
     Route::get('articles',[Controller::class,'article'])->name('article');
     Route::post('/',[IndexController::class,'store'])->name('store');
 
 });
-Route::prefix('/discount')->middleware(['auth','checkRole:مشتری'])->group(function () {
+Route::prefix('/discount')->middleware(['auth','Role:admin,RestaurantOwner'])->group(function () {
     Route::get('/',[DiscountController::class,'index'])->name('discount');
     Route::get('/create',[DiscountController::class,'create'])->name('discount.create');
     Route::post('/store',[DiscountController::class,'store'])->name('discount.store');
@@ -61,7 +61,7 @@ Route::prefix('/discount')->middleware(['auth','checkRole:مشتری'])->group(f
     Route::put('update/{id}/update',[DiscountController::class,'update'])->name('discount.update');
     Route::delete('/discounts/{id}', [DiscountController::class, 'destroy'])->name('discount.destroy');
 });
-Route::prefix('/Heeva')->group(function () {
+Route::prefix('/Heeva')->middleware(['auth','Role:ادمین,رستوران دار'])->group(function () {
     Route::get('/',[PizzaHivaController::class,'index'])->name('FastFoodHiva');
     Route::get('/create',[PizzaHivaController::class,'create'])->name('restaurant.create');
     Route::post('/store',[PizzaHivaController::class,'store'])->name('restaurant.store');
@@ -70,7 +70,7 @@ Route::prefix('/Heeva')->group(function () {
     Route::delete('/restaurants/{id}', [PizzaHivaController::class, 'destroy'])->name('restaurant.destroy');
 
 });
-Route::prefix('/Atavich')->group(function () {
+Route::prefix('/Atavich')->middleware(['auth','Role:ادمین,رستوران دار'])->group(function () {
     Route::get('/',[FastfoodAtavichController::class,'index'])->name('FastFoodAtavich');
     Route::get('/create',[FastfoodAtavichController::class,'create'])->name('fastfood.create');
     Route::post('/store',[FastfoodAtavichController::class,'store'])->name('fastfood.store');
@@ -78,7 +78,7 @@ Route::prefix('/Atavich')->group(function () {
     Route::put('update/{id}/update',[FastfoodAtavichController::class,'update'])->name('fastfood.update');
     Route::delete('fastfoods/{id}', [FastfoodAtavichController::class, 'destroy'])->name('fastfood.destroy');
 });
-Route::prefix('/bite')->group(function () {
+Route::prefix('/bite')->middleware(['auth','Role:ادمین,رستوران دار'])->group(function () {
     Route::get('/',[FastfoodCretishingController::class,'index'])->name('FastFoodBoof');
     Route::get('/create',[FastfoodCretishingController::class,'create'])->name('Boof.create');
     Route::post('/store',[FastfoodCretishingController::class,'store'])->name('Boof.store');
@@ -90,7 +90,7 @@ Route::prefix('/bite')->group(function () {
 
 
 
-Route::prefix('cart')->group(function () {
+Route::prefix('cart')->middleware(['auth','Role:ادمین,رستوران دار,مشتری'])->group(function () {
 
     Route::post('/add/{id}',[ProductController::class,'addToCart'])->name('cart');
     Route::get('/show',[productController::class,'showCart'])->name('cart.show');
@@ -112,7 +112,8 @@ Route::get('/article',function (){
     return view('Article.aboute2');
 });
 Route::fallback(function (){
-    return "<h1>notFount</h1>";
+//    return "<h1>notFount</h1>";
+    return view('Errors.errors');
 });
 
 require __DIR__.'/auth.php';

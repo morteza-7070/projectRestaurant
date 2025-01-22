@@ -33,7 +33,10 @@
 <h1 class="title">صفحه تخفیفات</h1>
 
 
-<button class="button-78" role="button"><a href="{{route('discount.create')}}">ایجاد تخفیفات</a></button>
+
+    <button class="button-78" role="button"><a href="{{route('discount.create')}}">ایجاد تخفیفات</a></button>
+
+
     <div class="row">
         <!-- HTML !-->
         @foreach($discount as $dis)
@@ -54,13 +57,13 @@
                        <form action="{{route('discount.edit',$dis->id)}}" method="get">
                            @csrf
 
-                           <button class="button-50" role="button">Edit</button>
+                           <button class="button-50" role="button">ویرایش</button>
 
                        </form>
                 <form action="{{route('discount.destroy',$dis->id)}}" method="post">
                     @csrf
                     @method("DELETE")
-                    <button class="button-49 mt-3" role="button">Delete</button>
+                    <button class="button-49 mt-3" role="button">خذف</button>
                 </form>
 
 

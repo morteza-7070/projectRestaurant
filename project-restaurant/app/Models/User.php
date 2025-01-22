@@ -23,13 +23,33 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'type_user'
+        'rol_id'
     ];
     public function orders(): HasMany
     {
         $this->hasMany(Order::class);
 
     }
+
+    public function isAdmin()
+    {
+        return $this->role=='admin';
+
+    }
+    public function isRestaurantOwner()
+    {
+        return $this->role=='restaurant-owner';
+    }
+    public function isCustomer()
+    {
+        return $this->role=='customer';
+
+    }
+    public function isGuest()
+    {
+        return $this->role=='guest';
+    }
+
 
     public function cart():BelongsToMany
     {

@@ -16,10 +16,11 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
         <div class="mt-4">
-            <x-input-label for="type_user" :value="__('نوع کاربر')" />
+            <x-input-label for="role" :value="__('نوع کاربر')" />
             <select id="type_user" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" name="type_user" required>
-                <option value="مشتری" {{ old('type_user') == 'مشتری' ? 'selected' : '' }}>مشتری</option>
-                <option value="رستوران دار" {{ old('type_user') == 'رستوران دار' ? 'selected' : '' }}>رستوران دار</option>
+                <option value="مشتری" {{ old('role') == 'customer' ? 'selected' : '' }}>مشتری</option>
+                <option value="رستوران دار" {{ old('role') == 'restaurantOwner' ? 'selected' : '' }}>رستوران دار</option>
+                <option value="رستوران دار" {{ old('role') == 'guest' ? 'selected' : '' }}>میهمان</option>
             </select>
             <x-input-error :messages="$errors->get('user_type')" class="mt-2" />
         </div>

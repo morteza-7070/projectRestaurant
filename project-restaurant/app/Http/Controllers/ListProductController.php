@@ -63,10 +63,11 @@ class ListProductController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
+   public function AllProducts()
+   {
+       $products=product::all();
+       return view('Product.index',compact('products'));
+   }
 
     /**
      * Store a newly created resource in storage.

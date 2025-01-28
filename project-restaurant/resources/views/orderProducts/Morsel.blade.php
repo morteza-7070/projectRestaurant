@@ -17,7 +17,9 @@
                     <li class="nav-item"><a href="" data-filter="{.footer}" class="nav-link">درباره ما</a></li>
                     <li class="nav-item"><a href="tel:+989157118565" class="nav-link"><img src="../../Icon/icons8-phone-96.png" alt="" style="width: 50%;height: 50%"></a></li>
                 </ul>
+                @can('access-customer')
                 <a href="{{route('cart.show')}}" class="link-shop">
+
                     <div class="cart">
                         <img src="../../Icon/ShopingCart01.png" alt="" class="CartIcon" >
                         <span class="body-shop">سبد خرید</span>
@@ -25,6 +27,8 @@
                     </div>
 
                 </a>
+                @endcan
+
             </nav>
         </div>
     </div>
@@ -37,13 +41,16 @@
                     <div class="card-body">
                         <div class="card-title">{{$product->name}}</div>
                         <div class="card-des">{{$product->description}}</div>
-                        <form action="{{ route('cart', $product->id) }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <button type="submit" class="btn btn-primary">افزودن به سبد خرید
-                                {{--                              <img src="images/shoping-cart2.png" alt="" class="image-icon">--}}
+                        @can('access-customer')
+                            <form action="{{ route('cart', $product->id) }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <button type="submit" class="btn btn-primary">افزودن به سبد خرید
+                                    {{--                              <img src="images/shoping-cart2.png" alt="" class="image-icon">--}}
 
-                            </button>
-                        </form>
+                                </button>
+                            </form>
+                        @endcan
+
                     </div>
                 </div>
             </div>

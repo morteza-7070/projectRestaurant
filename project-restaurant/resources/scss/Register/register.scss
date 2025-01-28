@@ -1,0 +1,27 @@
+.form-login{
+background-image: url("https://t3.ftcdn.net/jpg/06/75/72/98/360_F_675729886_wpafoYC7P7QT6KDNNeHvNULUCJXgkVK2.jpg");    background-repeat: no-repeat;
+
+    height: auto;
+
+
+    background-size: cover;
+    form{
+        margin:5% 15% ;
+        padding: 2% 0;
+
+        width: 50%;
+        vertical-align: center;
+        h2{text-align: center;justify-content: center;font-size: 2rem;font-weight: bolder}
+
+
+        div{
+            margin: 5% 0;
+            text-align: center;
+            justify-content: center;
+            label{font-weight: bolder;font-size: large;}
+
+           }
+
+
+    }
+}

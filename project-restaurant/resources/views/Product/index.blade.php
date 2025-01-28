@@ -6,15 +6,17 @@
                  'resources/css/app.css', 'resources/scss/Product/style.scss',
                  'resources/js/app.js',
              ])
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
 
 </head>
 <div class="container">
     <div class="header">
         <div class="navbar-nav">
             <ul class="nav">
-                <li class="list-item"><a href="" class="link-item">صفحه اصلی</a></li>
-                <li class="list-item"><a href="" class="link-item">محصولات </a></li>
-                <li class="list-item"><a href="" class="link-item">ایجاد محصول </a></li>
+                <li class="list-item"><a href="{{route('home')}}" class="link-item">صفحه اصلی</a></li>
+                <li class="list-item"><a href="#product" class="link-item">محصولات </a></li>
+                <li class="list-item"><a href="{{route('Boof.create')}}" class="link-item">ایجاد محصول </a></li>
 
             </ul>
             <div class="header-title">
@@ -27,7 +29,7 @@
             </div>
         </div>
     </div>
-    <div class="product">
+    <div id="product">
         <div class="row grid">
             @foreach($products as $product)
                 <div class="col-sm-6 col-lg-4 all  pasta">

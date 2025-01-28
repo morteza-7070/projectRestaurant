@@ -14,15 +14,19 @@ class RoleMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next , string $role): Response
+    public function handle(Request $request, Closure $next, ...$roles): Response
     {
-        if(!Auth::check()){
+        if (!Auth::check()) {
             return redirect()->route('login');
         }
-        if(Auth::user()->role!==$role)
-        {
-            abort(403,'شما اجازه دسترسی به این بخش را ندارید');
+
+        // بررسی نقش‌های فارسی مستقیماً
+        if (!in_array(Auth::user()->role, $roles)) {
+            abort(403, 'شما اجازه دسترسی به این بخش را ندارید');
         }
+
         return $next($request);
     }
+
+
 }

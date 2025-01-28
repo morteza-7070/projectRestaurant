@@ -19,6 +19,7 @@ class discount extends Model
     {
         return $this->hasOne(product::class);
     }
+
     public function shamsi(): Attribute
     {
         return Attribute::make(

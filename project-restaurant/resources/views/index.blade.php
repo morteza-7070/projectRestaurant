@@ -35,6 +35,9 @@
   <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+
 
 
 </head>
@@ -50,9 +53,15 @@
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" href="index.html">
-            <span>
-              فست فود و ساندویچی
-            </span>
+{{--              @can('access-guest')--}}
+{{--                  <span>--}}
+{{--              فست فود و ساندویچی--}}
+{{--            </span>--}}
+{{--              @endcan--}}
+              <span>
+
+                  فست فود و ساندویچی
+              </span>
           </a>
             @if (Route::has('login'))
                 <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
@@ -78,10 +87,10 @@
             <span class=""> </span>
           </button>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="collapse navbar-collapse text-white" id="navbarSupportedContent">
             <ul class="navbar-nav  mx-auto ">
               <li class="nav-item active">
-                <a class="nav-link" href="index.html">صفحه اصلی <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{route('home')}}">صفحه اصلی <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link text-white" href="{{route('restaurants.create')}}">ثبت نام مشتری</a>
@@ -160,7 +169,7 @@
                 </button>
               </form>
               <a href="{{route('restaurants.create')}}" class="order_online">
-                1سفارش آنلاین
+                سفارش آنلاین
               </a>
             </div>
           </div>
@@ -225,7 +234,7 @@
 ساندویچی عطاویچ با بیش از 15 سال سابقه کار درخحشان در تهران در خدمت همشهریان عزیز                    </p>
                     <div class="btn-box">
                       <a href="{{route('Atavitch')}}" class="btn1">
-سفارش                      </a>
+سفارش غذا                     </a>
                     </div>
                   </div>
                 </div>
@@ -445,7 +454,7 @@
       </ul>
         <div class="row grid">
             @foreach($pastaItems as $pasta)
-            <div class="col-sm-6 col-lg-4 all  pasta">
+            <div class="col-sm-6 col-lg-4 all pasta">
 
                     <div class="cart">
                         <img src="{{asset('storage/' . $pasta->image)}}" alt="imagePasta" class="image">
@@ -478,9 +487,12 @@
                                       <form action="{{ route('cart', $pasta->id) }}" method="POST" enctype="multipart/form-data">
                                           @csrf
                                           <button type="submit">
-                                              <img src="images/shoping-cart2.png" alt="" class="image-icon">
+                                              <img src="../../images/shoping-cart2.png" alt="" class="image-icon">
+                                              <h2> سفارش</h2>
+
                                           </button>
-                                      </form>                                  </div>
+                                      </form>
+                                  </div>
                               </div>
                           </div>
                        </div>
@@ -527,8 +539,11 @@
                                                 @csrf
                                                 <button type="submit">
                                                     <img src="images/shoping-cart2.png" alt="" class="image-icon">
+                                                    <h2> سفارش</h2>
+
                                                 </button>
-                                            </form>                                        </div>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -572,6 +587,8 @@
                                                 @csrf
                                                 <button type="submit">
                                                     <img src="images/shoping-cart2.png" alt="" class="image-icon">
+                                                    <h2> سفارش</h2>
+
                                                 </button>
                                             </form>
 
@@ -619,8 +636,11 @@
                                                 @csrf
                                                 <button type="submit">
                                                     <img src="images/shoping-cart2.png" alt="" class="image-icon">
+                                                    <h2> سفارش</h2>
+
                                                 </button>
-                                            </form>                                        </div>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -877,6 +897,25 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
   </script>
   <!-- End Google Map -->
+  <script>
+      $(document).ready(function () {
+          // مقداردهی اولیه به Isotope
+          var $grid = $('.grid').isotope({
+              itemSelector: '.all', // کلاس آیتم‌های قابل فیلتر
+              layoutMode: 'fitRows',
+          });
+
+          // رویداد کلیک برای فیلتر
+          $('.filters_menu li').on('click', function () {
+              $('.filters_menu li').removeClass('active');
+              $(this).addClass('active');
+
+              var filterValue = $(this).attr('data-filter');
+              $grid.isotope({ filter: filterValue });
+          });
+      });
+  </script>
+
 
 </body>
 

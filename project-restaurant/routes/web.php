@@ -7,9 +7,10 @@ use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\FastfoodCretishingController;
 use App\Http\Controllers\FastfoodAtavichController;
 use App\Http\Controllers\ListProductController;
-use App\Http\Controllers\MapController;
+use App\Http\Controllers\GuestController;
 use App\Http\Controllers\PizzaHivaController;
 use App\Http\Controllers\ProductController;
+
 
 
 
@@ -53,7 +54,7 @@ Route::prefix('/')->group(function(){
     Route::post('/',[IndexController::class,'store'])->name('store');
 
 });
-Route::prefix('/discount')->middleware(['auth','Role:admin,RestaurantOwner'])->group(function () {
+Route::prefix('/discount')->middleware(['auth','Role:ادمین,رستوران دار'])->group(function () {
     Route::get('/',[DiscountController::class,'index'])->name('discount');
     Route::get('/create',[DiscountController::class,'create'])->name('discount.create');
     Route::post('/store',[DiscountController::class,'store'])->name('discount.store');
@@ -103,13 +104,18 @@ Route::prefix('cart')->middleware(['auth','Role:ادمین,رستوران دار
 
 
 Route::prefix('/products')->group(function () {
-    Route::get('/hiva',[ListProductController::class,'showOrder'])->name('products');
+    Route::get('/',[ListProductController::class,'AllProducts'])->name('products');
+    Route::get('/hiva',[ListProductController::class,'showOrder'])->name('hiva');
     Route::get('/Atavich',[ListProductController::class,'showOrderAtavich'])->name('Atavitch');
     Route::get('/Morsel',[ListProductController::class,'orderMorsel'])->name('Morsel');
 });
 
 Route::get('/article',function (){
     return view('Article.aboute2');
+});
+Route::prefix('guest')->group(function () {
+    Route::get('/',[GuestController::class,'index'])->name('guest.index');
+
 });
 Route::fallback(function (){
 //    return "<h1>notFount</h1>";

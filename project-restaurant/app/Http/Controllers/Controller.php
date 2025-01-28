@@ -25,6 +25,7 @@ class Controller extends BaseController
 
     public function home(Request $request )
     {
+        $products=product::all();
 
         $pastaItems = product::where('type', 'پاستا')->get();
 
@@ -35,7 +36,7 @@ class Controller extends BaseController
         $pizzas = product::where('type', 'پیتزا')->get();
 
 
-        return view('index', compact('pastaItems', 'pizzas', 'sandwiches', 'friedItems'));
+        return view('index', compact('pastaItems', 'pizzas', 'sandwiches', 'friedItems','products'));
     }
 
     public function dashboard()

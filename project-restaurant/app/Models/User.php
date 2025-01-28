@@ -23,7 +23,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'rol_id'
+        'role'
     ];
     public function orders(): HasMany
     {
@@ -33,21 +33,21 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        return $this->role=='admin';
+        return $this->role=='ادمین';
 
     }
     public function isRestaurantOwner()
     {
-        return $this->role=='restaurant-owner';
+        return $this->role=='رستوران دار';
     }
     public function isCustomer()
     {
-        return $this->role=='customer';
+        return $this->role=='مشتری';
 
     }
     public function isGuest()
     {
-        return $this->role=='guest';
+        return $this->role=='مهمان';
     }
 
 

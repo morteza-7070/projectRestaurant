@@ -3,11 +3,11 @@
         background-size: cover;
         width: 100%;
         height: auto;
-        position: relative;
+
         .navbar-nav{
-            .nav{
-                .list-item{margin-top: 2%;
-                    .link-item{text-decoration: none;color: black;
+            .nav{width: 70%;
+                .list-item{margin-top: 2%;width: 10%;
+                    .link-item{text-decoration: none;color: black;margin: 0 3%;
 
                     }
                 }
@@ -27,7 +27,7 @@
             }
         }
     }
-    .product{
+    #product{
         .row{
             .pasta, .burger, .pizza, .fries{
                 margin-bottom: 5%;

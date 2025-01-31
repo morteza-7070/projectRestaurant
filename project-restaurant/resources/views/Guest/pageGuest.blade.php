@@ -7,9 +7,12 @@
 
 </head>
 <body dir="rtl">
+@php
+    $query = $query ?? '';
+@endphp
 <div class="container">
-    <header>
-        <nav class=" navbar navbar-expand-lg">
+    <header style="width: 100%">
+        <nav class=" navbar navbar-expand-lg" >
             <ul class="nav">
                 <li class="nav-item">
                     <a href="#card-product" class="nav-link">لیست محصولات</a>
@@ -18,19 +21,46 @@
                     <a href="" class="nav-link">درباره ما</a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">راه های ارتباط با ما</a>
+                    <a href="#follow" class="nav-link">راه های ارتباط با ما</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('products')}}" class="nav-link">سفارش</a>
                 </li>
             </ul>
-            <form action="" method="GET" class="d-flex">
+            <form action="{{route('guest.search')}}" method="GET" class="d-flex">
                 <input
                     type="text"
                     name="query"
                     class="form-control me-2"
-                    placeholder="جستجوی محصول."
+                    placeholder="جستجوی محصول"
                     value="{{ request('query') }}"
                     required>
                 <button type="submit" class="btn btn-primary">جستجو</button>
+                @if(request()->has('query'))
+                    <a href="{{ route('guest.index') }}" class="btn btn-secondary ms-2">نمایش همه</a>
+                @endif
             </form>
+            @if (Route::has('login'))
+                <div class=" auth">
+                    @auth
+                        <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 dashboard ">Dashboard</a>
+                    @else
+                        <a href="{{ route('login') }}"
+                           class="font-semibold text-white hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 login">
+                            ورود
+                        </a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}"
+                               class="ml-4 font-semibold text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 register">
+                                ثبت نام
+                            </a>
+                        @endif
+                    @endauth
+                </div>
+            @endif
+
+
         </nav>
         <div class="carousel1 ">
 
@@ -101,34 +131,86 @@
         </div>
     </header>
     <section id="card-product">
-        <div class="row">
 
-            @foreach($products as $product)
-                <div class="col-sm-6 col-lg-4">
-                    <div class="card">
-                        <div class="image">
-                            <img src="{{asset('storage/'.$product->image)}}" alt="" >
+                    @if(session('error'))
+                        <div class="alert alert-danger">{{ session('error') }}</div>
+                    @endif
+
+                    @if(isset($products) && $products->isNotEmpty())
+                        <h4>نتایج جستجو برای "{{ $query }}"</h4>
+                        <div class="row" >
+                            @foreach($products as $product)
+                                <div class="col-md-4">
+                                    <div class="card mb-3 mr-3">
+                                       <div class="image">
+                                           <img src="{{asset('storage/'.$product->image)}}" alt="" >
+                                       </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ $product->name }}</h5>
+                                            <p class="card-text">{{ $product->description }}</p>
+{{--                                            <p class="card-text"><strong>قیمت:</strong> {{ number_format($product->price) }} تومان</p>--}}
+                                            @if(isset($product->discount)&& $product->discount->percentage>0)
+                                                <h5> <span>{{ ($Atavich->price) - ($Atavich->price * ($Atavich->discount->percentage / 100))}}  ریال</span>
+                                                    </h5>
+                                            @else
+                                                <h5>{{$product->price}}</h5>
+
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
-                        <div class="card-body">
-                            <h2>{{$product->name}}</h2>
-                            <hr>
-                            <p class="description">{{$product->description}}</p>
-                            @if($product->discount && $product->discount->percentage>0)
-                                <button class="btn btn-danger">{{$product->discount->percentage}}%تخفیف</button>
-                                <h3 class="price-off">{{($product->price) - ($product->price * ($product->discount->percentage / 100))}}:قیمت با تخفیف</h3>
-                            @else
-                                <h3 class="price">{{$product->price}}:قیمت</h3>
+                    @elseif(isset($query))
+                        <p class="text-center text-muted">هیچ محصولی برای "{{ $query }}" یافت نشد.</p>
+                    @else
+                        <h4>تمام محصولات</h4>
+                        <div class="row">
 
-                            @endif
                         </div>
-                    </div>
-
-                </div>
-            @endforeach
-        </div>
+                    @endif
     </section>
-    <section class="footer mt-5">
-        <div class="container"></div>
+    <section class="footer  ">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 mt-3" id="follow">
+                    <img src="../../Icon/iconfastfood2.png" alt="" >
+                    <h2 class="header">follow</h2>
+                    <div class="icon-social">
+                        <img src="../../Icon/instagram2.png" alt="" >
+                        <img src="../../Icon/telegram.png" alt="" >
+                        <img src="../../Icon/twitter.png" alt="" >
+                    </div>
+                    <h2 class="header">Address</h2>
+                    <p class="address">مشهد بلوار معلم بین معلم2و4</p>
+                </div>
+                <div class="col-sm-4 mt-5">
+                    <div class="hours">
+                        <h2 class="opening">ساعات کاری</h2>
+                        <hr>
+                      <div class="time">
+                          <h3 class="day ">شنبه تا پنجشنبه</h3>
+                          <h4>9-21</h4>
+
+                          <h3 class="day "> جمعه</h3>
+                          <h4>10-15</h4>
+
+
+                      </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <h2 class="contact">ارتباط با ما</h2>
+                    <form action="{{route('guest.store')}}" method="post">
+                        @csrf
+                        <input type="text" class="name" name="name" placeholder="نام را وارد نمایید">
+                        <input type="tel" class="phone" name="phone" placeholder="شماره تماس">
+                        <textarea name="massages" class="description" placeholder="پیغام را وارد نمایید"></textarea>
+                        <button class="btn btn-success">ارسال</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </section>
 </div>
 </body>

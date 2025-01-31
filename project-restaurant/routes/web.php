@@ -103,7 +103,7 @@ Route::prefix('cart')->middleware(['auth','Role:ادمین,رستوران دار
 });
 
 
-Route::prefix('/products')->group(function () {
+Route::prefix('/products')->middleware(['auth','Role:مشتری,رستوران دار,ادمین'])->group(function () {
     Route::get('/',[ListProductController::class,'AllProducts'])->name('products');
     Route::get('/hiva',[ListProductController::class,'showOrder'])->name('hiva');
     Route::get('/Atavich',[ListProductController::class,'showOrderAtavich'])->name('Atavitch');
@@ -115,6 +115,8 @@ Route::get('/article',function (){
 });
 Route::prefix('guest')->group(function () {
     Route::get('/',[GuestController::class,'index'])->name('guest.index');
+    Route::get('/search', [GuestController::class, 'search'])->name('guest.search');
+    Route::post('/',[GuestController::class,'store'])->name('guest.store');
 
 });
 Route::fallback(function (){

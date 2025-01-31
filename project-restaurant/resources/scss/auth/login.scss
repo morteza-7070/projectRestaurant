@@ -1,0 +1,15 @@
+.container-fluid{
+    background-image: url("https://i.pinimg.com/1200x/8b/93/ac/8b93ac1695df6556453dda7ac926b3bb.jpg");
+background-repeat: no-repeat;
+    margin: 5% 25%;
+    position: relative;
+    background-size: cover;
+    width: 50%;
+    height: 600px;
+    a{}
+    form{text-align: center;justify-content: center;width: 50%;margin-top: 10%;position: absolute;
+        #email{width: 60%;margin-left: 20%}
+        #password{width: 60%;margin-left: 20%}
+        #remember{}
+    }
+}

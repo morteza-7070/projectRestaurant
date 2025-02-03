@@ -23,9 +23,34 @@
                 <li class="nav-item">
                     <a href="#follow" class="nav-link">راه های ارتباط با ما</a>
                 </li>
+
                 <li class="nav-item">
-                    <a href="{{route('products')}}" class="nav-link">سفارش</a>
+                    @auth
+                        <a href="{{route('products')}}" class="nav-link">سفارش</a>
+                    @else
+                        <a href="#" class="nav-link" onclick="showAlert()">سفارش</a>
+                    @endauth
                 </li>
+                <li class="nav-item">
+                    @auth
+                        <a href="{{route('home')}}" class="nav-link">ورود به سایت</a>
+                    @else
+                        <a href="#" class="nav-link" onclick="showSite()">ورود به سایت</a>
+                    @endauth
+                </li>
+
+                <script>
+                    function showAlert() {
+                        alert("برای ثبت سفارش ابتدا باید ثبت‌نام کنید و وارد شوید.");
+                    }
+                </script>
+                <script>
+                    function showSite()
+                    {
+                        alert("دوست عزیز برای ورود به بخش های مختلف سایت نیازمند ثبت نام است")
+                    }
+                </script>
+
             </ul>
             <form action="{{route('guest.search')}}" method="GET" class="d-flex">
                 <input
@@ -37,13 +62,17 @@
                     required>
                 <button type="submit" class="btn btn-primary">جستجو</button>
                 @if(request()->has('query'))
-                    <a href="{{ route('guest.index') }}" class="btn btn-secondary ms-2">نمایش همه</a>
+                    <a href="{{ route('guest.index') }}" class="btn btn-secondary ms-2 text-white">نمایش تمام محصولات</a>
                 @endif
             </form>
             @if (Route::has('login'))
                 <div class=" auth">
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 dashboard ">Dashboard</a>
+                        <h3 class="text-white ml-8">{{\Illuminate\Support\Facades\Auth::user()->name}}</h3>
+                        <form action="{{route('logout')}}" method="post">
+                            @csrf
+                            <button class="btn btn-primary">خروج</button>
+                        </form>
                     @else
                         <a href="{{ route('login') }}"
                            class="font-semibold text-white hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 login">
@@ -121,11 +150,11 @@
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
+                <span class="visually-hidden">قبل</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
+                <span class="visually-hidden">بعد</span>
             </button>
         </div>
         </div>
@@ -137,7 +166,7 @@
                     @endif
 
                     @if(isset($products) && $products->isNotEmpty())
-                        <h4>نتایج جستجو برای "{{ $query }}"</h4>
+{{--                        <h4>نتایج جستجو برای "{{ $query }}"</h4>--}}
                         <div class="row" >
                             @foreach($products as $product)
                                 <div class="col-md-4">
@@ -150,7 +179,8 @@
                                             <p class="card-text">{{ $product->description }}</p>
 {{--                                            <p class="card-text"><strong>قیمت:</strong> {{ number_format($product->price) }} تومان</p>--}}
                                             @if(isset($product->discount)&& $product->discount->percentage>0)
-                                                <h5> <span>{{ ($Atavich->price) - ($Atavich->price * ($Atavich->discount->percentage / 100))}}  ریال</span>
+                                                <button class="btn btn-danger">{{$product->discount->percentage}}%</button>
+                                                <h5> <span>{{ ($product->price) - ($product->price * ($product->discount->percentage / 100))}}  ریال</span>
                                                     </h5>
                                             @else
                                                 <h5>{{$product->price}}</h5>
@@ -162,12 +192,10 @@
                             @endforeach
                         </div>
                     @elseif(isset($query))
-                        <p class="text-center text-muted">هیچ محصولی برای "{{ $query }}" یافت نشد.</p>
+                        <p class="text-center text-white">هیچ محصولی برای "{{ $query }}" یافت نشد.</p>
                     @else
                         <h4>تمام محصولات</h4>
-                        <div class="row">
 
-                        </div>
                     @endif
     </section>
     <section class="footer  ">
@@ -175,13 +203,13 @@
             <div class="row">
                 <div class="col-sm-4 mt-3" id="follow">
                     <img src="../../Icon/iconfastfood2.png" alt="" >
-                    <h2 class="header">follow</h2>
+                    <h2 class="header">دنبال کردن</h2>
                     <div class="icon-social">
                         <img src="../../Icon/instagram2.png" alt="" >
                         <img src="../../Icon/telegram.png" alt="" >
                         <img src="../../Icon/twitter.png" alt="" >
                     </div>
-                    <h2 class="header">Address</h2>
+                    <h2 class="header">آدرس</h2>
                     <p class="address">مشهد بلوار معلم بین معلم2و4</p>
                 </div>
                 <div class="col-sm-4 mt-5">

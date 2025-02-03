@@ -16,8 +16,8 @@ body{background-color: #576574;
                     input{}
                     .btn{}
                 }
-            .auth{margin-right: 40%;
-                .dashboard{}
+            .auth{margin-right: 30%;
+                .dashboard{color: whitesmoke}
                 .login{}
                 .register{}
             }
@@ -89,6 +89,7 @@ body{background-color: #576574;
                         img{
                             width: 15%;
                             margin-left: 40%;
+                            margin-top: 5%;
                         }
                         .header,.address{text-align: center;margin: 3% 0}
                         .icon-social{

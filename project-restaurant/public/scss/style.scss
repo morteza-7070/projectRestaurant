@@ -11,7 +11,8 @@ body{
 	line-height: 1.8;
 	font-weight: normal;
 	background: #fafafa;
-	color: lighten($black,40%);
+	//color: lighten($black,40%);
+    color: whitesmoke;
 }
 a {
 	transition: .3s all ease;
@@ -80,6 +81,9 @@ h1, h2, h3, h4, h5,
 	&:focus, &:active {
 		border-color: $primary !important;
 	}
+}
+#navbarSupportedContent{
+    color: whitesmoke;
 }
 textarea.form-control {
 	height: inherit!important;

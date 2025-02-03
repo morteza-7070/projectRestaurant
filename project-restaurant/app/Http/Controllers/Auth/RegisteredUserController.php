@@ -36,14 +36,7 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'role'=>['required',"in:میهمان,مشتری,رستوران دار"],
         ]);
-//        $roleMapping=[
-//            'customer'=>'مشتری',
-//            'RestaurantOwner'=>'رستوران دار',
-//            'admin'=>'ادمین',
-//            'guest'=>'میهمان'
-//        ];
-//        //تبدیل مقادیر افارسی به انگلیسی
-//        $role=$roleMapping[$request->role]?? 'customer';
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,

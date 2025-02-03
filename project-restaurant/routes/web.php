@@ -40,6 +40,17 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/home',[Controller::class,'PageHome'])->name('homePage');
+Route::prefix('/')->group(function () {
+    Route::get('/',[GuestController::class,'index'])->name('guest.index');
+    Route::get('/search', [GuestController::class, 'search'])->name('guest.search');
+    Route::post('/',[GuestController::class,'store'])->name('guest.store');
+    Route::post('/logout',function ()
+    {
+        \Illuminate\Support\Facades\Auth::logout();
+        return redirect('/');
+    })->name('logout');
+
+});
 
 Route::prefix('/')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -47,7 +58,7 @@ Route::prefix('/')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::prefix('/')->group(function(){
+Route::prefix('/dashboard')->middleware(['auth','Role:مشتری,رستوران دار,ادمین'])->group(function(){
     Route::get('index',[Controller::class,'index'])->name('index');
     Route::get('/',[Controller::class,'home'])->name('home');
     Route::get('articles',[Controller::class,'article'])->name('article');
@@ -87,10 +98,6 @@ Route::prefix('/bite')->middleware(['auth','Role:ادمین,رستوران دا�
     Route::put('update/{id}/update',[FastfoodCretishingController::class,'update'])->name('Boof.update');
     Route::delete('Boof/{id}', [FastfoodCretishingController::class, 'destroy'])->name('Boof.destroy');
 });
-
-
-
-
 Route::prefix('cart')->middleware(['auth','Role:ادمین,رستوران دار,مشتری'])->group(function () {
 
     Route::post('/add/{id}',[ProductController::class,'addToCart'])->name('cart');
@@ -99,10 +106,7 @@ Route::prefix('cart')->middleware(['auth','Role:ادمین,رستوران دار
     Route::post('/cart/remove/{id}', [ProductController::class, 'remove'])->name('cart.remove');
     Route::post('/clear', [ProductController::class, 'clearCart'])->name('cart.clear');
     Route::post('/order', [ProductController::class, 'storeProduct'])->name('cart.store');
-
 });
-
-
 Route::prefix('/products')->middleware(['auth','Role:مشتری,رستوران دار,ادمین'])->group(function () {
     Route::get('/',[ListProductController::class,'AllProducts'])->name('products');
     Route::get('/hiva',[ListProductController::class,'showOrder'])->name('hiva');
@@ -113,14 +117,8 @@ Route::prefix('/products')->middleware(['auth','Role:مشتری,رستوران �
 Route::get('/article',function (){
     return view('Article.aboute2');
 });
-Route::prefix('guest')->group(function () {
-    Route::get('/',[GuestController::class,'index'])->name('guest.index');
-    Route::get('/search', [GuestController::class, 'search'])->name('guest.search');
-    Route::post('/',[GuestController::class,'store'])->name('guest.store');
 
-});
 Route::fallback(function (){
-//    return "<h1>notFount</h1>";
     return view('Errors.errors');
 });
 

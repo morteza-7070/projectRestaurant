@@ -63,10 +63,13 @@
                   فست فود و ساندویچی
               </span>
           </a>
+
             @if (Route::has('login'))
                 <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 ">Dashboard</a>
+{{--                        <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 ">Dashboard</a>--}}
+                        <h3 class="text-white">{{\Illuminate\Support\Facades\Auth::user()->name}}</h3>
+
                     @else
                         <a href="{{ route('login') }}"
                            class="font-semibold text-white hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
@@ -82,97 +85,165 @@
                     @endauth
                 </div>
             @endif
-
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class=""> </span>
-          </button>
-
-          <div class="collapse navbar-collapse text-white" id="navbarSupportedContent">
-            <ul class="navbar-nav  mx-auto ">
-              <li class="nav-item active">
-                <a class="nav-link" href="{{route('home')}}">صفحه اصلی <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-white" href="{{route('restaurants.create')}}">ثبت نام مشتری</a>
-              </li>
+{{--            <h2 class="text-white">fggggd</h2>--}}
+            <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('restaurants.create')}}">ثبت نام رستوران دار</a>
+                    <a href="{{route('guest.index')}}" class="nav-link text-white">برگشت به صفحه اصلی</a>
                 </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{route('discount')}}">لیست تخفیفات</a>
-              </li>
+               @can('access-restaurant')
+                    <li class="nav-item">
+                        <a href="{{route('discount')}}" class="nav-link text-white">صفحه تخفیفات</a>
+                    </li>
+                @endcan
+                @can('access-admin')
+                    <li class="nav-item">
+                        <a href="{{route('discount')}}" class="nav-link text-white">صفحه تخفیفات</a>
+                    </li>
+                @endcan
+              @can('access-restaurant')
+                    <li class="nav-item">
+                        <a href="{{route('products')}}" class="nav-link text-white">افزودن غذا</a>
+                    </li>
+                @endcan
+                @can('access-admin')
+                    <li class="nav-item">
+                        <a href="{{route('products')}}" class="nav-link text-white">افزودن غذا</a>
+                    </li>
+                @endcan
+
+                @can('access-restaurant')
+                    <li class="nav-item">
+                        <a href="{{route('FastFoodHiva')}}" class="nav-link text-white">فست فود هیوا</a>
+                    </li>
+                @endcan
+                @can('access-admin')
+                    <li class="nav-item">
+                        <a href="{{route('FastFoodHiva')}}" class="nav-link text-white">فست فود هیوا</a>
+                    </li>
+                @endcan
+                @can('access-restaurant')
+                    <li class="nav-item">
+                        <a href="{{route('FastFoodAtavich')}}" class="nav-link text-white">فست فود عطاویچ</a>
+                    </li>
+                @endcan
+                @can('access-admin')
+                    <li class="nav-item">
+                        <a href="{{route('FastFoodAtavich')}}" class="nav-link text-white">فست فود عطاویچ</a>
+                    </li>
+                @endcan
+
+             @can('access-restaurant')
+                    <li class="nav-item">
+                        <a href="{{route('FastFoodBoof')}}" class="nav-link text-white">فست فود لقمه کش</a>
+                    </li>
+                @endcan
+                @can('access-admin')
+                    <li class="nav-item">
+                        <a href="{{route('FastFoodBoof')}}" class="nav-link text-white">فست فود لقمه کش</a>
+                    </li>
+                @endcan
+               @can('access-customer')
+                    <li class="nav-item">
+                        <a href="{{route('cart.show')}}" class="nav-link text-white">مشاهده سبد خرید</a>
+                    </li>
+                @endcan
+            </ul>
+
+{{--          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">--}}
+{{--            <span class="text-white"> ghghghghghghghghghgh</span>--}}
+{{--          </button>--}}
+
+{{--          <div class="collapse navbar-collapse text-white" id="navbarSupportedContent">--}}
+{{--            <ul class="navbar-nav  mx-auto ">--}}
+{{--              <li class="nav-item active">--}}
+{{--                <a class="nav-link" href="{{route('home')}}">صفحه اصلی <span class="sr-only">(current)</span></a>--}}
+{{--              </li>--}}
+{{--              <li class="nav-item">--}}
+{{--                <a class="nav-link text-white" href="{{route('restaurants.create')}}">ثبت نام مشتری</a>--}}
+{{--              </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="{{route('restaurants.create')}}">ثبت نام رستوران دار</a>--}}
+{{--                </li>--}}
+{{--              <li class="nav-item">--}}
+{{--                <a class="nav-link" href="{{route('discount')}}">لیست تخفیفات</a>--}}
+{{--              </li>--}}
 {{--              <li class="nav-item">--}}
 {{--                <a class="nav-link" href="book.html">لیست غذاها</a>--}}
 {{--              </li>--}}
-            </ul>
-            <div class="user_option">
-              <a href="" class="user_link">
-                <i class="fa fa-user" aria-hidden="true">{{\Morilog\Jalali\Jalalian::now()}}</i>
-              </a>
-              <a class="cart_link" href="#">
-                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
-                  <g>
-                    <g>
-                      <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                   c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                    </g>
-                  </g>
-                  <g>
-                    <g>
-                      <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                   C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                   c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                   C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                    </g>
-                  </g>
-                  <g>
-                    <g>
-                      <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                   c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                    </g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                </svg>
-              </a>
-              <form class="form-inline">
-                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                </button>
-              </form>
-              <a href="{{route('restaurants.create')}}" class="order_online">
-                سفارش آنلاین
-              </a>
-            </div>
-          </div>
+{{--            </ul>--}}
+{{--              <ul class="navbar">--}}
+{{--                  <li class="nav-item">--}}
+{{--                      <a href="" class="nav-link text-white">fgbd</a>--}}
+{{--                  </li>--}}
+{{--              </ul>--}}
+{{--            <div class="user_option">--}}
+{{--              <a href="" class="user_link">--}}
+{{--                <i class="fa fa-user text-white" aria-hidden="true">{{\Morilog\Jalali\Jalalian::now()}}</i>--}}
+{{--              </a>--}}
+{{--              <a class="cart_link" href="#">--}}
+{{--                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">--}}
+{{--                  <g>--}}
+{{--                    <g>--}}
+{{--                      <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248--}}
+{{--                   c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />--}}
+{{--                    </g>--}}
+{{--                  </g>--}}
+{{--                  <g>--}}
+{{--                    <g>--}}
+{{--                      <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48--}}
+{{--                   C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064--}}
+{{--                   c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4--}}
+{{--                   C457.728,97.71,450.56,86.958,439.296,84.91z" />--}}
+{{--                    </g>--}}
+{{--                  </g>--}}
+{{--                  <g>--}}
+{{--                    <g>--}}
+{{--                      <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296--}}
+{{--                   c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />--}}
+{{--                    </g>--}}
+{{--                  </g>--}}
+{{--                  <g>--}}
+{{--                  </g>--}}
+{{--                  <g>--}}
+{{--                  </g>--}}
+{{--                  <g>--}}
+{{--                  </g>--}}
+{{--                  <g>--}}
+{{--                  </g>--}}
+{{--                  <g>--}}
+{{--                  </g>--}}
+{{--                  <g>--}}
+{{--                  </g>--}}
+{{--                  <g>--}}
+{{--                  </g>--}}
+{{--                  <g>--}}
+{{--                  </g>--}}
+{{--                  <g>--}}
+{{--                  </g>--}}
+{{--                  <g>--}}
+{{--                  </g>--}}
+{{--                  <g>--}}
+{{--                  </g>--}}
+{{--                  <g>--}}
+{{--                  </g>--}}
+{{--                  <g>--}}
+{{--                  </g>--}}
+{{--                  <g>--}}
+{{--                  </g>--}}
+{{--                  <g>--}}
+{{--                  </g>--}}
+{{--                </svg>--}}
+{{--              </a>--}}
+{{--              <form class="form-inline">--}}
+{{--                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">--}}
+{{--                  <i class="fa fa-search" aria-hidden="true"></i>--}}
+{{--                </button>--}}
+{{--              </form>--}}
+{{--              <a href="{{route('restaurants.create')}}" class="order_online">--}}
+{{--                سفارش آنلاین--}}
+{{--              </a>--}}
+{{--            </div>--}}
+{{--          </div>--}}
         </nav>
       </div>
     </header>
@@ -267,27 +338,50 @@
             <div class="box ">
               <div class="img-box">
 {{--                <img src="images/o1.jpg" alt="">--}}
-                  <img src="{{"storage/".$sandwiches[0]->image}}" alt="">
+{{--                  <img src="{{"storage/".$sandwiches[0]->image ?? :null}}" alt="">--}}
+                  @if(!empty($sandwiches)&& isset($sandwiches[0]->image))
+                      <img src="{{asset('stortage/'.$sandwiches[0]->image)}}" alt="">
+                  @else
+                      <img src="../../images/f5.png" alt="">
+                  @endif
               </div>
               <div class="detail-box">
                 <h5>
 
-                    {{$sandwiches[0]->name}}
-                </h5>
-                <h6>
-                    @if ($sandwiches->first()?->discount?->percentage > 0)
-                        <span>{{ $sandwiches->first()?->discount->percentage }}%OFF</span>
+{{--                    {{$sandwiches[0]->name}}--}}
+                    @if(!empty($sandwiches)&&isset($sandwiches[0]->name))
+                        {{$sandwiches[0]->name}}
+                    @else
+                        سیب زمینی سرخ کردنی
 
                     @endif
-                </h6>
-                <a href="">
-{{--                    @foreach ($pizzas as $pizza)--}}
-                        <form action="{{ route('cart', $sandwiches->first()->id) }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <button type="submit" class="btn ">سفارش</button>
-                        </form>
-{{--                    @endforeach--}}
 
+                </h5>
+{{--                <h6>--}}
+{{--                    @if ($sandwiches->first()?->discount?->percentage > 0)--}}
+{{--                        <span>{{ $sandwiches->first()?->discount->percentage }}%OFF</span>--}}
+
+{{--                    @endif--}}
+{{--                </h6>--}}
+                  <h6>
+                      @if ($sandwiches->isNotEmpty() && optional($sandwiches->first()->discount)->percentage > 0)
+                          <span>{{ $sandwiches->first()->discount->percentage }}% OFF</span>
+
+                          <form action="{{ route('cart', $sandwiches->first()->id) }}" method="POST" enctype="multipart/form-data">
+                              @csrf
+                              <button type="submit" class="btn btn-primary">سفارش</button>
+                          </form>
+                      @endif
+                  </h6>
+                <a href="">
+                  @if($sandwiches->isNotEmpty()&& $sandwiches->first() !== null)
+                      @foreach($pizzas as $pizza)
+                            <form action="{{route('cart', $sandwiches->first()->id)}}" method="post" enctype="multipart/form-data">
+                                <button type="submit" class="btn btn-primary"></button>
+
+                            </form>
+                      @endforeach
+                  @endif
                   <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                     <g>
                       <g>

@@ -53,7 +53,7 @@ body{background-color: #576574;
             h4{}
 
             .row{
-                .col-md-4{height: 400px;border: none;margin: 5% 0;
+                .col-md-4 {height: 25%;border: none;margin-top: 5%;margin-bottom: 3%;
                     .card{width: auto;height: auto;text-align: center;
                         .image{
                             img{
@@ -66,7 +66,12 @@ body{background-color: #576574;
                             }
                         }
                         .card-body{
-                            h5{font-size: 2rem;font-weight: bold}
+                            h5{font-size: 2rem;font-weight: bold;
+                            span{
+
+
+                            }}
+
                             hr{width: 40%;border: 1px solid black;margin: 2% auto}
                             .card-text{font-size: 1.2rem;font-weight: bold;text-align: center}
                             .btn-danger{
@@ -82,7 +87,7 @@ body{background-color: #576574;
             }
 
         }
-        .footer{direction: ltr;margin-top: 15%;;background-color: #bdc3c7;
+        .footer{direction: ltr;background-color: #bdc3c7;
             .container{
                 .row{
                     .col-sm-4{

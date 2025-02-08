@@ -1,13 +1,11 @@
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    @vite([
+                 'resources/css/app.css', 'resources/scss/Error/error.scss',
+                 'resources/js/app.js',
+             ])
+</head>
+<body class="Error">
+<img src="../../images/404.jpg" alt="" style="width: 100%;height: 100%">
 
-<div class="container">
-    <div class="header">
-        <div class="nav">
-            <nav>
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a href="{{route('home')}}" class="nav-link">برگشت به صفحه اصلی</a></li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-    <h2>به نظر میاد این صفحه یه موجود فضایی دزدیده! اگه بتونی اون رو پیدا کنی، جایزه داری</h2>
-</div>
+</body>

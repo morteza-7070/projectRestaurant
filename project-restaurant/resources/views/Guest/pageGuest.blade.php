@@ -41,7 +41,7 @@
 
                 <script>
                     function showAlert() {
-                        alert("برای ثبت سفارش ابتدا باید ثبت‌نام کنید و وارد شوید.");
+                        alert("برای ثبت سفارش ابتدا باید ثبت ‌نام کنید و وارد شوید.");
                     }
                 </script>
                 <script>
@@ -166,24 +166,28 @@
                     @endif
 
                     @if(isset($products) && $products->isNotEmpty())
-{{--                        <h4>نتایج جستجو برای "{{ $query }}"</h4>--}}
                         <div class="row" >
                             @foreach($products as $product)
-                                <div class="col-md-4">
-                                    <div class="card mb-3 mr-3">
+                                <div class="col-md-4 col-lg-4">
+                                    <div class="card mb-3 shadow ">
                                        <div class="image">
                                            <img src="{{asset('storage/'.$product->image)}}" alt="" >
                                        </div>
                                         <div class="card-body">
                                             <h5 class="card-title">{{ $product->name }}</h5>
                                             <p class="card-text">{{ $product->description }}</p>
-{{--                                            <p class="card-text"><strong>قیمت:</strong> {{ number_format($product->price) }} تومان</p>--}}
                                             @if(isset($product->discount)&& $product->discount->percentage>0)
                                                 <button class="btn btn-danger">{{$product->discount->percentage}}%</button>
-                                                <h5> <span>{{ ($product->price) - ($product->price * ($product->discount->percentage / 100))}}  ریال</span>
-                                                    </h5>
+
+                                                <h5 class="mt-3 ">قیمت با احتساب تخفیف
+                                                    <hr>
+                                                <span class="bg-amber-500">{{($product->price) - ($product->price*($product->discount->percentage/100))}}ریال</span>
+                                                </h5>
                                             @else
-                                                <h5>{{$product->price}}</h5>
+                                                <h5 class="mt-3">قیمت
+                                                    <hr>
+                                                    <span class="bg-amber-500">{{$product->price}}</span>
+                                                </h5>
 
                                             @endif
                                         </div>

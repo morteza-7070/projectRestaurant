@@ -9,6 +9,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\location;
 use App\Models\Restaurant;
 use App\services\MapService;
 
@@ -105,6 +106,23 @@ class MapController extends Controller
         }
 
         return response()->json($coordinates);
+    }
+    public function map()
+    {
+        return view('Api.Api');
+    }
+    public function store(Request $request) {
+        $request->validate([
+            'latitude' => 'required',
+            'longitude' => 'required',
+        ]);
+
+        location::create([
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+        ]);
+
+        return redirect()->route('map')->with('success', 'مکان با موفقیت ذخیره شد!');
     }
 }
 //class MapController extends Controller

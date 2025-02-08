@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\MapController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\DiscountController;
@@ -114,9 +115,8 @@ Route::prefix('/products')->middleware(['auth','Role:مشتری,رستوران �
     Route::get('/Morsel',[ListProductController::class,'orderMorsel'])->name('Morsel');
 });
 
-Route::get('/article',function (){
-    return view('Article.aboute2');
-});
+Route::get('/map',[MapController::class,'map'])->name('map');
+Route::post('/map',[MapController::class,'store'])->name('map.store');
 
 Route::fallback(function (){
     return view('Errors.errors');
